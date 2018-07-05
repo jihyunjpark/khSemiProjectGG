@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<head>
+<title>Login</title>
+<!-- 로그인 연동 스크립트 -->
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type="text/javascript"
+	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
+	charset="utf-8"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="../../images/icons/favicon.ico" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="../../vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="../../fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="../../vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="../../vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="../../vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="../../vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="../../vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="../../css/util.css">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+				<form class="login100-form validate-form">
+					<span class="login100-form-title p-b-33"> Account Login </span>
+
+					<div class="wrap-input100 validate-input"
+						data-validate="Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email"
+							placeholder="Email"> <span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+
+					<div class="wrap-input100 rs1 validate-input"
+						data-validate="Password is required">
+						<input class="input100" type="password" name="pass"
+							placeholder="Password"> <span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+					<!-- 로그인 버튼 -->
+					<div class="container-login100-form-btn m-t-20">
+						<button class="login100-form-btn">Sign in</button>
+					</div>
+					<br>
+					<!-- 연동 로그인 버튼 - 카카오 -->
+					<div class="container-login-api">
+						<div class="container-login-kakao">
+							<a id="kakao-login-btn"></a> <a
+								href="http://developers.kakao.com/logout"></a>
+							<script type='text/javascript'>
+								//<![CDATA[
+								// 사용할 앱의 JavaScript 키를 설정해 주세요.
+								Kakao.init('e8c4fb9a405e63f9eb58467ef526fb71');
+								// 카카오 로그인 버튼을 생성합니다.
+								Kakao.Auth.createLoginButton({
+									container : '#kakao-login-btn',
+									success : function(authObj) {
+										alert(JSON.stringify(authObj));
+										window.location.replace("http://localhost:8081/swp/index.jsp")
+									},
+									fail : function(err) {
+										alert(JSON.stringify(err));
+									}
+								});
+								//]]>
+							</script>
+						</div>
+						<!-- 연동 로그인 버튼 - 네이버 -->
+						<div class="container-login-naver">
+							<!-- 네이버아이디로로그인 버튼 노출 영역 -->
+							<div id="naverIdLogin"></div>
+							<!-- //네이버아이디로로그인 버튼 노출 영역 -->
+
+							<!-- 네이버아디디로로그인 초기화 Script -->
+							<script>
+							var naverLogin = new naver.LoginWithNaverId(
+									{
+										clientId: "MiE7za1q2r2x8mnXzzsu",
+										callbackUrl: "http://localhost:8081/swp/views/common/callback.html",
+										isPopup: false,
+										loginButton: {color: "green", type: 3, height: 60}
+									}
+								);
+								/* (4) 네아로 로그인 정보를 초기화하기 위하여 init을 호출 */
+								naverLogin.init();
+								
+							</script>
+
+
+						</div>
+					</div>
+
+					<div class="text-center p-t-45 p-b-4">
+						<span class="txt1"> Forgot </span> <a href="#" class="txt2 hov1">
+							Username / Password? </a>
+					</div>
+
+					<div class="text-center">
+						<span class="txt1"> Create an account? </span> <a
+							href="/swp/views/common/signUp.jsp" class="txt2 hov1"> Sign
+							up </a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!--===============================================================================================-->
+	<script src="/swp/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="/swp/vendor/animsition/js/animsition.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="/swp/vendor/bootstrap/js/popper.js"></script>
+	<script src="/swp/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="/swp/vendor/select2/select2.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="/swp/vendor/daterangepicker/moment.min.js"></script>
+	<script src="/swp/vendor/daterangepicker/daterangepicker.js"></script>
+	<!--===============================================================================================-->
+	<script src="/swp/vendor/countdowntime/countdowntime.js"></script>
+	<!--===============================================================================================-->
+	<script src="/swp/js/main.js"></script>
+
+</body>
+</html>
