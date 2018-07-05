@@ -8,7 +8,7 @@
 </head>
 <body>
 <%@ include file="/views/common/header.jsp"%>
-asasas
+탱영아
 			<section class="vertical-center slider">
 				<div>
 					<img src="/swp/images/main_flash_1_180625.jpg">
