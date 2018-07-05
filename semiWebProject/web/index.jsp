@@ -8,7 +8,11 @@
 </head>
 <body>
 <%@ include file="/views/common/header.jsp"%>
+<<<<<<< HEAD
 안녕태영아
+=======
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbdd
+>>>>>>> branch 'master' of https://github.com/jihyunjpark/khSemiProjectGG
 			<section class="vertical-center slider">
 				<div>
 					<img src="/swp/images/main_flash_1_180625.jpg">
