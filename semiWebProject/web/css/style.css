@@ -9,10 +9,8 @@
 	z-index: 100;
 	border-bottom: 1px solid #d1d8e4;
 	background: #fff;
-	width:100%;
+	width: 100%;
 }
-
-
 
 body, button, input, select, table, textarea {
 	font-size: 12px;
@@ -33,12 +31,10 @@ a:link, a:visited, a:hover {
 	text-decoration: none;
 }
 
-#accordian a:link,#accordian a:visited,#accordian a:hover {
+#accordian a:link, #accordian a:visited, #accordian a:hover {
 	color: white;
 	text-decoration: none;
 }
-
-
 
 #top-menu {
 	margin: 10px;
@@ -200,7 +196,6 @@ fieldset {
 	display: block;
 	width: 456px;
 	height: 41px;
-	
 }
 
 .greenbox input {
@@ -247,7 +242,7 @@ fieldset {
 	margin: 0 auto;
 } */
 .greenwindow {
-	width:510px;
+	width: 510px;
 	margin: 0 auto;
 }
 
@@ -317,9 +312,9 @@ fieldset {
 	font-size: 15px;
 }
 
-.section{
-	width:1300px;
-	float:left;
+.section {
+	width: 1300px;
+	float: left;
 }
 
 /* 사이드바 */
@@ -330,7 +325,7 @@ fieldset {
 	padding: 0 10px;
 	cursor: pointer;
 	/*fallback for browsers not supporting gradients*/
-	background: #684da8; 
+	background: #684da8;
 	/*background: linear-gradient(#8368c1, #5c4396);*/
 }
 /*heading hover effect*/
@@ -366,10 +361,10 @@ fieldset {
 #accordian ul ul {
 	display: none;
 }
+
 #accordian li.active ul {
 	display: block;
 }
-
 
 /* 슬라이드배너 */
 .slider {
@@ -412,122 +407,138 @@ fieldset {
 	width: 100%;
 }
 
-
-
 /* menubar */
- .menubar{
-border:none;
-border:0px;
-margin:0px;
-padding:0px;
-font: 67.5% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
-font-size:14px;
-font-weight:bold;
+.menubar {
+	border: none;
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	font: 67.5% "Lucida Sans Unicode", "Bitstream Vera Sans",
+		"Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica,
+		sans-serif;
+	font-size: 14px;
+	font-weight: bold;
 }
 
-
-
-.menubar ul{
-background: #7C65B2;
-height:50px;
-list-style:none;
-margin:0;
-padding-left:700px;
+.menubar ul {
+	background: #7C65B2;
+	height: 50px;
+	list-style: none;
+	margin: 0;
+	padding-left: 700px;
 }
 
-.menubar li{
-float:left;
-padding:0px;
+.menubar li {
+	float: left;
+	padding: 0px;
 }
 
-.menubar li a{
-background: #7C65B2;
-color:#cccccc;
-display:block;
-font-weight:normal;
-line-height:50px;
-margin:0px;
-padding:0px 25px;
-text-align:center;
-text-decoration:none;
+.menubar li a {
+	background: #7C65B2;
+	color: #cccccc;
+	display: block;
+	font-weight: normal;
+	line-height: 50px;
+	margin: 0px;
+	padding: 0px 25px;
+	text-align: center;
+	text-decoration: none;
 }
 
-.menubar li a:hover, .menubar ul li:hover a{
-background: #5c4396;
-color:#FFFFFF;
-text-decoration:none;
+.menubar li a:hover, .menubar ul li:hover a {
+	background: #5c4396;
+	color: #FFFFFF;
+	text-decoration: none;
 }
 
-.menubar li ul{
-background:#7C65B2;
-display:none; /* 평상시에는 드랍메뉴가 안보이게 하기 */
-height:auto;
-padding:0px;
-margin:0px;
-border:0px;
-position:absolute;
-width:200px;
-z-index:200;
-/*top:1em;
+.menubar li ul {
+	background: #7C65B2;
+	display: none; /* 평상시에는 드랍메뉴가 안보이게 하기 */
+	height: auto;
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	position: absolute;
+	width: 200px;
+	z-index: 200;
+	/*top:1em;
 /*left:0;*/
 }
 
-.menubar li:hover ul{
-display:block; /* 마우스 커서 올리면 드랍메뉴 보이게 하기 */
+.menubar li:hover ul {
+	display: block; /* 마우스 커서 올리면 드랍메뉴 보이게 하기 */
 }
 
 .menubar li li {
-background: #7C65B2;
-display:block;
-float:none;
-margin:0px;
-padding:0px;
-width:200px;
+	background: #7C65B2;
+	display: block;
+	float: none;
+	margin: 0px;
+	padding: 0px;
+	width: 200px;
 }
 
-.menubar li:hover li a{
-background:none;
+.menubar li:hover li a {
+	background: none;
 }
 
-.menubar li ul a{
-display:block;
-height:50px;
-font-size:12px;
-font-style:normal;
-margin:0px;
-padding:0px 10px 0px 15px;
-text-align:left;
+.menubar li ul a {
+	display: block;
+	height: 50px;
+	font-size: 12px;
+	font-style: normal;
+	margin: 0px;
+	padding: 0px 10px 0px 15px;
+	text-align: left;
 }
 
-.menubar li ul a:hover, .menubar li ul li:hover a{
-background:#5c4396;
-border:0px;
-color:#ffffff;
-text-decoration:none;
+.menubar li ul a:hover, .menubar li ul li:hover a {
+	background: #5c4396;
+	border: 0px;
+	color: #ffffff;
+	text-decoration: none;
 }
 
-.menubar p{
-clear:left;
+.menubar p {
+	clear: left;
 }
 
 #accordian {
 	background: #7C65B2;
 	width: 180px;
-	height:100%;
+	height: 100%;
 	margin: 12px;
 	color: white;
 	/*Some cool shadow and glow effect*/
-	box-shadow: 
-		0 5px 15px 1px rgba(0, 0, 0, 0.6), 
-		0 0 200px 1px rgba(255, 255, 255, 0.5);
-	float:left;
+	box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.6), 0 0 200px 1px
+		rgba(255, 255, 255, 0.5);
+	float: left;
 }
 
-.#accordian a {
+.
+#accordian a {
 	color: white;
 }
-.section{
-	width:1300px;
-	float:left;
 
+.section {
+	width: 1300px;
+	float: left;
+}
+/* SHOW COMMENT */
+.tableArea {
+	width: 600px;
+	height: auto;
+	margin-top: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.tableArea table td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	text-align: center;
+	
+	
 }

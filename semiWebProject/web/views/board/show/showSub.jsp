@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	ShowVo show = (ShowVo)request.getAttribute("show");
+	ShowVo show = (ShowVo) request.getAttribute("show");
 %>
 <!DOCTYPE html>
 <html>
@@ -216,8 +216,8 @@ star-input>.input.focus {
 				<div id="subContainer">
 					<div id="detailMain">
 						<div id="contentsLeft">
-							<img src="/swp/resource/upload/<%=show.getShow_image() %>" width=350 id="objImg"
-								class="subDetailImg" />
+							<img src="/swp/resource/upload/<%=show.getShow_image()%>"
+								width=350 id="objImg" class="subDetailImg" />
 							<div class="star-input" id="won">
 								<span class="input"> <input type="radio"
 									name="star-input" value="1" id="p1"> <label for="p1">1</label>
@@ -240,19 +240,20 @@ star-input>.input.focus {
 							<ul id="eventContents">
 								<li class="detailCntExp"><2018-19 세종시즌></li>
 								<li class="detailCntName">
-									<%if(show.getCategory().equals("Y")){ %>
-										&lt연극&gt
-									<%}else{ %>
-										&lt뮤지컬&gt
-									<%} %>
-									<b><%=show.getShow_name() %></b>
+									<%
+										if (show.getCategory().equals("Y")) {
+									%> &lt연극&gt <%
+ 	} else {
+ %> &lt뮤지컬&gt <%
+ 	}
+ %> <b><%=show.getShow_name()%></b>
 								</li>
 								<li>
 									<table border=0 cellpadding=0 cellspacing=0
 										id="contentsDetailTB">
 										<tr>
 											<th>장&nbsp;&nbsp;&nbsp;&nbsp;르 :</th>
-											<td><%=show.getGenre() %></td>
+											<td><%=show.getGenre()%></td>
 										</tr>
 										<tr>
 											<th>공연시간 :</th>
@@ -260,11 +261,11 @@ star-input>.input.focus {
 										</tr>
 										<tr>
 											<th>관람등급 :</th>
-											<td><%=show.getShow_grade() %>세이상</td>
+											<td><%=show.getShow_grade()%>세이상</td>
 										</tr>
 										<tr>
 											<th>공연장소 :</th>
-											<td><%=show.getLocation() %></td>
+											<td><%=show.getLocation()%></td>
 										</tr>
 										<tr>
 											<th>공연기간 :</th>
@@ -272,7 +273,7 @@ star-input>.input.focus {
 										</tr>
 										<tr>
 											<th>출&nbsp;&nbsp;&nbsp;&nbsp;연 :</th>
-											<td><%=show.getGuest() %></td>
+											<td><%=show.getGuest()%></td>
 										</tr>
 										<tr>
 											<th>홈페이지 :</th>
@@ -282,6 +283,28 @@ star-input>.input.focus {
 								</li>
 							</ul>
 						</div>
+							<div class="tableArea">
+								<table align="center">
+									<tr>
+										<th>글번호</th>
+										<th width="200">글제목</th>
+										<th width="100">작성자</th>
+										<th>조회수</th>
+										<th width="100">작성일</th>
+									</tr>
+									<tr>
+										<td colspan="5">한줄 리뷰가 없습니다.</td>
+									</tr>
+									<tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</table>
+							</div>
 					</div>
 				</div>
 			</div>
