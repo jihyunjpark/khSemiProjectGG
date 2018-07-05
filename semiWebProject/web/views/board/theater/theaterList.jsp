@@ -17,7 +17,7 @@
 </head>
 <body>
 	<%@ include file="/views/common/header.jsp"%>
-	<h2>극장 리스트</h2>
+	<h2>극장 리스트 머지</h2>
 	
 	<table class="">
 	<tr>
