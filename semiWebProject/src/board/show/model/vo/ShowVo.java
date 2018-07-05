@@ -23,6 +23,9 @@ public class ShowVo {
 	private int wish_count;
 	private String location;
 	private String category;
+	private String period;
+	private String show_runtime;
+	private String sub_image;
 	
 	public ShowVo(){}
 
@@ -135,7 +138,29 @@ public class ShowVo {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	
-	
+
+	public String getPeriod() {
+		return period;
+	}
+
+	public void setPeriod(String period) {
+		this.period = period;
+	}
+
+	public String getShow_runtime() {
+		return show_runtime;
+	}
+
+	public void setShow_runtime(String show_runtime) {
+		this.show_runtime = show_runtime;
+	}
+
+	public String getSub_image() {
+		return sub_image;
+	}
+
+	public void setSub_image(String sub_image) {
+		this.sub_image = sub_image;
+	}
 }
 

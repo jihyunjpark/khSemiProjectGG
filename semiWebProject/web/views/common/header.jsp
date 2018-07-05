@@ -94,7 +94,9 @@
 		
 		var menuName = sessionStorage.getItem('menu');
 		console.log(menuName);
-		if(menuName != null){
+		if(menuName != null && menuName == 'home'){
+			$("#accordian").hide();
+		}else if(menuName != null && menuName != 'home'){
 			$("#" + menuName + "Menu").click();
 		}
 	})
@@ -168,7 +170,7 @@
 			<div class="menubar">
 <ul>
  <li><a href="/swp" onclick="setLeftMenu('home');">Home</a></li>
- <li><a href="/swp/showList.do" id="current" onclick="setLeftMenu('show');">공연</a>
+ <li><a href="/swp/showMenuList.do?category=N" id="current" onclick="setLeftMenu('show');">공연</a>
 	<ul>
      <li><a href="/swp/showMenuList.do?category=N" onclick="setLeftMenu('show');" >뮤지컬</a></li>
      <li><a href="/swp/showMenuList.do?category=Y" onclick="setLeftMenu('show');">연극</a></li>

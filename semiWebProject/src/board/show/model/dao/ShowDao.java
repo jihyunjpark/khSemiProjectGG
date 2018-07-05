@@ -107,6 +107,7 @@ public class ShowDao {
 				temp.setWish_count(rs.getInt("WISH_COUNT"));
 				temp.setLocation(rs.getString("LOCATION"));
 				temp.setCategory(rs.getString("CATEGORY"));
+				temp.setPeriod(rs.getString("PERIOD"));
 				
 				list.add(temp);
 			}
@@ -150,6 +151,9 @@ public class ShowDao {
 				show.setWish_count(rs.getInt("WISH_COUNT"));
 				show.setLocation(rs.getString("LOCATION"));
 				show.setCategory(rs.getString("CATEGORY"));
+				show.setPeriod(rs.getString("PERIOD"));
+				show.setShow_runtime(rs.getString("SHOW_RUNTIME"));
+				show.setSub_image(rs.getString("SUB_IMAGE"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

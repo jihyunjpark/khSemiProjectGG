@@ -238,15 +238,14 @@ star-input>.input.focus {
 						<div id="contentsRight">
 							<div class="iconArea"></div>
 							<ul id="eventContents">
-								<li class="detailCntExp"><2018-19 세종시즌></li>
 								<li class="detailCntName">
 									<%
 										if (show.getCategory().equals("Y")) {
 									%> &lt연극&gt <%
- 	} else {
- %> &lt뮤지컬&gt <%
- 	}
- %> <b><%=show.getShow_name()%></b>
+									 	} else {
+									 %> &lt뮤지컬&gt <%
+									 	}
+									 %> <b><%=show.getShow_name()%></b>
 								</li>
 								<li>
 									<table border=0 cellpadding=0 cellspacing=0
@@ -257,7 +256,7 @@ star-input>.input.focus {
 										</tr>
 										<tr>
 											<th>공연시간 :</th>
-											<td>120분</td>
+											<td><%=show.getShow_runtime() %>분</td>
 										</tr>
 										<tr>
 											<th>관람등급 :</th>
@@ -269,7 +268,7 @@ star-input>.input.focus {
 										</tr>
 										<tr>
 											<th>공연기간 :</th>
-											<td>2018.06.12 ~ 2018.08.26</td>
+											<td><%=show.getPeriod() %></td>
 										</tr>
 										<tr>
 											<th>출&nbsp;&nbsp;&nbsp;&nbsp;연 :</th>
@@ -283,28 +282,35 @@ star-input>.input.focus {
 								</li>
 							</ul>
 						</div>
-							<div class="tableArea">
-								<table align="center">
-									<tr>
-										<th>글번호</th>
-										<th width="200">글제목</th>
-										<th width="100">작성자</th>
-										<th>조회수</th>
-										<th width="100">작성일</th>
-									</tr>
-									<tr>
-										<td colspan="5">한줄 리뷰가 없습니다.</td>
-									</tr>
-									<tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
-									<tr>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-								</table>
-							</div>
+						<div class="tableArea">
+							<table align="center">
+								<tr>
+									<th>글번호</th>
+									<th width="200">글제목</th>
+									<th width="100">작성자</th>
+									<th>조회수</th>
+									<th width="100">작성일</th>
+								</tr>
+								<tr>
+									<td colspan="5">한줄 리뷰가 없습니다.</td>
+								</tr>
+								<tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</table>
+						</div>
+						<div class="subImage">
+						<%
+							String[] subs = show.getSub_image().split(",");
+							for(String name : subs){%>
+								<img src="/swp/resource/upload/<%=name %>" alt="<%=name%>"/>	
+						<%}%>
+						</div>
 					</div>
 				</div>
 			</div>
