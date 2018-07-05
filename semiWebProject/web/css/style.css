@@ -19,12 +19,42 @@ body, button, input, select, table, textarea {
 
 #body-wrapper {
 	overflow: hidden;
-	background: #F1F2E9;
 }
 
-#top-menu div {
-	display: block;
+header {
+	width: 1140px;
+	margin: 0 auto;
 }
+
+
+#top-menu{
+	width: 1140px;
+	min-width: 1140px !important;
+}
+
+#top-menu-right {
+	float: right;'
+}
+
+#top-menu-right .al_bar {
+    margin: 5px 4px 0 9px;
+    width: 1px;
+    height: 11px;
+    background: #000000;
+}
+
+#top-menu{
+	position: relative;
+    z-index: 102;
+    text-align: center;
+    width: 100%;
+    min-width: 960px;
+    height: 32px;
+    background: #fff;
+    border-bottom: 1px solid #c1c1c1;
+}
+
+
 
 a:link, a:visited, a:hover {
 	color: black;
@@ -36,19 +66,7 @@ a:link, a:visited, a:hover {
 	text-decoration: none;
 }
 
-#top-menu {
-	margin: 10px;
-	text-decoration: none;
-	color: black;
-	float: right;
-	font-family: sans-serif;
-	font-size: small;
-	text-decoration: none;
-}
 
-#top-menu a {
-	margin: 5px;
-}
 
 /* header */
 .special_bg {
@@ -313,12 +331,24 @@ fieldset {
 }
 
 .section {
-	width: 1300px;
-	float: left;
+	width: 1140px;
+	height:100%;
+	margin:10px auto;
 }
 
 /* 사이드바 */
-/*heading styles*/
+#accordian {
+	background: #7C65B2;
+	width: 160px;
+	height: 100%;
+	margin-left: 12px;
+	color: white;
+	/*Some cool shadow and glow effect*/
+	box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.6), 0 0 200px 1px
+		rgba(255, 255, 255, 0.5);
+	float: left;
+}
+
 #accordian h3 {
 	font-size: 13px;
 	line-height: 50px;
@@ -368,8 +398,8 @@ fieldset {
 
 /* 슬라이드배너 */
 .slider {
-	width: 60%;
-	margin: 0px auto;
+	width: 1183px;
+	margin: 10px auto;
 }
 
 .slick-slide {
@@ -409,26 +439,25 @@ fieldset {
 
 /* menubar */
 .menubar {
-	border: none;
-	border: 0px;
-	margin: 0px;
-	padding: 0px;
-	font: 67.5% "Lucida Sans Unicode", "Bitstream Vera Sans",
-		"Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica,
-		sans-serif;
-	font-size: 14px;
-	font-weight: bold;
+		width: 1140px;;
+	margin: 0 auto;
+	overflow: hidden;
+	height: 48px;
 }
 
 .menubar ul {
-	background: #7C65B2;
-	height: 50px;
+	overflow:hidden;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0px 0px 0px 0px;
 	list-style: none;
-	margin: 0;
-	padding-left: 700px;
+	line-height: normal;
+	text-align: center;
 }
 
 .menubar li {
+	overflow:hidden;
+	width:228px;;
 	float: left;
 	padding: 0px;
 }
@@ -459,7 +488,7 @@ fieldset {
 	margin: 0px;
 	border: 0px;
 	position: absolute;
-	width: 200px;
+	width: 228px;
 	z-index: 200;
 	/*top:1em;
 /*left:0;*/
@@ -475,7 +504,7 @@ fieldset {
 	float: none;
 	margin: 0px;
 	padding: 0px;
-	width: 200px;
+	width: 228px;
 }
 
 .menubar li:hover li a {
@@ -503,27 +532,6 @@ fieldset {
 	clear: left;
 }
 
-#accordian {
-	background: #7C65B2;
-	width: 180px;
-	height: 100%;
-	margin: 12px;
-	color: white;
-	/*Some cool shadow and glow effect*/
-	box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.6), 0 0 200px 1px
-		rgba(255, 255, 255, 0.5);
-	float: left;
-}
-
-.
-#accordian a {
-	color: white;
-}
-
-.section {
-	width: 1300px;
-	float: left;
-}
 /* SHOW COMMENT */
 .tableArea {
 	width: 600px;

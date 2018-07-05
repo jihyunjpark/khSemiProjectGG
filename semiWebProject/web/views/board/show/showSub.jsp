@@ -204,6 +204,44 @@ star-input>.input.focus {
 	vertical-align: middle;
 }
 /*-------- 별점 --------- */
+
+/* 테이블 */
+table.type09 {
+	border-collapse: collapse;
+	text-align: left;
+	line-height: 1.5;
+}
+
+table.type09 thead th {
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	color: #369;
+	border-bottom: 3px solid #036;
+}
+
+table.type09 tbody th {
+	width: 150px;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+	background: #f3f6f7;
+}
+
+table.type09 td {
+	width: 350px;
+	padding: 10px;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+}
+
+.commentArea table{
+width:60%;
+margin: 150px auto;
+
+}
+
 </style>
 
 
@@ -242,10 +280,10 @@ star-input>.input.focus {
 									<%
 										if (show.getCategory().equals("Y")) {
 									%> &lt연극&gt <%
-									 	} else {
-									 %> &lt뮤지컬&gt <%
-									 	}
-									 %> <b><%=show.getShow_name()%></b>
+ 	} else {
+ %> &lt뮤지컬&gt <%
+ 	}
+ %> <b><%=show.getShow_name()%></b>
 								</li>
 								<li>
 									<table border=0 cellpadding=0 cellspacing=0
@@ -256,7 +294,7 @@ star-input>.input.focus {
 										</tr>
 										<tr>
 											<th>공연시간 :</th>
-											<td><%=show.getShow_runtime() %>분</td>
+											<td><%=show.getShow_runtime()%>분</td>
 										</tr>
 										<tr>
 											<th>관람등급 :</th>
@@ -268,7 +306,7 @@ star-input>.input.focus {
 										</tr>
 										<tr>
 											<th>공연기간 :</th>
-											<td><%=show.getPeriod() %></td>
+											<td><%=show.getPeriod()%></td>
 										</tr>
 										<tr>
 											<th>출&nbsp;&nbsp;&nbsp;&nbsp;연 :</th>
@@ -282,8 +320,8 @@ star-input>.input.focus {
 								</li>
 							</ul>
 						</div>
-						<div class="tableArea">
-							<table align="center">
+
+						<!-- <table align="center">
 								<tr>
 									<th>글번호</th>
 									<th width="200">글제목</th>
@@ -302,15 +340,41 @@ star-input>.input.focus {
 									<td></td>
 									<td></td>
 								</tr>
-							</table>
-						</div>
-						<div class="subImage">
+							</table> -->
 						<%
 							String[] subs = show.getSub_image().split(",");
-							for(String name : subs){%>
-								<img src="/swp/resource/upload/<%=name %>" alt="<%=name%>"/>	
-						<%}%>
-						</div>
+							for (String name : subs) {
+						%>
+						<img src="/swp/resource/upload/<%=name%>" alt="<%=name%>" />
+						<%
+							}
+						%>
+						<div class="subImage"></div>
+					</div>
+					<div class="commentArea">
+						<table class="type09">
+							<thead>
+								<tr>
+									<th scope="cols">평점</th>
+									<th scope="cols">내용</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">평점</th>
+									<td>내용</td>
+								</tr>
+								<tr>
+									<th scope="row">평점</th>
+									<td>내용</td>
+								</tr>
+								<tr>
+									<th scope="row">평점</th>
+									<td>내용</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
