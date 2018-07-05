@@ -8,7 +8,7 @@
 </head>
 <body>
 <%@ include file="/views/common/header.jsp"%>
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbb
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbb돼라
 			<section class="vertical-center slider">
 				<div>
 					<img src="/swp/images/main_flash_1_180625.jpg">
