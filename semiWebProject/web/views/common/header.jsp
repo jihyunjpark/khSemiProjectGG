@@ -91,37 +91,59 @@
 			}
 		})
 
-		var menuName = sessionStorage.getItem('menu');
+		 var menuName = sessionStorage.getItem('menu');
 		console.log(menuName);
-		if (menuName != null && menuName == 'home') {
+		if (menuName == null || menuName == 'home') {
 			$("#accordian").hide();
 		} else if (menuName != null && menuName != 'home') {
 			$("#" + menuName + "Menu").click();
-		}
+		} 
 	})
 
 	function setLeftMenu(menu) {
 		sessionStorage.setItem('menu', menu);
 	}
 
+	$(document).ready(function() {
+
+		// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+		var floatPosition = parseInt($("#floatMenu").css('top'));
+		// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+
+		$(window).scroll(function() {
+			// 현재 스크롤 위치를 가져온다.
+			var scrollTop = $(window).scrollTop();
+			var newPosition = scrollTop + floatPosition + "px";
+
+			/* 애니메이션 없이 바로 따라감
+			 $("#floatMenu").css('top', newPosition);
+			 */
+
+			$("#floatMenu").stop().animate({
+				"top" : newPosition
+			}, 500);
+
+		}).scroll();
+
+	});
+
 	/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
 </script>
-
-
 
 </head>
 
 <body>
+
 	<button>정보확인-카카오</button>
 	<button onclick="confirmEmail();">정보확인-네이버</button>
-	<div id=body-wrapper>
+	<div class="header">
 		<header id="header" class="">
 			<div id="top-menu">
 				<div id="top-menu-right">
 					<a
 						href="<%=request.getContextPath() + "/views/common/loginPage.html"%>"
-						id="top-Login">로그인</a><span class="al_bar"></span> 
-						<a	href="<%=request.getContextPath() + "/views/myPage.jsp"%>"
+						id="top-Login">로그인</a><span class="al_bar"></span> <a
+						href="<%=request.getContextPath() + "/views/myPage.jsp"%>"
 						id="top-profile">마이페이지</a><span class="al_bar"></span><a
 						href="<%=request.getContextPath() + "/views/service.jsp"%>"
 						id="top-service">고객센터</a>
@@ -131,29 +153,29 @@
 
 		<br>
 
-		<div class="header">
-			<div class="search_area">
-				<form id="search_form" name="search" action="?" method="get"
-					role="search">
-					<fieldset class="greenwindow">
-						<legend>검색</legend>
-						<div class="greenbox">
-							<span class="keyword"> <input type="text" id="nquery"
-								name="query" class="box_window" maxlength="255" title="검색어 입력">
-							</span>
-						</div>
-						<button type="submit" class="bt_search">
-							<span class="spnew ico_search">검색</span> <span
-								class="ico_search_submit"></span>
-						</button>
-					</fieldset>
-				</form>
-			</div>
 
-			<br>
+		<div class="search_area">
+			<form id="search_form" name="search" action="?" method="get"
+				role="search">
+				<fieldset class="greenwindow">
+					<legend>검색</legend>
+					<div class="greenbox">
+						<span class="keyword"> <input type="text" id="nquery"
+							name="query" class="box_window" maxlength="255" title="검색어 입력">
+						</span>
+					</div>
+					<button type="submit" class="bt_search">
+						<span class="spnew ico_search">검색</span> <span
+							class="ico_search_submit"></span>
+					</button>
+				</fieldset>
+			</form>
+		</div>
 
-			<!-- 메뉴 -->
-			<!-- <div id="menu-wrapper">
+		<br>
+
+		<!-- 메뉴 -->
+		<!-- <div id="menu-wrapper">
 				<div id="menu" class="container">
 					<ul>
 						<li class="current_page_item"><a href="/swp/index.jsp">Home</a></li>
@@ -165,39 +187,38 @@
 					</ul>
 				</div>
 			</div> -->
-			<div class="menubar">
-				<ul>
-					<li><a href="/swp" onclick="setLeftMenu('home');">Home</a></li>
-					<li><a href="/swp/showMenuList.do?category=N" id="current"
-						onclick="setLeftMenu('show');">공연</a>
-						<ul>
-							<li><a href="/swp/showMenuList.do?category=N"
-								onclick="setLeftMenu('show');">뮤지컬</a></li>
-							<li><a href="/swp/showMenuList.do?category=Y"
-								onclick="setLeftMenu('show');">연극</a></li>
-						</ul></li>
-					<li><a href="#">커뮤니티</a>
-						<ul>
-							<li><a href="#">자유게시판</a></li>
-							<li><a href="#">공지사항</a></li>
-							<li><a href="#">리뷰</a></li>
-						</ul></li>
-					<li><a href="#">매거진</a>
-						<ul>
-							<li><a href="#">기사</a></li>
-							<li><a href="#">영상/포토</a></li>
-						</ul></li>
-					<li><a href="#">문의</a>
-						<ul>
-							<li><a href="#">문의게시판</a></li>
-							<li><a href="#">FAQ</a></li>
-						</ul></li>
-				</ul>
-			</div>
+		<div class="menubar">
+			<ul>
+				<li><a href="/swp" onclick="setLeftMenu('home');">Home</a></li>
+				<li><a href="/swp/showMenuList.do?category=N" id="current"
+					onclick="setLeftMenu('show');">공연</a>
+					<ul>
+						<li><a href="/swp/showMenuList.do?category=N"
+							onclick="setLeftMenu('show');">뮤지컬</a></li>
+						<li><a href="/swp/showMenuList.do?category=Y"
+							onclick="setLeftMenu('show');">연극</a></li>
+					</ul></li>
+				<li><a href="#">커뮤니티</a>
+					<ul>
+						<li><a href="#">자유게시판</a></li>
+						<li><a href="#">공지사항</a></li>
+						<li><a href="#">리뷰</a></li>
+					</ul></li>
+				<li><a href="#">매거진</a>
+					<ul>
+						<li><a href="#">기사</a></li>
+						<li><a href="#">영상/포토</a></li>
+					</ul></li>
+				<li><a href="#">문의</a>
+					<ul>
+						<li><a href="#">문의게시판</a></li>
+						<li><a href="#">FAQ</a></li>
+					</ul></li>
+			</ul>
 		</div>
-
+	</div>
+	<div id="left-header">
 		<!-- 사이드메뉴 -->
-
 		<div id="accordian">
 			<ul>
 				<li class="active">
@@ -249,5 +270,13 @@
 				</li>
 			</ul>
 		</div>
+	</div>
+	<!-- 	<div id=body-wrapper> -->
+	<div id="right-header">
+		<div id="floatparent">
+			<div id="floatMenu">플로팅 메뉴</div>
+		</div>
+
+	</div>
 </body>
 </html>

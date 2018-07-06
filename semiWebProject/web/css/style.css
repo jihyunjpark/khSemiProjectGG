@@ -19,42 +19,41 @@ body, button, input, select, table, textarea {
 
 #body-wrapper {
 	overflow: hidden;
+	display: inline-block;
 }
 
 header {
-	width: 1140px;
+	width: 960px;
 	margin: 0 auto;
 }
 
-
-#top-menu{
-	width: 1140px;
-	min-width: 1140px !important;
+#top-menu {
+	width: 960px;
+	min-width: 960px !important;
 }
 
 #top-menu-right {
-	float: right;'
+	float: right;
+	'
 }
 
 #top-menu-right .al_bar {
-    margin: 5px 4px 0 9px;
-    width: 1px;
-    height: 11px;
-    background: #000000;
+	margin: 5px 4px 0 9px;
+	width: 1px;
+	height: 11px;
+	background: #000000;
 }
 
-#top-menu{
+#top-menu {
 	position: relative;
-    z-index: 102;
-    text-align: center;
-    width: 100%;
-    min-width: 960px;
-    height: 32px;
-    background: #fff;
-    border-bottom: 1px solid #c1c1c1;
+	z-index: 102;
+	text-align: center;
+	width: 100%;
+	min-width: 960px;
+	height: 32px;
+	background: #fff;
+	border-bottom: 1px solid #c1c1c1;
 }
-
-
 
 a:link, a:visited, a:hover {
 	color: black;
@@ -65,8 +64,6 @@ a:link, a:visited, a:hover {
 	color: white;
 	text-decoration: none;
 }
-
-
 
 /* header */
 .special_bg {
@@ -332,15 +329,16 @@ fieldset {
 
 .section {
 	width: 1140px;
-	height:100%;
-	margin:10px auto;
+	height: 100%;
+	margin: 10px auto;
 }
 
 /* 사이드바 */
 #accordian {
+	left:50px;
 	background: #7C65B2;
 	width: 160px;
-	height: 100%;
+	height: 60%;
 	margin-left: 12px;
 	color: white;
 	/*Some cool shadow and glow effect*/
@@ -373,6 +371,7 @@ fieldset {
 }
 /*links*/
 #accordian ul ul li a {
+	min-width:286px;
 	color: white;
 	text-decoration: none;
 	font-size: 12px;
@@ -398,8 +397,11 @@ fieldset {
 
 /* 슬라이드배너 */
 .slider {
-	width: 1183px;
+	display:inline-block;
+	overflow:hidden;
+	width: 960px;
 	margin: 10px auto;
+	
 }
 
 .slick-slide {
@@ -434,19 +436,19 @@ fieldset {
 	background: #7C65B2;
 	color: white;
 	text-align: center;
-	width: 100%;
+	width: 960px;
 }
 
 /* menubar */
 .menubar {
-		width: 1140px;;
+	width: 960px;
 	margin: 0 auto;
 	overflow: hidden;
 	height: 48px;
 }
 
 .menubar ul {
-	overflow:hidden;
+	overflow: hidden;
 	width: 100%;
 	margin: 0 auto;
 	padding: 0px 0px 0px 0px;
@@ -456,8 +458,8 @@ fieldset {
 }
 
 .menubar li {
-	overflow:hidden;
-	width:228px;;
+	overflow: hidden;
+	width: 192px;;
 	float: left;
 	padding: 0px;
 }
@@ -488,7 +490,7 @@ fieldset {
 	margin: 0px;
 	border: 0px;
 	position: absolute;
-	width: 228px;
+	width: 192px;
 	z-index: 200;
 	/*top:1em;
 /*left:0;*/
@@ -504,7 +506,7 @@ fieldset {
 	float: none;
 	margin: 0px;
 	padding: 0px;
-	width: 228px;
+	width: 192px;
 }
 
 .menubar li:hover li a {
@@ -532,6 +534,35 @@ fieldset {
 	clear: left;
 }
 
+/* 플로팅 배너 */
+#left-header {
+	overflow:hidden;
+	display: inline-block;
+}
+
+#right-header {
+	overflow:hidden;
+	display: inline-block;
+	width:286px;
+	min-width:286px;
+	float:right;
+}
+
+#floatparent{
+	overflow:hidden;
+	height:5000px;
+}
+
+#floatMenu {
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	top: 300px;
+	background-color: #606060;
+	color: #fff;
+	z-index: 999;
+}
+
 /* SHOW COMMENT */
 .tableArea {
 	width: 600px;
@@ -547,6 +578,4 @@ fieldset {
 	border-collapse: collapse;
 	border-spacing: 0px;
 	text-align: center;
-	
-	
 }
