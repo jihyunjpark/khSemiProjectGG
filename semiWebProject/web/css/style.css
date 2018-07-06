@@ -1,16 +1,23 @@
 .wrap {
+	margin: 50px auto;
 	position: relative;
 	overflow: hidden;
-	min-width: 1100px;
+	width:960px;
 	background: #f2f4f7;
+}
+
+body, header, div{
+	background-color: #fbf9ff;
+	
 }
 
 .header {
 	z-index: 100;
 	border-bottom: 1px solid #d1d8e4;
-	background: #fff;
+	background: #fbf9ff;
 	width: 100%;
 }
+
 
 body, button, input, select, table, textarea {
 	font-size: 12px;
@@ -19,6 +26,7 @@ body, button, input, select, table, textarea {
 
 #body-wrapper {
 	overflow: hidden;
+	display: inline-block;
 }
 
 header {
@@ -26,47 +34,39 @@ header {
 	margin: 0 auto;
 }
 
-
-#top-menu{
+#top-menu {
 	width: 1140px;
 	min-width: 1140px !important;
+	background-color: #fbf9ff;
 }
 
 #top-menu-right {
-	float: right;'
+	position:absolute;
+	right:0;
+	float: right;
 }
 
 #top-menu-right .al_bar {
-    margin: 5px 4px 0 9px;
-    width: 1px;
-    height: 11px;
-    background: #000000;
+	margin: 5px 4px 0 9px;
+	width: 1px;
+	height: 11px;
+	background: #000000;
 }
 
-#top-menu{
+#top-menu {
 	position: relative;
-    z-index: 102;
-    text-align: center;
-    width: 100%;
-    min-width: 960px;
-    height: 32px;
-    background: #fff;
-    border-bottom: 1px solid #c1c1c1;
+	z-index: 102;
+	text-align: center;
+	width: 100%;
+	min-width: 960px;
+	height: 32px;
+	border-bottom: 1px solid #c1c1c1;
 }
-
-
 
 a:link, a:visited, a:hover {
 	color: black;
 	text-decoration: none;
 }
-
-#accordian a:link, #accordian a:visited, #accordian a:hover {
-	color: white;
-	text-decoration: none;
-}
-
-
 
 /* header */
 .special_bg {
@@ -155,13 +155,6 @@ form {
 	background: rgba(0, 0, 0, 0.4);
 	text-decoration: none;
 	color: #FFFFFF;
-}
-
-#footer {
-	height: 100px;
-	margin: 0 auto;
-	padding: 50px 0px 0px 0px;
-	height: 100px;
 }
 
 .bt_search {
@@ -332,21 +325,23 @@ fieldset {
 
 .section {
 	width: 1140px;
-	height:100%;
-	margin:10px auto;
+	height: 100%;
+	margin: 5px auto;
 }
 
 /* 사이드바 */
 #accordian {
+	position:absolute;
+	z-index:9999;
+	margin-right:50px;
 	background: #7C65B2;
-	width: 160px;
+	width: 180px;
 	height: 100%;
-	margin-left: 12px;
+	margin-left: 10px;
 	color: white;
 	/*Some cool shadow and glow effect*/
 	box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.6), 0 0 200px 1px
 		rgba(255, 255, 255, 0.5);
-	float: left;
 }
 
 #accordian h3 {
@@ -384,7 +379,6 @@ fieldset {
 }
 /*hover effect on links*/
 #accordian ul ul li a:hover {
-	background: #5c4396;
 	border-left: 5px solid lightgreen;
 }
 /*Lets hide the non active LIs by default*/
@@ -394,6 +388,11 @@ fieldset {
 
 #accordian li.active ul {
 	display: block;
+}
+
+#accordian a:link, #accordian a:visited, #accordian a:hover {
+	color: white;
+	text-decoration: none;
 }
 
 /* 슬라이드배너 */
@@ -427,6 +426,10 @@ fieldset {
 	opacity: 1;
 }
 
+.slick-dots{
+	display: none;
+}
+
 .footer {
 	position: fixed;
 	left: 0;
@@ -439,14 +442,14 @@ fieldset {
 
 /* menubar */
 .menubar {
-		width: 1140px;;
+	width: 1140px;
 	margin: 0 auto;
 	overflow: hidden;
 	height: 48px;
 }
 
 .menubar ul {
-	overflow:hidden;
+	overflow: hidden;
 	width: 100%;
 	margin: 0 auto;
 	padding: 0px 0px 0px 0px;
@@ -456,8 +459,8 @@ fieldset {
 }
 
 .menubar li {
-	overflow:hidden;
-	width:228px;;
+	overflow: hidden;
+	width: 228px;
 	float: left;
 	padding: 0px;
 }
@@ -504,7 +507,7 @@ fieldset {
 	float: none;
 	margin: 0px;
 	padding: 0px;
-	width: 228px;
+	width: 192px;
 }
 
 .menubar li:hover li a {
@@ -532,6 +535,42 @@ fieldset {
 	clear: left;
 }
 
+/* 플로팅 배너 */
+#left-header {
+	padding:0;
+	overflow:hidden;
+	display: inline-block;
+	width:200px;
+	min-width:200px;
+	float:left; 
+	
+}
+
+#right-header {
+	margin: 0 auto;
+	padding:0;
+	overflow:hidden;
+	display: inline-block;
+	width:286px;
+	min-width:286px;
+	float:right;
+}
+
+#floatparent{
+	overflow:hidden;
+	height:5000px;
+}
+
+#floatMenu {
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	top: 300px;
+	background-color: #606060;
+	color: #fff;
+	z-index: 999;
+}
+
 /* SHOW COMMENT */
 .tableArea {
 	width: 600px;
@@ -547,6 +586,5 @@ fieldset {
 	border-collapse: collapse;
 	border-spacing: 0px;
 	text-align: center;
-	
-	
 }
+

@@ -15,19 +15,24 @@
 /*-------- showSub --------- */
 /* -- */
 #subContainer {
-	width: 1185px;
+	width: 960px;
 	margin: auto;
 	padding-top: 35px;
 	padding-left: 10px;
 	height: auto;
-	float: left;
 	font-family: "나눔고딕", "NanumGothic", NanumGothicWeb, sans-serif;
+	width: 960px;
 }
 
 .iconArea {
 	padding: 4px 0 0;
 	height: 23px;
 	margin: 6px 0;
+}
+
+.wrapper {
+	overflow: hidden;
+	width: 960px;
 }
 
 }
@@ -62,18 +67,19 @@
 #detailMain {
 	width: 870px; /*width:930px; height:563px*/
 	padding: 29px;
-	margin-left: 190px;
 	border: solid 1px #c2c2c2;
-	float: left;
 	overflow: hidden;
 }
 
 #contentsLeft {
+	overflow: hidden;
 	width: 390px;
 	float: left;
+	width: 390px;
 }
 
 #contentsRight {
+	overflow: hidden;
 	float: left;
 	width: 480px;
 	padding: 0;
@@ -236,12 +242,14 @@ table.type09 td {
 	border-bottom: 1px solid #ccc;
 }
 
-.commentArea table{
-width:60%;
-margin: 150px auto;
-
+.commentArea table {
+	width: 60%;
+	margin: 150px auto;
 }
 
+#sub_menu {
+	background-color: #e5e5e5;
+}
 </style>
 
 
@@ -249,6 +257,7 @@ margin: 150px auto;
 <body>
 	<%@ include file="/views/common/header.jsp"%>
 	<div class="wrap">
+<<<<<<< HEAD
 		<div id="container ">
 			<div class="wrapper">
 				<div id="subContainer">
@@ -271,20 +280,42 @@ margin: 150px auto;
 									<b>0</b>점
 								</output>
 							</div>
+=======
+		<div id="container">
+			<div id="detailMain">
+				<div id="contentsLeft">
+					<img src="/swp/resource/upload/<%=show.getShow_image()%>" width=350
+						id="objImg" class="subDetailImg" />
+					<div class="star-input" id="won">
+						<span class="input"> <input type="radio" name="star-input"
+							value="1" id="p1"> <label for="p1">1</label> <input
+							type="radio" name="star-input" value="2" id="p2"> <label
+							for="p2">2</label> <input type="radio" name="star-input"
+							value="3" id="p3"> <label for="p3">3</label> <input
+							type="radio" name="star-input" value="4" id="p4"> <label
+							for="p4">4</label> <input type="radio" name="star-input"
+							value="5" id="p5"> <label for="p5">5</label>
+						</span>
+						<output for="star-input">
+							<b>0</b>점
+						</output>
+					</div>
+>>>>>>> branch 'master' of https://github.com/jihyunjpark/khSemiProjectGG
 
-						</div>
+				</div>
 
-						<div id="contentsRight">
-							<div class="iconArea"></div>
-							<ul id="eventContents">
-								<li class="detailCntName">
-									<%
-										if (show.getCategory().equals("Y")) {
-									%> &lt연극&gt <%
+				<div id="contentsRight">
+					<div class="iconArea"></div>
+					<ul id="eventContents">
+						<li class="detailCntName">
+							<%
+								if (show.getCategory().equals("Y")) {
+							%> &lt연극&gt <%
  	} else {
  %> &lt뮤지컬&gt <%
  	}
  %> <b><%=show.getShow_name()%></b>
+<<<<<<< HEAD
 								</li>
 								<li>
 									<table border=0 cellpadding=0 cellspacing=0
@@ -344,20 +375,85 @@ margin: 150px auto;
 								<tr>
 									<th scope="row">평점1</th>
 									<td>내용</td>
+=======
+						</li>
+						<li>
+							<table border=0 cellpadding=0 cellspacing=0 id="contentsDetailTB">
+								<tr>
+									<th>장&nbsp;&nbsp;&nbsp;&nbsp;르 :</th>
+									<td><%=show.getGenre()%></td>
 								</tr>
 								<tr>
-									<th scope="row">평점</th>
-									<td>내용</td>
+									<th>공연시간 :</th>
+									<td><%=show.getShow_runtime()%>분</td>
+>>>>>>> branch 'master' of https://github.com/jihyunjpark/khSemiProjectGG
 								</tr>
 								<tr>
-									<th scope="row">평점</th>
-									<td>내용</td>
+									<th>관람등급 :</th>
+									<td><%=show.getShow_grade()%>세이상</td>
 								</tr>
-							</tbody>
-						</table>
-					</div>
+								<tr>
+									<th>공연장소 :</th>
+									<td><%=show.getLocation()%></td>
+								</tr>
+								<tr>
+									<th>공연기간 :</th>
+									<td><%=show.getPeriod()%></td>
+								</tr>
+								<tr>
+									<th>출&nbsp;&nbsp;&nbsp;&nbsp;연 :</th>
+									<td><%=show.getGuest()%></td>
+								</tr>
+								<tr>
+									<th>홈페이지 :</th>
+									<td><a href="http://xn--6h5by1a/" target="new">http://없음</a></td>
+								</tr>
+							</table>
+						</li>
+						<br>
+						<br>
+						<br>
+						<br>
+					</ul>
 				</div>
+				<%
+					String[] subs = show.getSub_image().split(",");
+					for (String name : subs) {
+				%>
+				<img src="/swp/resource/upload/<%=name%>" alt="<%=name%>" />
+				<%
+					}
+				%>
+
+				<div class="subImage"></div>
+
 			</div>
+
+		</div>
+		<div class="commentArea">
+			<table class="type09">
+				<thead>
+					<tr>
+						<th scope="cols">평점</th>
+						<th scope="cols">내용</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">평점1</th>
+						<td>내용</td>
+					</tr>
+					<tr>
+						<th scope="row">평점</th>
+						<td>내용</td>
+					</tr>
+					<tr>
+						<th scope="row">평점</th>
+						<td>내용</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 	</div>
@@ -379,6 +475,7 @@ margin: 150px auto;
 		}, function() {
 			$("#won").hide();
 		});
+
 	})
 </script>
 </html>

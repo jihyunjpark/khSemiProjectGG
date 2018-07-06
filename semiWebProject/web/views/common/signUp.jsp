@@ -44,13 +44,6 @@
   			</fieldset>
   			<span>성별을 선택해주세요.</span>
 		</p>
-		<p>
-			<label for="birth" class="floatLabel">생일</label>
-			<fieldset>
-			<input  id="birth" name="birth" type="date">
-			</fieldset>
-			<span>생년월일을 선택해주세요.</span>
-		</p>
 		
 		<div class="container-login100-form-btn m-t-20">
 						<button id="submit" class="login100-form-btn">
