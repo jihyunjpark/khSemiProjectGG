@@ -12,6 +12,7 @@
 	width: 100%;
 }
 
+
 body, button, input, select, table, textarea {
 	font-size: 12px;
 	font-family: Dotum, '돋움', Helvetica, "Apple SD Gothic Neo", sans-serif;
@@ -23,18 +24,17 @@ body, button, input, select, table, textarea {
 }
 
 header {
-	width: 960px;
+	width: 1140px;
 	margin: 0 auto;
 }
 
 #top-menu {
-	width: 960px;
-	min-width: 960px !important;
+	width: 1140px;
+	min-width: 1140px !important;
 }
 
 #top-menu-right {
 	float: right;
-	'
 }
 
 #top-menu-right .al_bar {
@@ -152,13 +152,6 @@ form {
 	background: rgba(0, 0, 0, 0.4);
 	text-decoration: none;
 	color: #FFFFFF;
-}
-
-#footer {
-	height: 100px;
-	margin: 0 auto;
-	padding: 50px 0px 0px 0px;
-	height: 100px;
 }
 
 .bt_search {
@@ -330,14 +323,14 @@ fieldset {
 .section {
 	width: 1140px;
 	height: 100%;
-	margin: 10px auto;
+	margin: 5px auto;
 }
 
 /* 사이드바 */
 #accordian {
 	left:50px;
 	background: #7C65B2;
-	width: 160px;
+	width: 180px;
 	height: 60%;
 	margin-left: 12px;
 	color: white;
@@ -383,7 +376,6 @@ fieldset {
 }
 /*hover effect on links*/
 #accordian ul ul li a:hover {
-	background: #5c4396;
 	border-left: 5px solid lightgreen;
 }
 /*Lets hide the non active LIs by default*/
@@ -397,11 +389,8 @@ fieldset {
 
 /* 슬라이드배너 */
 .slider {
-	display:inline-block;
-	overflow:hidden;
-	width: 960px;
+	width: 1183px;
 	margin: 10px auto;
-	
 }
 
 .slick-slide {
@@ -429,6 +418,10 @@ fieldset {
 	opacity: 1;
 }
 
+.slick-dots{
+	display: none;
+}
+
 .footer {
 	position: fixed;
 	left: 0;
@@ -436,12 +429,12 @@ fieldset {
 	background: #7C65B2;
 	color: white;
 	text-align: center;
-	width: 960px;
+	width: 100%;
 }
 
 /* menubar */
 .menubar {
-	width: 960px;
+	width: 1140px;
 	margin: 0 auto;
 	overflow: hidden;
 	height: 48px;
@@ -459,7 +452,7 @@ fieldset {
 
 .menubar li {
 	overflow: hidden;
-	width: 192px;;
+	width: 228px;
 	float: left;
 	padding: 0px;
 }
@@ -490,7 +483,7 @@ fieldset {
 	margin: 0px;
 	border: 0px;
 	position: absolute;
-	width: 192px;
+	width: 228px;
 	z-index: 200;
 	/*top:1em;
 /*left:0;*/
@@ -536,11 +529,18 @@ fieldset {
 
 /* 플로팅 배너 */
 #left-header {
+	margin: 0 auto;
+	padding:0;
 	overflow:hidden;
 	display: inline-block;
+	width:286px;
+	min-width:286px;
+	float: left;
 }
 
 #right-header {
+	margin: 0 auto;
+	padding:0;
 	overflow:hidden;
 	display: inline-block;
 	width:286px;

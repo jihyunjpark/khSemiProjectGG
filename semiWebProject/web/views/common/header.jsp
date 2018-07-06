@@ -13,8 +13,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/swp/slick/slick.css">
 <link rel="stylesheet" type="text/css" href="/swp/slick/slick-theme.css">
+<link rel="stylesheet" type="text/css" href="/swp/slick/slick.css">
 <link rel="stylesheet" type="text/css" href="/swp/css/style.css">
 <!-- (1) LoginWithNaverId Javscript SDK -->
 <script type="text/javascript"
@@ -134,7 +134,6 @@
 
 <body>
 
-	<button>정보확인-카카오</button>
 	<button onclick="confirmEmail();">정보확인-네이버</button>
 	<div class="header">
 		<header id="header" class="">
@@ -273,9 +272,9 @@
 	</div>
 	<!-- 	<div id=body-wrapper> -->
 	<div id="right-header">
-		<div id="floatparent">
+		<!-- <div id="floatparent">
 			<div id="floatMenu">플로팅 메뉴</div>
-		</div>
+		</div> -->
 
 	</div>
 </body>
