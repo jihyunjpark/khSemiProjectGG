@@ -171,7 +171,6 @@
 			</form>
 		</div>
 
-<<<<<<< HEAD
 			<div class="menubar">
 				<ul>
 					<li><a href="/swp" onclick="setLeftMenu('home');">Home</a></li>
@@ -201,51 +200,7 @@
 						</ul></li>
 				</ul>
 			</div>
-=======
 		<br>
-
-		<!-- 메뉴 -->
-		<!-- <div id="menu-wrapper">
-				<div id="menu" class="container">
-					<ul>
-						<li class="current_page_item"><a href="/swp/index.jsp">Home</a></li>
-						<li><a href="#">연극</a></li>
-						<li><a href="#">공연장</a></li>
-						<li><a href="#">커뮤니티</a></li>
-						<li><a href="#">매거진</a></li>
-						<li><a href="#">랭킹</a></li>
-					</ul>
-				</div>
-			</div> -->
-		<div class="menubar">
-			<ul>
-				<li><a href="/swp" onclick="setLeftMenu('home');">Home</a></li>
-				<li><a href="/swp/showMenuList.do?category=N" id="current"
-					onclick="setLeftMenu('show');">공연</a>
-					<ul>
-						<li><a href="/swp/showMenuList.do?category=N"
-							onclick="setLeftMenu('show');">뮤지컬</a></li>
-						<li><a href="/swp/showMenuList.do?category=Y"
-							onclick="setLeftMenu('show');">연극</a></li>
-					</ul></li>
-				<li><a href="#">커뮤니티</a>
-					<ul>
-						<li><a href="#">자유게시판</a></li>
-						<li><a href="#">공지사항</a></li>
-						<li><a href="#">리뷰</a></li>
-					</ul></li>
-				<li><a href="#">매거진</a>
-					<ul>
-						<li><a href="#">기사</a></li>
-						<li><a href="#">영상/포토</a></li>
-					</ul></li>
-				<li><a href="#">문의</a>
-					<ul>
-						<li><a href="#">문의게시판</a></li>
-						<li><a href="#">FAQ</a></li>
-					</ul></li>
-			</ul>
->>>>>>> branch 'master' of https://github.com/jihyunjpark/khSemiProjectGG
 		</div>
 	</div>
 	<div id="left-header">
