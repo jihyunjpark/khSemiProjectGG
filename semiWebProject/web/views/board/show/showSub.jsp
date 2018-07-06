@@ -250,6 +250,102 @@ table.type09 td {
 #sub_menu {
 	background-color: #e5e5e5;
 }
+
+/* menubar */
+.menuSub {
+	width: 1140px;
+	margin: 0 auto;
+	overflow: hidden;
+	height: 48px;
+}
+
+.menuSub ul {
+	overflow: hidden;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0px 0px 0px 0px;
+	list-style: none;
+	line-height: normal;
+	text-align: center;
+}
+
+.menuSub li {
+	overflow: hidden;
+	width: 228px;
+	float: left;
+	padding: 0px;
+}
+
+.menuSub li a {
+	background: #7C65B2;
+	color: #cccccc;
+	display: block;
+	font-weight: normal;
+	line-height: 50px;
+	margin: 0px;
+	padding: 0px 25px;
+	text-align: center;
+	text-decoration: none;
+}
+
+.menuSub li a:hover, .menuSub ul li:hover a {
+	background: #5c4396;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.menuSub li ul {
+	background: #7C65B2;
+	display: none; /* 평상시에는 드랍메뉴가 안보이게 하기 */
+	height: auto;
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	position: absolute;
+	width: 228px;
+	z-index: 200;
+	/*top:1em;
+/*left:0;*/
+}
+
+.menuSub li:hover ul {
+	display: block; /* 마우스 커서 올리면 드랍메뉴 보이게 하기 */
+}
+
+.menuSub li li {
+	background: #7C65B2;
+	display: block;
+	float: none;
+	margin: 0px;
+	padding: 0px;
+	width: 228px;
+}
+
+.menuSub li:hover li a {
+	background: none;
+}
+
+.menuSub li ul a {
+	display: block;
+	height: 50px;
+	font-size: 12px;
+	font-style: normal;
+	margin: 0px;
+	padding: 0px 10px 0px 15px;
+	text-align: left;
+}
+
+.menuSub li ul a:hover, .menuSub li ul li:hover a {
+	background: #5c4396;
+	border: 0px;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.menuSub p {
+	clear: left;
+}
+
 </style>
 
 
@@ -285,10 +381,10 @@ table.type09 td {
 							<%
 								if (show.getCategory().equals("Y")) {
 							%> &lt연극&gt <%
- 	} else {
- %> &lt뮤지컬&gt <%
- 	}
- %> <b><%=show.getShow_name()%></b>
+                        	} else {
+                           %> &lt뮤지컬&gt <%
+                         	}
+                           %> <b><%=show.getShow_name()%></b>
 						</li>
 						<li>
 							<table border=0 cellpadding=0 cellspacing=0 id="contentsDetailTB">
@@ -323,7 +419,25 @@ table.type09 td {
 							</table>
 						</li>
 					</ul>
-				</div>
+				</div>	
+				<div class="menuSub">
+				<ul>
+					<li>
+						<a onclick="setSubMenu('subImage');">공연정보</a>
+					</li>
+					<li>
+						<a onclick="setSubMenu('showLocation');">공연장정보</a>
+					</li>
+					<li>
+						<a onclick="setSubMenu('calendar');">캘린더</a>
+					</li>
+					<li>
+						<a onclick="setSubMenu('comment');">리뷰</a>
+					</li>
+				</ul>
+			</div>
+				
+				<div class="subImage menuSubArea">
 				<%
 					String[] subs = show.getSub_image().split(",");
 					for (String name : subs) {
@@ -332,7 +446,19 @@ table.type09 td {
 				<%
 					}
 				%>
-				<div class="subImage"></div>
+				</div>
+				<div class="showLocation menuSubArea">
+					지도
+				</div>
+				<div class="calendar menuSubArea">
+					달력
+				</div>
+				<div class="comment menuSubArea">
+					한줄 코멘트
+				</div>
+				
+				
+				
 			</div>
 			<div class="commentArea">
 				<table class="type09">
@@ -382,7 +508,14 @@ table.type09 td {
 		}, function() {
 			$("#won").hide();
 		});
-
-	})
+		
+		//setSubMenu('subImage');
+		$(".menuSubArea").hide(); //원 로직
+	});
+	
+	function setSubMenu(area){
+		$(".menuSubArea").hide();
+		$("."+area).show();
+	}
 </script>
 </html>
