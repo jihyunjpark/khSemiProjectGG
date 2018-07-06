@@ -1,14 +1,20 @@
 .wrap {
+	margin: 50px auto;
 	position: relative;
 	overflow: hidden;
-	min-width: 1100px;
+	width:960px;
 	background: #f2f4f7;
+}
+
+body, header, div{
+	background-color: #fbf9ff;
+	
 }
 
 .header {
 	z-index: 100;
 	border-bottom: 1px solid #d1d8e4;
-	background: #fff;
+	background: #fbf9ff;
 	width: 100%;
 }
 
@@ -31,9 +37,12 @@ header {
 #top-menu {
 	width: 1140px;
 	min-width: 1140px !important;
+	background-color: #fbf9ff;
 }
 
 #top-menu-right {
+	position:absolute;
+	right:0;
 	float: right;
 }
 
@@ -51,17 +60,11 @@ header {
 	width: 100%;
 	min-width: 960px;
 	height: 32px;
-	background: #fff;
 	border-bottom: 1px solid #c1c1c1;
 }
 
 a:link, a:visited, a:hover {
 	color: black;
-	text-decoration: none;
-}
-
-#accordian a:link, #accordian a:visited, #accordian a:hover {
-	color: white;
 	text-decoration: none;
 }
 
@@ -328,16 +331,17 @@ fieldset {
 
 /* 사이드바 */
 #accordian {
-	left:50px;
+	position:absolute;
+	z-index:9999;
+	margin-right:50px;
 	background: #7C65B2;
 	width: 180px;
-	height: 60%;
-	margin-left: 12px;
+	height: 100%;
+	margin-left: 10px;
 	color: white;
 	/*Some cool shadow and glow effect*/
 	box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.6), 0 0 200px 1px
 		rgba(255, 255, 255, 0.5);
-	float: left;
 }
 
 #accordian h3 {
@@ -364,7 +368,6 @@ fieldset {
 }
 /*links*/
 #accordian ul ul li a {
-	min-width:286px;
 	color: white;
 	text-decoration: none;
 	font-size: 12px;
@@ -385,6 +388,11 @@ fieldset {
 
 #accordian li.active ul {
 	display: block;
+}
+
+#accordian a:link, #accordian a:visited, #accordian a:hover {
+	color: white;
+	text-decoration: none;
 }
 
 /* 슬라이드배너 */
@@ -529,13 +537,13 @@ fieldset {
 
 /* 플로팅 배너 */
 #left-header {
-	margin: 0 auto;
 	padding:0;
 	overflow:hidden;
 	display: inline-block;
-	width:286px;
-	min-width:286px;
-	float: left;
+	width:200px;
+	min-width:200px;
+	float:left; 
+	
 }
 
 #right-header {
@@ -579,3 +587,4 @@ fieldset {
 	border-spacing: 0px;
 	text-align: center;
 }
+
