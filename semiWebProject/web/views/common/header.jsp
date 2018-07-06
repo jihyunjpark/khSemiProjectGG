@@ -24,7 +24,7 @@
 	type="text/javascript" type="text/javascript"></script>
 <script type="text/javascript" src="/swp/js/jquery-3.3.1.min.js"></script>
 <script>
-	/*jQuery time*/
+	/*jQuery time 태영아 div 열림 닫힘 확인좀!*/
 
 	var naverLogin = new naver.LoginWithNaverId({
 		clientId : "{MiE7za1q2r2x8mnXzzsu}",
@@ -185,8 +185,8 @@
 						</ul></li>
 					<li><a href="#">커뮤니티</a>
 						<ul>
-							<li><a href="#">자유게시판</a></li>
-							<li><a href="#">공지사항</a></li>
+							<li><a href="/swp/freeList.do">자유게시판</a></li>
+							<li><a href="/swp/noticeList.do">공지사항</a></li>
 							<li><a href="#">리뷰</a></li>
 						</ul></li>
 					<li><a href="#">매거진</a>
