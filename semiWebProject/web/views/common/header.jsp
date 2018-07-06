@@ -152,19 +152,6 @@
 
 			<br>
 
-			<!-- 메뉴 -->
-			<!-- <div id="menu-wrapper">
-				<div id="menu" class="container">
-					<ul>
-						<li class="current_page_item"><a href="/swp/index.jsp">Home</a></li>
-						<li><a href="#">연극</a></li>
-						<li><a href="#">공연장</a></li>
-						<li><a href="#">커뮤니티</a></li>
-						<li><a href="#">매거진</a></li>
-						<li><a href="#">랭킹</a></li>
-					</ul>
-				</div>
-			</div> -->
 			<div class="menubar">
 				<ul>
 					<li><a href="/swp" onclick="setLeftMenu('home');">Home</a></li>

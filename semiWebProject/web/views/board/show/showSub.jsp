@@ -253,6 +253,7 @@ margin: 150px auto;
 			<div class="wrapper">
 				<div id="subContainer">
 					<div id="detailMain">
+					
 						<div id="contentsLeft">
 							<img src="/swp/resource/upload/<%=show.getShow_image()%>"
 								width=350 id="objImg" class="subDetailImg" />
@@ -320,27 +321,6 @@ margin: 150px auto;
 								</li>
 							</ul>
 						</div>
-
-						<!-- <table align="center">
-								<tr>
-									<th>글번호</th>
-									<th width="200">글제목</th>
-									<th width="100">작성자</th>
-									<th>조회수</th>
-									<th width="100">작성일</th>
-								</tr>
-								<tr>
-									<td colspan="5">한줄 리뷰가 없습니다.</td>
-								</tr>
-								<tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							</table> -->
 						<%
 							String[] subs = show.getSub_image().split(",");
 							for (String name : subs) {
