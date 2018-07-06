@@ -78,12 +78,6 @@ public class MemberVo {
 		return genreStr;
 	}
 	public void setGenreStr(String genreStr) {
-		this.genreStr = hobbyStr;
-	}
-	@Override
-	public String toString() {
-		return "MemberVo [userId=" + userId + ", password=" + password + ", userName=" + userName + ", gender=" + gender
-				+ ", age=" + age + ", email=" + email + ", phone=" + phone + ", address=" + address + ", genreStr="
-				+ genreStr + ", genre=" + genre + ", enrolldate=" + enrolldate + "]";
+		this.genreStr = genreStr;
 	}
 }
