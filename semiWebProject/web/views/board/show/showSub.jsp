@@ -362,7 +362,7 @@ margin: 150px auto;
 							</thead>
 							<tbody>
 								<tr>
-									<th scope="row">평점</th>
+									<th scope="row">평점1</th>
 									<td>내용</td>
 								</tr>
 								<tr>
