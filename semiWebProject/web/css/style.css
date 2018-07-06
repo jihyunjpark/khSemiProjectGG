@@ -6,6 +6,8 @@
 	background: #f2f4f7;
 }
 
+
+
 body, header, div{
 	background-color: #fbf9ff;
 	
@@ -107,7 +109,6 @@ a:link, a:visited, a:hover {
 }
 
 form {
-	display: block;
 	margin-top: 0em;
 }
 
@@ -238,20 +239,29 @@ fieldset {
 	background-position: -3px -5px;
 }
 
-/* .search_area {
+ .search_area {
 	position: relative;
 	display: inline-block;
 	width:100%;
 	margin: 0 auto;
 	height: 100%;
-} */
+} 
 
-/* #search_form {
+#logo_image{
+	margin: 0 auto;
+	display:inline-block;
+	width:80px;
+	height:80px;
+	background: #e5e5e5;
+	
+}
+
+ #search_form {
 	display: inline-block;
 	overflow:visible;
 	width:550px;
 	margin: 0 auto;
-} */
+} 
 .greenwindow {
 	width: 510px;
 	margin: 0 auto;
@@ -507,7 +517,7 @@ fieldset {
 	float: none;
 	margin: 0px;
 	padding: 0px;
-	width: 192px;
+	width: 228px;
 }
 
 .menubar li:hover li a {

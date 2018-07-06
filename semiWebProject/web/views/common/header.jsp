@@ -154,6 +154,7 @@
 
 
 		<div class="search_area">
+		<div id="logo_image"></div>
 			<form id="search_form" name="search" action="?" method="get"
 				role="search">
 				<fieldset class="greenwindow">
