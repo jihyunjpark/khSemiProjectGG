@@ -43,8 +43,8 @@ public class MemberDao {
 				result.setUserId(id);
 				result.setPassword(pwd);
 				result.setNickname(rs.getString("nickame"));
-				result.setAddress(rs.getString("address"));
-				result.setAge(rs.getInt("age"));
+				//result.setAddress(rs.getString("address"));
+				//result.setAge(rs.getInt("age"));
 				result.setEnrolldate(rs.getDate("enrolldate"));
 			}
 		} catch (ClassNotFoundException e) {
@@ -160,14 +160,14 @@ public class MemberDao {
 		try {
 			stmt = con.createStatement();
 			//3. 쿼리 작성
-			query = "UPDATE MEMBER "
-					+ "SET PASSWORD = '" + m.getPassword() + "',"
-						+ "USERNAME = '" + m.getUserName() + "', "
-						+ "GENDER = '" + m.getGender() + "', "
-						+ "EMAIL = '" + m.getEmail() + "', "
-						+ "GENRE = '" + m.getGenreStr() + "' "
-					+ "WHERE USERID = '" + m.getUserId() + "'";
-			System.out.println("query : " + query);
+//			query = "UPDATE MEMBER "
+//					+ "SET PASSWORD = '" + m.getPassword() + "',"
+//						+ "USERNAME = '" + m.getUserName() + "', "
+//						+ "GENDER = '" + m.getGender() + "', "
+//						+ "EMAIL = '" + m.getEmail() + "', "
+//						+ "GENRE = '" + m.getGenreStr() + "' "
+//					+ "WHERE USERID = '" + m.getUserId() + "'";
+//			System.out.println("query : " + query);
 			//4. 실행 결과 처리(int)
 			result = stmt.executeUpdate(query);
 			
