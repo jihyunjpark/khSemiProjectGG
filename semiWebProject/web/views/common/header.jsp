@@ -23,8 +23,10 @@
 <script src="http://thecodeplayer.com/uploads/js/prefixfree-1.0.7.js"
 	type="text/javascript" type="text/javascript"></script>
 <script type="text/javascript" src="/swp/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript"
+	src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=MiE7za1q2r2x8mnXzzsu&submodules=geocoder"></script>
 <script>
-	/*jQuery time 태영아 div 열림 닫힘 확인좀!*/
+	/* jQuery time */
 
 	var naverLogin = new naver.LoginWithNaverId({
 		clientId : "{MiE7za1q2r2x8mnXzzsu}",
@@ -91,13 +93,13 @@
 			}
 		})
 
-		 var menuName = sessionStorage.getItem('menu');
+		var menuName = sessionStorage.getItem('menu');
 		console.log(menuName);
 		if (menuName == null || menuName == 'home') {
 			$("#accordian").hide();
 		} else if (menuName != null && menuName != 'home') {
 			$("#" + menuName + "Menu").click();
-		} 
+		}
 	})
 
 	function setLeftMenu(menu) {
@@ -127,7 +129,6 @@
 
 	});
 
-	/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
 </script>
 
 </head>
@@ -154,7 +155,7 @@
 
 
 		<div class="search_area">
-		<div id="logo_image"></div>
+			<div id="logo_image"></div>
 			<form id="search_form" name="search" action="?" method="get"
 				role="search">
 				<fieldset class="greenwindow">
@@ -172,37 +173,36 @@
 			</form>
 		</div>
 
-			<div class="menubar">
-				<ul>
-					<li><a href="/swp" onclick="setLeftMenu('home');">Home</a></li>
-					<li><a href="/swp/showMenuList.do?category=N" id="current"
-						onclick="setLeftMenu('show');">공연</a>
-						<ul>
-							<li><a href="/swp/showMenuList.do?category=N"
-								onclick="setLeftMenu('show');">뮤지컬</a></li>
-							<li><a href="/swp/showMenuList.do?category=Y"
-								onclick="setLeftMenu('show');">연극</a></li>
-						</ul></li>
-					<li><a href="#">커뮤니티</a>
-						<ul>
-							<li><a href="/swp/freeList.do">자유게시판</a></li>
-							<li><a href="/swp/noticeList.do">공지사항</a></li>
-							<li><a href="#">리뷰</a></li>
-						</ul></li>
-					<li><a href="#">매거진</a>
-						<ul>
-							<li><a href="#">기사</a></li>
-							<li><a href="#">영상/포토</a></li>
-						</ul></li>
-					<li><a href="#">문의</a>
-						<ul>
-							<li><a href="#">문의게시판</a></li>
-							<li><a href="#">FAQ</a></li>
-						</ul></li>
-				</ul>
-			</div>
-		<br>
+		<div class="menubar">
+			<ul>
+				<li><a href="/swp" onclick="setLeftMenu('home');">Home</a></li>
+				<li><a href="/swp/showMenuList.do?category=N" id="current"
+					onclick="setLeftMenu('show');">공연</a>
+					<ul>
+						<li><a href="/swp/showMenuList.do?category=N"
+							onclick="setLeftMenu('show');">뮤지컬</a></li>
+						<li><a href="/swp/showMenuList.do?category=Y"
+							onclick="setLeftMenu('show');">연극</a></li>
+					</ul></li>
+				<li><a href="#">커뮤니티</a>
+					<ul>
+						<li><a href="/swp/freeList.do">자유게시판</a></li>
+						<li><a href="/swp/noticeList.do">공지사항</a></li>
+						<li><a href="#">리뷰</a></li>
+					</ul></li>
+				<li><a href="#">매거진</a>
+					<ul>
+						<li><a href="#">기사</a></li>
+						<li><a href="#">영상/포토</a></li>
+					</ul></li>
+				<li><a href="#">문의</a>
+					<ul>
+						<li><a href="#">문의게시판</a></li>
+						<li><a href="#">FAQ</a></li>
+					</ul></li>
+			</ul>
 		</div>
+		<br>
 	</div>
 	<div id="left-header">
 		<!-- 사이드메뉴 -->
@@ -259,10 +259,9 @@
 		</div>
 	</div>
 	<div id="right-header">
-		<!-- <div id="floatparent">
+		<div id="floatparent">
 			<div id="floatMenu">플로팅 메뉴</div>
-		</div> -->
-
+		</div>
 	</div>
 </body>
 </html>

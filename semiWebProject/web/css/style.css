@@ -112,51 +112,6 @@ form {
 	margin-top: 0em;
 }
 
-/* Menu */
-#menu-wrapper {
-	overflow: hidden;
-	height: 48px;
-	margin-bottom: 2em;
-	background: #7C65B2;
-}
-
-#menu {
-	overflow: hidden;
-	height: 48px;
-}
-
-#menu ul {
-	margin: 0;
-	padding: 0px 0px 0px 0px;
-	list-style: none;
-	line-height: normal;
-	text-align: center;
-}
-
-#menu li {
-	display: inline-block;
-}
-
-#menu a {
-	display: block;
-	padding: 0px 30px;
-	line-height: 48px;
-	border: none;
-	text-decoration: none;
-	text-transform: lowercase;
-	text-align: center;
-	text-transform: uppercase;
-	font-family: 'Oswald', sans-serif;
-	font-size: 14px;
-	font-weight: 300;
-	color: #FFFFFF;
-}
-
-#menu a:hover, #menu .current_page_item a {
-	background: rgba(0, 0, 0, 0.4);
-	text-decoration: none;
-	color: #FFFFFF;
-}
 
 .bt_search {
 	overflow: hidden;
@@ -459,6 +414,7 @@ fieldset {
 }
 
 .menubar ul {
+	display:block;
 	overflow: hidden;
 	width: 100%;
 	margin: 0 auto;
