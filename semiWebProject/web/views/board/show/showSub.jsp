@@ -15,8 +15,6 @@
 	ShowDetailVo show = extXmlsd.getXmlDataSAX(showId);
 	String theaterId = show.getMt10id();
 	TheaterDetailVo theater = extXmltd.getXmlDataSAX(theaterId);
-	
-	
 
 	/* 페이징 */
 	ArrayList<ReviewVo> list = (ArrayList<ReviewVo>) request.getAttribute("list");
@@ -43,10 +41,9 @@
 /*-------- showSub --------- */
 /* -- */
 #container {
-overflow:hidden;
-width: 1002px;
-margin: 0 auto;
-
+	overflow: hidden;
+	width: 1002px;
+	margin: 0 auto;
 }
 
 #subContainer {
@@ -100,7 +97,7 @@ margin: 0 auto;
 }
 
 #detailMain {
-overflow:hidden;
+	overflow: hidden;
 	width: 960px;
 	padding: 20px;
 	border: solid 1px #c2c2c2;
@@ -288,7 +285,7 @@ table.type09 td {
 
 /* menubar */
 .menuSub {
-display:inline;
+	display: inline;
 	width: 960px;
 	margin: 0 auto;
 	overflow: hidden;
@@ -390,6 +387,19 @@ display:inline;
 	width: 960px;
 	margin: 0 auto;
 }
+
+.reviewSection {
+	
+}
+#reviewTable{
+width: 960px;
+	width: 100%;
+	border: 0;
+	cellpadding: 0;
+	cellspacing: 0;
+	text-align: left;
+
+}
 </style>
 
 
@@ -479,66 +489,85 @@ display:inline;
 					<div id="map" style="width: 100%; height: 400px;"></div>
 					<div id="map-description">
 						<p>극장정보</p>
-						<p>공연장 이름 : <%=theater.getFcltynm() %></p> 
-						<p>공연장 주소 : <%=theater.getAdres() %></p> 
-						<p>개관연도 : <%=theater.getOpende() %></p>
-						<p>객석 수 : <%=theater.getSeatscale() %></p>
-						<p>전화번호 : <%=theater.getTelno() %></p>
-						<p>홈페이지 : <%=theater.getRelateurl() %></p>
-						
+						<p>
+							공연장 이름 :
+							<%=theater.getFcltynm()%></p>
+						<p>
+							공연장 주소 :
+							<%=theater.getAdres()%></p>
+						<p>
+							개관연도 :
+							<%=theater.getOpende()%></p>
+						<p>
+							객석 수 :
+							<%=theater.getSeatscale()%></p>
+						<p>
+							전화번호 :
+							<%=theater.getTelno()%></p>
+						<p>
+							홈페이지 :
+							<%=theater.getRelateurl()%></p>
+
 
 					</div>
 					<script>
 						var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 						var options = { //지도를 생성할 때 필요한 기본 옵션
-							center : new daum.maps.LatLng(<%=theater.getLa()%>, <%=theater.getLo()%>), //지도의 중심좌표.
+							center : new daum.maps.LatLng(
+					<%=theater.getLa()%>
+						,
+					<%=theater.getLo()%>
+						), //지도의 중심좌표.
 							level : 3
 						//지도의 레벨(확대, 축소 정도)
 						};
 
 						var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
-						
+
 						// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
 						var zoomControl = new daum.maps.ZoomControl();
-						map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+						map.addControl(zoomControl,
+								daum.maps.ControlPosition.RIGHT);
 
 						// 지도가 확대 또는 축소되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
-						daum.maps.event.addListener(map, 'zoom_changed', function() {        
-						    
-						    // 지도의 현재 레벨을 얻어옵니다
-						    var level = map.getLevel();
-						    
-						    var resultDiv = document.getElementById('result');  
-						});
-						
-						var markerPosition  = new daum.maps.LatLng(<%=theater.getLa()%>, <%=theater.getLo()%>); 
+						daum.maps.event.addListener(map, 'zoom_changed',
+								function() {
+
+									// 지도의 현재 레벨을 얻어옵니다
+									var level = map.getLevel();
+
+									var resultDiv = document
+											.getElementById('result');
+								});
+
+						var markerPosition = new daum.maps.LatLng(
+					<%=theater.getLa()%>
+						,
+					<%=theater.getLo()%>
+						);
 
 						// 마커를 생성합니다
 						var marker = new daum.maps.Marker({
-						    position: markerPosition
+							position : markerPosition
 						});
 
 						// 마커가 지도 위에 표시되도록 설정합니다
 						marker.setMap(map);
 
 						// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-						// marker.setMap(null);    
-						
+						// marker.setMap(null);
 					</script>
 				</div>
 
 				<div class="calendar menuSubArea">달력</div>
 				<div class="comment menuSubArea">
-					<div class="section">
-						<table width="100%" border=0 cellpadding=0 cellspacing=0
-							align="center">
+					<div class="reviewSection">
+						<table id="reviewTable">
 							<tr>
-								<th>공연시설명</th>
-								<th>공연장 수</th>
-								<th>시설 특성</th>
-								<th>지역(시도)</th>
-								<th>지역(구군)</th>
-								<th>개관연도</th>
+								<th>별점</th>
+								<th>내용</th>
+								<th>작성자</th>
+								<th>작성일</th>
 							</tr>
 							<%
 								if (list.size() == 0) {
@@ -553,12 +582,10 @@ display:inline;
 								for (ReviewVo n : list) {
 							%>
 							<tr>
-								<td>1</td>
-								<td>2</td>
-								<td>3</td>
-								<td>4</td>
-								<td>5</td>
-								<td>6</td>
+								<td><%=n.getPointgrade()%></td>
+								<td><%=n.getContent()%></td>
+								<td><%=n.getMemberId()%></td>
+								<td><%=n.getReviewDate()%></td>
 							</tr>
 							<%
 								}

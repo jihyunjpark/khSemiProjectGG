@@ -75,7 +75,7 @@ public class ReviewListServlet extends HttpServlet {
 		
 		String url = "";
 		if(null != list){
-			url = "/views/board/show/showSub2.jsp?showId=" + showId;
+			url = "/views/board/show/showSub.jsp?showId=" + showId;
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 		}else{

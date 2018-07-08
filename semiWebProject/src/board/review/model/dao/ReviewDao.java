@@ -41,12 +41,12 @@ public class ReviewDao {
 		ResultSet rs = null;
 		String query = "";
 		try {
-			query = "SELECT B.RNUM, B.REVIEW_NO, B.MEMBER_ID, B.POINTGRADE, B.CONTENT, B.PREPARATATIONDATE, B.SHOWCODE, B.REPORT_COUNT, B.WISH_BOOL "
+			query = "SELECT B.RNUM, B.REVIEW_NO, B.MEMBER_ID, B.POINTGRADE, B.CONTENT, B.REVIEW_DATE, B.SHOWCODE, B.REPORT_COUNT, B.WISH_BOOL "
 					+ "FROM ("
-					+ "SELECT ROWNUM AS RNUM, A.REVIEW_NO, A.MEMBER_ID, A.POINTGRADE, A.CONTENT, A.PREPARATATIONDATE, A.SHOWCODE, A.REPORT_COUNT, A.WISH_BOOL "
+					+ "SELECT ROWNUM AS RNUM, A.REVIEW_NO, A.MEMBER_ID, A.POINTGRADE, A.CONTENT, A.REVIEW_DATE, A.SHOWCODE, A.REPORT_COUNT, A.WISH_BOOL "
 					+ "FROM ("
-					+ "SELECT REVIEW_NO, MEMBER_ID, POINTGRADE, CONTENT, PREPARATATIONDATE, SHOWCODE, REPORT_COUNT, WISH_BOOL "
-					+ "FROM REVIEW WHERE SHOWCODE = ? ORDER BY PREPARATATIONDATE) A " + "WHERE ROWNUM <= ?) B "
+					+ "SELECT REVIEW_NO, MEMBER_ID, POINTGRADE, CONTENT, REVIEW_DATE, SHOWCODE, REPORT_COUNT, WISH_BOOL "
+					+ "FROM REVIEW WHERE SHOWCODE = ? ORDER BY REVIEW_DATE) A " + "WHERE ROWNUM <= ?) B "
 					+ "WHERE B.rnum >= ?";
 
 			pstmt = con.prepareStatement(query);
@@ -68,12 +68,12 @@ public class ReviewDao {
 				temp = new ReviewVo();
 				temp.setReviewNo(rs.getInt("REVIEW_NO"));
 				temp.setMemberId(rs.getString("MEMBER_ID"));
-				temp.setPointgrade(rs.getInt("pointgrade"));
-				temp.setContent(rs.getString("content"));
-				temp.setReviewDate(rs.getDate("review_date"));
-				temp.setShowcode(rs.getString("showcode"));
-				temp.setReportCount(rs.getInt("report_count"));
-				temp.setWishbool(rs.getBoolean("wish_bool"));
+				temp.setPointgrade(rs.getInt("POINTGRADE"));
+				temp.setContent(rs.getString("CONTENT"));
+				temp.setReviewDate(rs.getDate("REVIEW_DATE"));
+				temp.setShowcode(rs.getString("SHOWCODE"));
+				temp.setReportCount(rs.getInt("REPORT_COUNT"));
+				temp.setWishbool(rs.getBoolean("WISH_BOOL"));
 				list.add(temp);
 			}
 		} catch (SQLException e) {
