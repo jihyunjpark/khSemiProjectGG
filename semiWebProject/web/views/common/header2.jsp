@@ -233,7 +233,7 @@
 							onclick="setLeftMenu('show');">뮤지컬</a></li>
 						<li><a href="http://localhost:8081/swp/views/board/show/showMain2.jsp?category=AAAA"
 							onclick="setLeftMenu('show');">연극</a></li>
-						<li><a href="http://localhost:8081/swp/views/board/theater/theaterList.jsp"
+						<li><a href="http://localhost:8081/swp/views/board/theater/theaterList2.jsp"
 							onclick="setLeftMenu('show');">극장 목록</a></li>
 					</ul>
 				</li>

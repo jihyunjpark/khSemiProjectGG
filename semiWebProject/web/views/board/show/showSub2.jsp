@@ -1,6 +1,6 @@
+<%@page import="common.PageInfo"%>
 <%@page import="board.review.model.vo.ReviewVo"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="common.PageInfo"%>
 <%@page import="board.theater.controller.TheaterDetailExtXml"%>
 <%@page import="board.theater.model.vo.TheaterDetailVo"%>
 <%@page import="board.show.controller.ShowDetailExtXml"%>
@@ -15,6 +15,8 @@
 	ShowDetailVo show = extXmlsd.getXmlDataSAX(showId);
 	String theaterId = show.getMt10id();
 	TheaterDetailVo theater = extXmltd.getXmlDataSAX(theaterId);
+	
+	
 
 	/* 페이징 */
 	ArrayList<ReviewVo> list = (ArrayList<ReviewVo>) request.getAttribute("list");
@@ -36,10 +38,17 @@
 <meta charset="UTF-8">
 <title>긴장감고조</title>
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e8c4fb9a405e63f9eb58467ef526fb71"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e8c4fb9a405e63f9eb58467ef526fb71&libraries=services"></script>
 <style>
 /*-------- showSub --------- */
 /* -- */
+#container {
+overflow:hidden;
+width: 1002px;
+margin: 0 auto;
+
+}
+
 #subContainer {
 	width: 960px;
 	margin: auto;
@@ -91,10 +100,10 @@
 }
 
 #detailMain {
-	width: 870px; /*width:930px; height:563px*/
-	padding: 29px;
+overflow:hidden;
+	width: 960px;
+	padding: 20px;
 	border: solid 1px #c2c2c2;
-	overflow: hidden;
 }
 
 #contentsLeft {
@@ -279,7 +288,8 @@ table.type09 td {
 
 /* menubar */
 .menuSub {
-	width: 1140px;
+display:inline;
+	width: 960px;
 	margin: 0 auto;
 	overflow: hidden;
 	height: 48px;
@@ -297,7 +307,7 @@ table.type09 td {
 
 .menuSub li {
 	overflow: hidden;
-	width: 228px;
+	width: 240px;
 	float: left;
 	padding: 0px;
 }
@@ -378,6 +388,7 @@ table.type09 td {
 
 .subImage img {
 	width: 960px;
+	margin: 0 auto;
 }
 </style>
 
@@ -465,20 +476,54 @@ table.type09 td {
 					%>
 				</div>
 				<div class="showLocation menuSubArea">
-					<div id="map" style="width: 500px; height: 400px;"></div>
+					<div id="map" style="width: 100%; height: 400px;"></div>
 					<div id="map-description">
-						극장 위치<%=request.getParameter("showId")%>
+						<p>극장정보</p>
+						<p>공연장 이름 : <%=theater.getFcltynm() %></p> 
+						<p>공연장 주소 : <%=theater.getAdres() %></p> 
+						<p>개관연도 : <%=theater.getOpende() %></p>
+						<p>객석 수 : <%=theater.getSeatscale() %></p>
+						<p>전화번호 : <%=theater.getTelno() %></p>
+						<p>홈페이지 : <%=theater.getRelateurl() %></p>
+						
 
 					</div>
 					<script>
 						var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 						var options = { //지도를 생성할 때 필요한 기본 옵션
-							center : new daum.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+							center : new daum.maps.LatLng(<%=theater.getLa()%>, <%=theater.getLo()%>), //지도의 중심좌표.
 							level : 3
 						//지도의 레벨(확대, 축소 정도)
 						};
 
 						var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
+						
+						// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+						var zoomControl = new daum.maps.ZoomControl();
+						map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+
+						// 지도가 확대 또는 축소되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
+						daum.maps.event.addListener(map, 'zoom_changed', function() {        
+						    
+						    // 지도의 현재 레벨을 얻어옵니다
+						    var level = map.getLevel();
+						    
+						    var resultDiv = document.getElementById('result');  
+						});
+						
+						var markerPosition  = new daum.maps.LatLng(<%=theater.getLa()%>, <%=theater.getLo()%>); 
+
+						// 마커를 생성합니다
+						var marker = new daum.maps.Marker({
+						    position: markerPosition
+						});
+
+						// 마커가 지도 위에 표시되도록 설정합니다
+						marker.setMap(map);
+
+						// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+						// marker.setMap(null);    
+						
 					</script>
 				</div>
 

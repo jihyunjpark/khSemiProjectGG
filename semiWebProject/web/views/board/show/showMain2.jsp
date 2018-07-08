@@ -9,7 +9,6 @@
 	List<ShowVo2> list = null;
 	String category = "AAAB";
 	int currentPage = 1;
-	System.out.println(request.getParameter("category"));
 	if ("AAAA".equals(request.getParameter("category"))) {
 		category = "AAAA";
 	}
@@ -23,12 +22,27 @@
 		ShowListExtXml ext = new ShowListExtXml();
 		list = ext.getXmlDataSAX(currentPage, "AAAA");
 	}
+	System.out.println(category);
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script>
+function movePage(page) {
+	location.href="http://localhost:8081/swp/views/board/show/showMain2.jsp?category=<%=category%>&page=" + page;
+}
+function nextPage(page) {
+	page += 1;
+	location.href="http://localhost:8081/swp/views/board/show/showMain2.jsp?category=<%=category%>&page=" + page;
+}
+function prevPage(page) {
+	page -= 1;
+	location.href="http://localhost:8081/swp/views/board/show/showMain2.jsp?category=<%=category%>&page=" + page;
+}
+
+</script>
 </head>
 <body>
 	<div>
@@ -93,6 +107,30 @@
 				%>
 			</table>
 		</div>
+		
+		<!-- 페이징 처리 부분     <<	1 2 3 4 5 6 7 ... >>  -->
+			<div class="pageArea" align="center">
+				<button onclick="movePage(1);"><<</button>
+				<button onclick="prevPage(<%=currentPage%>);"><</button>
+				<%
+					for (int i = currentPage; i <= currentPage + 10; i++) {
+				%>
+				<%
+					if (currentPage == i) {
+				%>
+				<button disabled><%=i%></button>
+				<%
+					} else {
+				%>
+				<button onclick="movePage(<%=i%>);"><%=i%></button>
+				<%
+					}
+				%>
+				<%
+					}
+				%>
+				<button onclick="nextPage(<%=currentPage%>);">></button>
+			</div>
 	</div>
 	</div>
 	<%@ include file="/views/common/footer.jsp"%>

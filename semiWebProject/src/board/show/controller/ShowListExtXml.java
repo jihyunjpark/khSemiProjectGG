@@ -15,7 +15,7 @@ public class ShowListExtXml {
 		List<ShowVo2> showList = null;
 		
 		try {
-			String baseUrl = "http://www.kopis.or.kr/openApi/restful/pblprfr?service=d11d486f591e447d84737299b2895c19&stdate=20180601&eddate=20180730&cpage=" + page + "&rows=12&prfstate=02&signgucode=11&shcate=" + type;
+			String baseUrl = "http://www.kopis.or.kr/openApi/restful/pblprfr?service=d11d486f591e447d84737299b2895c19&stdate=20180101&eddate=20190101&cpage=" + page + "&rows=12&prfstate=02&shcate=" + type;
 			SAXBuilder builder = new SAXBuilder();
 			Document doc = (Document) builder.build(new java.net.URL(baseUrl));
 			Element root = doc.getRootElement(); // result
