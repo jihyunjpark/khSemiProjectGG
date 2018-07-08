@@ -573,7 +573,7 @@ width: 960px;
 								if (list.size() == 0) {
 							%>
 							<tr>
-								<td colspan="5">조회 된 게시글이 없습니다.</td>
+								<td colspan="5">이 공연에 리뷰가 없습니다.</td>
 							</tr>
 							<%
 								} else {
@@ -582,7 +582,7 @@ width: 960px;
 								for (ReviewVo n : list) {
 							%>
 							<tr>
-								<td><%=n.getPointgrade()%></td>
+								<td><%%></td>
 								<td><%=n.getContent()%></td>
 								<td><%=n.getMemberId()%></td>
 								<td><%=n.getReviewDate()%></td>

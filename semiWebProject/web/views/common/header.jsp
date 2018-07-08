@@ -190,6 +190,8 @@
 							onclick="setLeftMenu('community');">자유게시판</a></li>
 						<li><a href="/swp/noticeList.do"
 							onclick="setLeftMenu('community');">공지사항</a></li>
+							<li><a href="/swp/totalReviewList.do"
+							onclick="setLeftMenu('community');">리뷰 게시판</a></li>
 					</ul></li>
 				<li><a href="/swp/freeList.do"
 					onclick="setLeftMenu('magazine');">매거진</a>
@@ -244,7 +246,7 @@
 					<ul>
 						<li><a href="#">자유 게시판</a></li>
 						<li><a href="#">공지사항</a></li>
-						<li><a href="#">리뷰</a></li>
+						<li><a href="#">리뷰 게시판</a></li>
 					</ul>
 				</li>
 				<li>
