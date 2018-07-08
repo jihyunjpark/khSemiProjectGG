@@ -75,6 +75,4 @@ public class TheaterVo {
 				+ fcltychartr + ", sidonm=" + sidonm + ", gugunnm=" + gugunnm + ", opende=" + opende + "]";
 	}
 	
-	
-	
 }

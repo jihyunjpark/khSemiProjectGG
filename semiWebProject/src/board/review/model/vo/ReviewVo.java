@@ -9,14 +9,15 @@ public class ReviewVo {
 	private int pointgrade;
 	private String content;
 	private Date reviewDate;
-	private int showcode;
+	private String showcode;
 	private int reportCount;
+	private boolean wishbool;
 	
 	public ReviewVo() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ReviewVo(String memberId, String memberName, int pointgrade, String content, int showcode) {
+	public ReviewVo(String memberId, String memberName, int pointgrade, String content, String showcode) {
 		super();
 		this.memberId = memberId;
 		this.memberName = memberName;
@@ -25,7 +26,7 @@ public class ReviewVo {
 		this.showcode = showcode;
 	}
 
-	public ReviewVo(int reviewNo, String memberId, String memberName, int pointgrade, String content, Date reviewDate, int showcode,
+	public ReviewVo(int reviewNo, String memberId, String memberName, int pointgrade, String content, Date reviewDate, String showcode,
 			int reportCount) {
 		this.reviewNo = reviewNo;
 		this.memberId = memberId;
@@ -35,6 +36,16 @@ public class ReviewVo {
 		this.reviewDate = reviewDate;
 		this.showcode = showcode;
 		this.reportCount = reportCount;
+	}
+	
+	
+
+	public boolean isWishbool() {
+		return wishbool;
+	}
+
+	public void setWishbool(boolean wishbool) {
+		this.wishbool = wishbool;
 	}
 
 	public int getReviewNo() {
@@ -85,11 +96,11 @@ public class ReviewVo {
 		this.reviewDate = reviewDate;
 	}
 
-	public int getShowcode() {
+	public String getShowcode() {
 		return showcode;
 	}
 
-	public void setShowcode(int showcode) {
+	public void setShowcode(String showcode) {
 		this.showcode = showcode;
 	}
 

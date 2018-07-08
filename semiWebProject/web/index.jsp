@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body> 
-<%@ include file="/views/common/header.jsp"%>
+<%@ include file="/views/common/header2.jsp"%>
 			<section class="vertical-center slider">
 				<div>
 					<img src="/swp/images/main_flash_1_180625.jpg">
