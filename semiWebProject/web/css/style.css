@@ -248,13 +248,13 @@ fieldset {
 }
 
 .ltShowStar, #ltShowStar {
+	display: -webkit-inline-box;
 	height: 18px;
 }
 
 .ltShowStar p, #ltShowStar p {
-	float: left;
 	padding-left: 6px;
-	padding-top: 1px;
+    padding-top: 1px;
 }
 
 .ltShowStar p b, #ltShowStar p b {

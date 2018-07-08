@@ -163,4 +163,83 @@ public class ShowDao {
 		}
 		return show;
 	}
+
+
+	public int getPointgrade(Connection con, String showId) {
+		int point = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "SELECT TRUNC(SUM(POINTGRADE)/count(POINTGRADE)) AS POINT FROM REVIEW WHERE SHOWCODE=?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, showId);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				point = rs.getInt("POINT");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally{
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return point;
+	}
+
+
+	public int getShowReviewCount(Connection con, String showId) {
+		int count = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "SELECT COUNT(*) AS REVIEWCOUNT FROM REVIEW WHERE SHOWCODE=?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, showId);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				count = rs.getInt("REVIEWCOUNT");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return count;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
