@@ -148,10 +148,7 @@
 				</div>
 			</div>
 		</header>
-
 		<br>
-
-
 		<div class="search_area">
 			<div id="logo_image"></div>
 			<form id="search_form" name="search" action="?" method="get"
@@ -174,13 +171,15 @@
 		<div class="menubar">
 			<ul>
 				<li><a href="/swp" onclick="setLeftMenu('home');">Home</a></li>
-				<li><a href="http://localhost:8081/swp/views/board/show/showMain2.jsp" id="current"
+				<li><a href="http://localhost:8081/swp/views/board/show/showMain.jsp" id="current"
 					onclick="setLeftMenu('show');">공연</a>
 					<ul>
-						<li><a href="http://localhost:8081/swp/views/board/show/showMain2.jsp?category=AAAB"
-							onclick="setLeftMenu('show');">뮤지컬</a></li>
-						<li><a href="http://localhost:8081/swp/views/board/show/showMain2.jsp?category=AAAA"
+						<li><a href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=AAAA"
 							onclick="setLeftMenu('show');">연극</a></li>
+						<li><a href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=AAAB"
+							onclick="setLeftMenu('show');">뮤지컬</a></li>
+						<li><a href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=CCCA"
+							onclick="setLeftMenu('show');">클래식</a></li>
 						<li><a href="http://localhost:8081/swp/views/board/theater/theaterList.jsp"
 							onclick="setLeftMenu('show');">극장 목록</a></li>
 					</ul></li>
@@ -191,7 +190,6 @@
 							onclick="setLeftMenu('community');">자유게시판</a></li>
 						<li><a href="/swp/noticeList.do"
 							onclick="setLeftMenu('community');">공지사항</a></li>
-						<li><a href="#" onclick="setLeftMenu('home');">리뷰</a></li>
 					</ul></li>
 				<li><a href="/swp/freeList.do"
 					onclick="setLeftMenu('magazine');">매거진</a>
@@ -225,15 +223,17 @@
 				<!-- we will keep this LI open by default -->
 				<li>
 					<h3 id="showMenu">
-						<span class="icon-tasks"></span><a href="http://localhost:8081/swp/views/board/show/showMain2.jsp"
+						<span class="icon-tasks"></span><a href="http://localhost:8081/swp/views/board/show/showMain.jsp"
 							id="current" onclick="setLeftMenu('show');">공연</a>
 					</h3>
 					<ul>
-						<li><a href="http://localhost:8081/swp/views/board/show/showMain2.jsp?category=AAAB"
-							onclick="setLeftMenu('show');">뮤지컬</a></li>
-						<li><a href="http://localhost:8081/swp/views/board/show/showMain2.jsp?category=AAAA"
+						<li><a href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=AAAA"
 							onclick="setLeftMenu('show');">연극</a></li>
-						<li><a href="http://localhost:8081/swp/views/board/theater/theaterList2.jsp"
+						<li><a href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=AAAB"
+							onclick="setLeftMenu('show');">뮤지컬</a></li>
+						<li><a href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=CCCA"
+							onclick="setLeftMenu('show');">클래식</a></li>
+						<li><a href="http://localhost:8081/swp/views/board/theater/theaterList.jsp"
 							onclick="setLeftMenu('show');">극장 목록</a></li>
 					</ul>
 				</li>

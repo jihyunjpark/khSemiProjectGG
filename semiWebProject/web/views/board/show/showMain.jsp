@@ -7,22 +7,79 @@
 	pageEncoding="UTF-8"%>
 <%
 	List<ShowVo2> list = null;
-	String category = "AAAB";
-	int currentPage = 1;
-	if ("AAAA".equals(request.getParameter("category"))) {
+	String category = "AAAA";
+	if (null != request.getParameter("category")) {
+		category = request.getParameter("category");
+	} else {
 		category = "AAAA";
 	}
+	int currentPage = 1;
 	if (null != request.getParameter("page")) {
 		currentPage = Integer.parseInt(request.getParameter("page"));
 	}
-	if (category == "AAAB") {
-		ShowListExtXml ext = new ShowListExtXml();
-		list = ext.getXmlDataSAX(currentPage, "AAAB");
-	} else {
+	if (category.equals("AAAA")) {
 		ShowListExtXml ext = new ShowListExtXml();
 		list = ext.getXmlDataSAX(currentPage, "AAAA");
+	} else if (category.equals("AAAB")) {
+		ShowListExtXml ext = new ShowListExtXml();
+		list = ext.getXmlDataSAX(currentPage, "AAAB");
+	} else if (category.equals("CCCA")) {
+		ShowListExtXml ext = new ShowListExtXml();
+		list = ext.getXmlDataSAX(currentPage, "CCCA");
 	}
-	System.out.println(category);
+%>
+<%
+	int limitPage; //한페이지에 출력할 페이지 갯수
+	int maxPage; //가장 마지막 페이지
+	int startPage; //시작 페이지 변수
+	int endPage; //마지막 페이지 변수
+	int limit; //한페이지에 출력할 글에 갯수
+
+	limit = 12;
+	limitPage = 10;
+
+	if (request.getParameter("page") != null) {
+		currentPage = Integer.parseInt(request.getParameter("page"));
+	} else {
+		currentPage = 1;
+	}
+	int listCount = 0;
+	//게시글의 총 갯수
+	switch (category) {
+		case "AAAA" :
+			listCount = 527;
+			break;
+		case "AAAB" :
+			listCount = 587;
+			break;
+		case "CCCA" :
+			listCount = 885;
+			break;
+	}
+	//134 -> 14
+	maxPage = (int) ((double) listCount / limit + 0.9);
+
+	//현재 페이지 번호
+	//12 - 10
+	/* startPage = (int) (currentPage / limitPage * limitPage) + 1; */
+	startPage = ((currentPage - 1) / 10) * 10 + 1;
+
+	//11~20  -> 134 -> 14
+	endPage = startPage + limitPage - 1;
+	if (maxPage < endPage) {
+		endPage = maxPage;
+	}
+
+	System.out.println("request.category:" + request.getParameter("category"));
+	System.out.println("category:" + category);
+	System.out.println("limitPage:" + limitPage);
+	System.out.println("maxPage:" + maxPage);
+	System.out.println("startPage:" + startPage);
+	System.out.println("endPage:" + endPage);
+	System.out.println("limit:" + limit);
+	System.out.println("currentPage:" + currentPage);
+	System.out.println("listCount:" + listCount);
+	System.out.println();
 %>
 <!DOCTYPE html>
 <html>
@@ -31,22 +88,30 @@
 <title>Insert title here</title>
 <script>
 function movePage(page) {
-	location.href="http://localhost:8081/swp/views/board/show/showMain2.jsp?category=<%=category%>&page=" + page;
-}
-function nextPage(page) {
-	page += 1;
-	location.href="http://localhost:8081/swp/views/board/show/showMain2.jsp?category=<%=category%>&page=" + page;
+	location.href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=<%=category%>&page=" + page;
 }
 function prevPage(page) {
 	page -= 1;
-	location.href="http://localhost:8081/swp/views/board/show/showMain2.jsp?category=<%=category%>&page=" + page;
+	location.href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=<%=category%>&page=" + page;
+}
+function nextPage(page) {
+	page += 1;
+	location.href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=<%=category%>&page=" + page;
 }
 
 </script>
+<style>
+table{
+border-spacing: 7px;
+
+}
+
+
+</style>
 </head>
 <body>
 	<div>
-		<%@ include file="/views/common/header2.jsp"%>
+		<%@ include file="/views/common/header.jsp"%>
 		<div class="section">
 			<table width="100%" border=0 cellpadding=0 cellspacing=0>
 				<%
@@ -107,31 +172,22 @@ function prevPage(page) {
 				%>
 			</table>
 		</div>
-		
+
 		<!-- 페이징 처리 부분     <<	1 2 3 4 5 6 7 ... >>  -->
-			<div class="pageArea" align="center">
-				<button onclick="movePage(1);"><<</button>
-				<button onclick="prevPage(<%=currentPage%>);"><</button>
-				<%
-					for (int i = currentPage; i <= currentPage + 10; i++) {
-				%>
-				<%
-					if (currentPage == i) {
-				%>
-				<button disabled><%=i%></button>
-				<%
-					} else {
-				%>
-				<button onclick="movePage(<%=i%>);"><%=i%></button>
-				<%
-					}
-				%>
-				<%
-					}
-				%>
-				<button onclick="nextPage(<%=currentPage%>);">></button>
-			</div>
-	</div>
+		<div class="pageArea" align="center">
+			<button onclick="movePage(1);"><<</button> <button onclick="prevPage(<%=currentPage%>)" <%if(1 == currentPage){ %>disabled<%} %>><</button>
+			<%
+				for (int i = startPage; i <= endPage; i++) {
+			%>
+			
+			<button onclick="movePage(<%=i%>);" <%if (currentPage == i) {%>
+				disabled <%}%>><%=i%></button>
+			<%
+				}
+			%>
+			<button onclick="nextPage(<%=currentPage%>)" <%if(maxPage == currentPage){ %>disabled<%} %>>></button>
+			<button onclick="movePage(<%=maxPage%>);">>></button>
+		</div>
 	</div>
 	<%@ include file="/views/common/footer.jsp"%>
 </body>

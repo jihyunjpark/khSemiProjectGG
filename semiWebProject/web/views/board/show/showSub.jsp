@@ -395,7 +395,7 @@ display:inline;
 
 </head>
 <body>
-	<%@ include file="/views/common/header2.jsp"%>
+	<%@ include file="/views/common/header.jsp"%>
 	<div class="wrap">
 		<div id="container">
 			<div id="detailMain">
