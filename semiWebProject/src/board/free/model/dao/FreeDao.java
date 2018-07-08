@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import board.free.model.vo.FreeReplyVo;
 import board.free.model.vo.FreeVo;
 import common.JDBCTemplate;
 
@@ -357,6 +358,105 @@ public class FreeDao {
 //		return result;
 //	}
 
+	public FreeVo selectFree(Connection con, int boardNo) {
+		FreeVo board = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "";
+		//1. 쿼리 작성
+		query = prop.getProperty("selectFree");
+		try {
+			//2. 쿼리 실행 객체 생성
+			pstmt = con.prepareStatement(query);
+			//3. 파라미터 설정
+			pstmt.setInt(1, boardNo);
+			//4. 쿼리 실행
+			rs = pstmt.executeQuery();
+			//5. 결과 처리(resultset)
+			while(rs.next()){
+				board = new FreeVo();
+				board.setBoard_no(rs.getInt("BOARD_NO"));
+				board.setNickname(rs.getString("NICKNAME"));
+				board.setTitle(rs.getString("TITLE"));
+				board.setBoard_count(rs.getInt("BOARD_COUNT") + 1);
+				board.setBoard_date(rs.getDate("BOARD_DATE"));
+				board.setBoard_content(rs.getString("BOARD_CONTENT"));
+				board.setMember_id(rs.getString("MEMBER_ID"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			//6. 자원 반납
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		//7. 결과 값 return
+		return board;
+	}
+
+	public int updateReadCount(Connection con, int boardNo) {
+		int result = -1;
+		PreparedStatement pstmt = null;
+		String query = "";
+		query = prop.getProperty("updateReadCount");
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int insertComment(Connection con, FreeReplyVo reply) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public ArrayList<FreeReplyVo> selectReplyList(Connection con, FreeReplyVo reply) {
+		ArrayList<FreeReplyVo> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "";
+		try {
+			//1. 쿼리 작성
+			query = prop.getProperty("selectReplyList");
+			//2. 쿼리 전송 객체 생성
+			pstmt = con.prepareStatement(query);
+			//3. 전달 값 설정
+			pstmt.setInt(1, reply.getBoard_no());
+			//4. 쿼리 실행
+			rs = pstmt.executeQuery();
+			//5. 결과 처리(resultSet-list parsing)
+			list = new ArrayList<FreeReplyVo>();
+			FreeReplyVo temp = null;
+			while(rs.next()){
+				temp = new FreeReplyVo();
+				temp.setReply_no(rs.getInt("REPLY_NO"));
+				temp.setBoard_no(rs.getInt("BOARD_NO"));
+				temp.setReply_content(rs.getString("REPLY_CONTENT"));
+				temp.setNickname(rs.getString("NICKNAME"));
+				temp.setMember_id(rs.getString("MEMBER_ID"));
+				temp.setReply_date_str(rs.getString("REPLY_DATE_STR"));
+				temp.setReply_date(rs.getDate("REPLY_DATE"));
+				
+				list.add(temp);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			//6. 자원 반납(close)
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		//7. 결과 리턴
+		return list;
+	}
+	
 	
 }
 

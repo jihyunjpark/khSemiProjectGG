@@ -9,10 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import board.free.model.service.FreeService;
 import board.free.model.vo.FreeVo;
 import common.PageInfo;
+import member.model.vo.MemberVo;
 
 @WebServlet("/freeList.do")
 public class FreeListServlet extends HttpServlet {
@@ -69,6 +71,8 @@ public class FreeListServlet extends HttpServlet {
 			url = "views/board/free/freeList.jsp";
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
+			HttpSession session = request.getSession();
+			session.setAttribute("user", new MemberVo("won", "원"));
 		}
 //		}else{
 //			url = "views/common/errorPage.jsp";

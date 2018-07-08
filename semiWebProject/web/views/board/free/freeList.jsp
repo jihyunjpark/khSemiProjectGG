@@ -43,7 +43,7 @@ td{
 				</tr>
 			<%}else{%>
 				<%for(FreeVo free: list){ %>
-					<tr>
+					<tr onclick="moveFreeSub(<%=free.getBoard_no() %>);">
 						<td><%=free.getBoard_no() %></td>
 						<td><%=free.getTitle() %></td>
 						<td><%=free.getNickname() %></td>
@@ -70,4 +70,15 @@ td{
 </div>
 <%@ include file="/views/common/footer.jsp"%>
 </body>
+
+<script>
+function movePage(pageNum){
+	location.href = "/swp/freeList.do?currentPage=" + pageNum;
+}
+
+function moveFreeSub(bno){
+	location.href = "/swp/freeSub.do?currentPage=<%=currentPage%>&bno=" + bno;
+}
+
+</script>
 </html>

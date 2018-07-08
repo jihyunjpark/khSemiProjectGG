@@ -325,6 +325,11 @@ table.type09 td {
 	background: #5c4396;
 	color: #FFFFFF;
 	text-decoration: none;
+	border-bottom: 5px solid lightgreen;
+}
+
+.menuSub li a.highlight{
+	border-bottom: 5px solid lightgreen;
 }
 
 .menuSub li ul {
@@ -469,10 +474,10 @@ width: 960px;
 				</div>
 				<div class="menuSub">
 					<ul>
-						<li><a onclick="setSubMenu('subImage');">공연정보</a></li>
-						<li><a onclick="setSubMenu('showLocation');">공연장정보</a></li>
-						<li><a onclick="setSubMenu('calendar');">캘린더</a></li>
-						<li><a onclick="setSubMenu('comment');">리뷰</a></li>
+						<li><a onclick="setSubMenu('subImage', this);">공연정보</a></li>
+						<li><a onclick="setSubMenu('showLocation', this);">공연장정보</a></li>
+						<li><a onclick="setSubMenu('calendar', this);">캘린더</a></li>
+						<li><a onclick="setSubMenu('comment', this);">리뷰</a></li>
 					</ul>
 				</div>
 
@@ -624,9 +629,11 @@ width: 960px;
 		$(".menuSubArea").hide(); //원 로직
 	});
 
-	function setSubMenu(area) {
+	function setSubMenu(area, obj) {
 		$(".menuSubArea").hide();
 		$("." + area).show();
+		$(".menuSub a").removeClass("highlight");
+		$(obj).toggleClass("highlight");
 	}
 
 	function movePage(pageNum) {

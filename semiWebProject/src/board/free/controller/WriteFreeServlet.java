@@ -2,6 +2,8 @@ package board.free.controller;
 
 import java.io.IOException;
 
+//import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
-import com.oreilly.servlet.MultipartRequest;
 
 import board.free.model.service.FreeService;
 import board.free.model.vo.FreeVo;
@@ -34,35 +35,35 @@ public class WriteFreeServlet extends HttpServlet {
 			request.setAttribute("msg", "전송 데이터의 타입을 확인하십시오!!");
 			view.forward(request, response);
 		}
-		//3. 파일 저장 경로 설정
-		String root = request.getServletContext().getRealPath("/");
-		System.out.println(root);
-		String path = root + "upload";
-		//4. request -> multipartrequest
-		MultipartRequest mRequest = new MultipartRequest(request,
-																		path, maxSize, "UTF-8");
-		//전송 값을 변수에 저장
-		String writer = mRequest.getParameter("writer");
-		String title = mRequest.getParameter("title");
-		String content = mRequest.getParameter("content");
-		String fileName = mRequest.getFilesystemName("attFile");
-		
-		FreeVo board = new FreeVo();
-		board.setWriter(writer);
-		board.setTitle(title);
-		board.setContent(content);
-		board.setAttachFile(fileName);
-
-		//비지니스 호출
-		int result = new FreeService().insertBoard(board);
-		
-		if(0 < result){
-			response.sendRedirect("/mwp/boardList.do");
-		}else{
-			view = request.getRequestDispatcher("views/common/errorPage.jsp");
-			request.setAttribute("msg", "게시글 작성에 실패하였습니다.");
-			view.forward(request, response);
-		}
+//		//3. 파일 저장 경로 설정
+//		String root = request.getServletContext().getRealPath("/");
+//		System.out.println(root);
+//		String path = root + "upload";
+//		//4. request -> multipartrequest
+//		MultipartRequest mRequest = new MultipartRequest(request,
+//																		path, maxSize, "UTF-8");
+//		//전송 값을 변수에 저장
+//		String writer = mRequest.getParameter("writer");
+//		String title = mRequest.getParameter("title");
+//		String content = mRequest.getParameter("content");
+//		String fileName = mRequest.getFilesystemName("attFile");
+//		
+//		FreeVo board = new FreeVo();
+//		board.setWriter(writer);
+//		board.setTitle(title);
+//		board.setContent(content);
+//		board.setAttachFile(fileName);
+//
+//		//비지니스 호출
+//		int result = new FreeService().insertBoard(board);
+//		
+//		if(0 < result){
+//			response.sendRedirect("/mwp/boardList.do");
+//		}else{
+//			view = request.getRequestDispatcher("views/common/errorPage.jsp");
+//			request.setAttribute("msg", "게시글 작성에 실패하였습니다.");
+//			view.forward(request, response);
+//		}
 	}
 }
 

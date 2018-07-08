@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import board.free.model.dao.FreeDao;
+import board.free.model.vo.FreeReplyVo;
 import board.free.model.vo.FreeVo;
 import common.JDBCTemplate;
 
@@ -123,6 +124,33 @@ public class FreeService {
 //		return result;
 //		
 //	}
+
+	public FreeVo selectFree(int boardNo) {
+		Connection con = JDBCTemplate.getConnection();
+		
+		FreeVo board = new FreeDao().selectFree(con, boardNo);
+		//조회 수 조회수 1증가
+		if(null != board){
+			int result = new FreeDao().updateReadCount(con, boardNo);
+			if(0 < result){
+				JDBCTemplate.commit(con);
+			}else{
+				JDBCTemplate.rollback(con);
+			}
+		}
+		JDBCTemplate.close(con);
+		return board;
+	}
+
+	public ArrayList<FreeReplyVo> insertComment(FreeReplyVo reply) {
+		Connection con = JDBCTemplate.getConnection();
+		
+		int result = new FreeDao().insertComment(con, reply);
+		
+		ArrayList<FreeReplyVo> list = new FreeDao().selectReplyList(con, reply);
+		
+		return list;
+	}
 }
 
 

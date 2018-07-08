@@ -9,6 +9,8 @@ public class FreeReplyVo {
 	private String reply_content;
 	private Date reply_date;
 	private String del_flag;
+	private String nickname;
+	private String reply_date_str;
 	
 	public FreeReplyVo(){}
 
@@ -59,4 +61,24 @@ public class FreeReplyVo {
 	public void setDel_flag(String del_flag) {
 		this.del_flag = del_flag;
 	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getReply_date_str() {
+		return reply_date_str;
+	}
+
+	public void setReply_date_str(String reply_date_str) {
+		this.reply_date_str = reply_date_str;
+	}
+	
+	
+	
+	
 }
