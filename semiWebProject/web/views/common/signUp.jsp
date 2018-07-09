@@ -6,10 +6,30 @@
 <meta charset="UTF-8">
   <title>회원가입</title>
       <link rel="stylesheet" href="/swp/css/signUp.css">
+<script>
+	function memberJoin(){
+		$("#submit").submit();		
+	}
+	
+	function validate(){
+		if($("#password").val() != $("#confirm_password").val()){
+			$("#passChkSpan").text("비밀번호가 일치하지 않습니다.");
+			$("#confirm_password").focus();
+			return false;
+		}
+		//다른 값들을 체크 하는 로직 추가(유효성 검사 로직 추가 영역)
+		return true;
+	}
+</script>
 </head>
 <body>
-<form action="#" method="post" onsubmit="validate();">
+<form id="joinForm" action="/swp/join.au" method="post" onsubmit="return validate();">
   <h2>회원 가입</h2>
+  		<p>
+			<label for="userId" class="floatLabel">ID</label>
+			<input id="userId" name="id" type="text">
+			<span>이미 사용중인 아이디 입니다.</span>
+		</p>
   		<p>
 			<label for="name" class="floatLabel">이름</label>
 			<input id="name" name="name" type="text">
@@ -24,7 +44,6 @@
 		<p>
 			<label for="email" class="floatLabel">이메일</label>
 			<input id="email" name="email" type="text">
-			<span>이미 사용중인 이메일 입니다.</span>
 		</p>
 		<p>
 			<label for="password" class="floatLabel">비밀번호</label>
@@ -45,8 +64,8 @@
   			<span>성별을 선택해주세요.</span>
 		</p>
 		
-		<div class="container-login100-form-btn m-t-20">
-						<button id="submit" class="login100-form-btn">
+		<div class="container-login100-form-btn m-t-20" onclick="memberJoin();">
+						<button id="submit" class="login100-form-btn" >
 							Create My Account
 						</button>
 					</div>
@@ -57,9 +76,6 @@
 	</form>
   <script src='/swp/js/jquery-3.3.1.min.js'></script>
   <script  src="/swp/js/signUp.js"></script>
-
-
-
 
 </body>
 </html>

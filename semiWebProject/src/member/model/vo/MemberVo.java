@@ -9,8 +9,6 @@ public class MemberVo {
 	private String nickname;
 	private char gender;
 	private String email;
-	private String genreStr;
-	private List<String> genre;
 	private Date enrolldate;
 	
 	public MemberVo(){
@@ -22,13 +20,12 @@ public class MemberVo {
 	}
 
 
-	public MemberVo(String userId, String password, String nickname, char gender, String email, String genreStr) {
+	public MemberVo(String userId, String password, String nickname, String email, char gender) {
 		this.userId = userId;
 		this.password = password;
 		this.nickname = nickname;
-		this.gender = gender;
 		this.email = email;
-		this.genreStr = genreStr;
+		this.gender = gender;
 	}
 
 	//userId
@@ -62,22 +59,17 @@ public class MemberVo {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public List<String> getGenre() {
-		return genre;
-	}
-	public void setGenre(List<String> genre) {
-		this.genre = genre;
-	}
 	public Date getEnrolldate() {
 		return enrolldate;
 	}
 	public void setEnrolldate(Date enrolldate) {
 		this.enrolldate = enrolldate;
 	}
-	public String getGenreStr() {
-		return genreStr;
+
+	@Override
+	public String toString() {
+		return "MemberVo [userId=" + userId + ", password=" + password + ", nickname=" + nickname + ", gender=" + gender
+				+ ", email=" + email + ", enrolldate=" + enrolldate + "]";
 	}
-	public void setGenreStr(String genreStr) {
-		this.genreStr = genreStr;
-	}
+
 }

@@ -28,14 +28,12 @@ public class UpdateMemberServlet extends HttpServlet {
 		
 		//2. 전송 값 변수에 저장
 		String id = request.getParameter("userId");
-		String pwd = request.getParameter("userPwd");
+		String pwd = request.getParameter("password");
 		String nickname = request.getParameter("nickname");
 		String gender = request.getParameter("gender");
 		String email = request.getParameter("email");
-		String genre = String.join(", ", request.getParameterValues("genre"));
 		
-		MemberVo member = new MemberVo(id, pwd, nickname, gender.charAt(0),
-																		 email, genre);
+		MemberVo member = new MemberVo(id, pwd, nickname, email, gender.charAt(0));
 		//3. 비지니스 로직 호출
 		MemberService ms = new MemberService();
 		int result = ms.setMemberInfo(member);

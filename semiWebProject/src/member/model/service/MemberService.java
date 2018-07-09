@@ -15,7 +15,6 @@ public class MemberService {
 		return new MemberDao().selectMemberId(id);
 	}
 	
-	
 	public int joinMember(MemberVo m){
 		return new MemberDao().insertMember(m);
 	}

@@ -2,6 +2,7 @@ package member.model.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -31,7 +32,7 @@ public class MemberDao {
 			//쿼리 작성시 주의 사항 
 			//- 스트링 값 비교 시 따옴표를 추가하는 경우 주의
 			String query = "SELECT * FROM MEMBER "
-					+ " WHERE USERID = '" + id + "' "   // where userid = 'admin' 
+					+ " WHERE MEMBER_ID = '" + id + "' "   // where userid = 'admin' 
 					+ " AND PASSWORD = '" + pwd + "'";
 			System.out.println(query);
 			//3. 쿼리 실행
@@ -43,8 +44,6 @@ public class MemberDao {
 				result.setUserId(id);
 				result.setPassword(pwd);
 				result.setNickname(rs.getString("nickame"));
-				//result.setAddress(rs.getString("address"));
-				//result.setAge(rs.getInt("age"));
 				result.setEnrolldate(rs.getDate("enrolldate"));
 			}
 		} catch (ClassNotFoundException e) {
@@ -76,7 +75,7 @@ public class MemberDao {
 		try {
 			stmt = con.createStatement();
 			//3. 실행 할 쿼리 작성
-			String query = "SELECT * FROM MEMBER WHERE USERID = '" + id + "'";
+			String query = "SELECT * FROM MEMBER WHERE MEMBER_ID = '" + id + "'";
 			rs = stmt.executeQuery(query);
 			
 			//4. 쿼리 실행 결과 처리(resultSet)
@@ -84,10 +83,9 @@ public class MemberDao {
 				result = new MemberVo();
 				result.setUserId(id);
 				result.setPassword(rs.getString("password"));
-				result.setNickname(rs.getString("nickname"));
 				result.setGender(rs.getString("gender").charAt(0));
+				result.setGender(rs.getString("nickname").charAt(0));
 				result.setEmail(rs.getString("email"));
-				result.setGenreStr(rs.getString("genre"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -108,25 +106,26 @@ public class MemberDao {
 		int result = 0;
 		//1. 커넥션을 맺는다
 		Connection con = JDBCTemplate.getConnection();
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
+		String query = "INSERT INTO MEMBER VALUES(?,?,?,?,DEFAULT,?,?)";
 		try {
 			//2. 쿼리 객체를 생성한다.
-			stmt = con.createStatement();
+			pstmt = con.prepareStatement(query);
 			//실행할 쿼리 작성
-			String query = "INSERT INTO MEMBER VALUES('"
-					+ m.getUserId() + "', '"  // '값', '값'
-					+ m.getPassword() + "', '"
-					+ m.getNickname() + "', '"
-					+ m.getGender() + "', "
-					+ m.getEmail() + "', '"
-					+ m.getGenreStr() + "', sysdate)";
 			System.out.println("insert query : " + query);
+			pstmt.setString(1, m.getUserId());
+			pstmt.setString(2, m.getPassword());
+			pstmt.setString(3, "F");
+			pstmt.setString(4, m.getNickname());
+			pstmt.setInt(5, 9);
+			pstmt.setString(6, m.getEmail());
+			
 			//3. 쿼리 실행 결과를 가져온다.
 			//executeQuery -> resultSet(표 형식의 데이터)
 			//							-> select 문 호출시 사용
 			//executeUpdate -> int(수정/추가/삭제 된 행의 수)
 			//							-> 추가/수정/삭제 시 사용
-			result = stmt.executeUpdate(query);
+			result = pstmt.executeUpdate();
 			
 			//dml의 경우 트랜잭션 처리 필요
 			//result - 0이 아닐때 commit
@@ -140,7 +139,7 @@ public class MemberDao {
 			e.printStackTrace();
 		}finally{
 			try {
-				stmt.close();
+				pstmt.close();
 				con.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -165,7 +164,6 @@ public class MemberDao {
 //						+ "USERNAME = '" + m.getUserName() + "', "
 //						+ "GENDER = '" + m.getGender() + "', "
 //						+ "EMAIL = '" + m.getEmail() + "', "
-//						+ "GENRE = '" + m.getGenreStr() + "' "
 //					+ "WHERE USERID = '" + m.getUserId() + "'";
 //			System.out.println("query : " + query);
 			//4. 실행 결과 처리(int)
@@ -199,7 +197,7 @@ public class MemberDao {
 			//2. 쿼리 객체를 생성한다.
  			stmt = con.createStatement();
 			//실행할 쿼리 작성
-			String query = "DELETE FROM MEMBER WHERE USERID='"+ id + "'";
+			String query = "DELETE FROM MEMBER WHERE MEMBER_ID='"+ id + "'";
 			System.out.println("delete query : " + query);
 			//3. 쿼리 실행 결과를 가져온다.
 			result = stmt.executeUpdate(query);
