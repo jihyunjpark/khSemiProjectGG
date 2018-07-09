@@ -31,6 +31,12 @@
 					<img src="/swp/images/main_flash_1_180625.jpg">
 				</div>
 			</section>
+			
+			<div> <!-- 박스오피스 -->
+			
+			<%@ include file="/views/board/show/boxoffice.jsp"%>
+			
+			</div>
 
 
 			<script src="https://code.jquery.com/jquery-2.2.0.min.js"

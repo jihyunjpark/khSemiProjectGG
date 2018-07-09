@@ -11,6 +11,13 @@
 	padding: 0;
 }
 
+body {
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #f5f5f5;
+    color: #666;
+}
+
 body, input, textarea, select, button, table {
 	font-family: 'y740', Nanum Gothic, dotum, sans-serif;
 	font-size: 12px;
@@ -40,6 +47,88 @@ h1 {
 	font-weight: bold;
 }
 
+.main_wrap {
+    overflow: hidden;
+    border-top: 1px solid #bbc5db;
+    border-bottom: 1px solid #bbc5db;
+    margin: 0 42px 20px 49px;
+}
+
+.main_menu1 {
+    float: left;
+    margin-right: 12px;
+    padding: 14px 12px 14px 0;
+    background: url(../../images/main/mline_dot.gif) repeat-y right top;
+}
+
+.main_menu1 select {
+    width: 198px;
+    border: 1px solid #c9c9c9;
+    font-size: 15px;
+    height: 35px;
+}
+
+option {
+    font-weight: normal;
+    display: block;
+    white-space: pre;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+
+
+
+.main_menu2 {
+    float: left;
+    overflow: hidden;
+    padding: 10px 0;
+    background: url(../../images/main/mline_dot.gif) repeat-y right top;
+}
+
+.main_menu3 {
+    float: left;
+    overflow: hidden;
+    padding: 10px 12px 10px 12px;
+}
+
+.main_menu2 p {
+    float: left;
+    background: url(../../images/main/mlist_dot.gif) no-repeat right 50%;
+    padding-right: 12px;
+    margin-right: 9px;
+}
+
+.m01_on {
+    background: url(../../images/main/m01_on.jpg) no-repeat;
+    width: 77px;
+    height: 42px;
+    display: inline-block;
+}
+
+.m02 {
+    background: url(../../images/main/m02_off.jpg) no-repeat;
+    width: 86px;
+    height: 42px;
+    display: inline-block;
+}
+
+.m03 {
+    background: url(../../images/main/m03_off.jpg) no-repeat;
+    width: 122px;
+    height: 42px;
+    display: inline-block;
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+.text_none {
+    display: none;
+}
+
+
 .poster_rank {
 	position: relative;
 	float: left;
@@ -47,12 +136,15 @@ h1 {
 	height: 879px;
 	background: #fff;
 	margin-bottom: 45px;
+	border: 1px solid #e9e9e9;
 }
 
 .poster_rank .title {
 	padding: 40px 48px 16px 48px;
 	line-height: 24px;
 	color: #000;
+	border-bottom: 1px solid #e9e9e9;
+	margin: 10px;
 }
 
 #visual {
@@ -148,10 +240,8 @@ img, fieldset {
 	border: 1px solid #cccccc;
 	box-sizing: border-box;
 }
+
 </style>
-
-
-
 
 </head>
 <body>
@@ -166,11 +256,11 @@ img, fieldset {
 					기준</span>
 			</p>
 		</div>
+		
 		<div class="main_wrap">
 			<form name="boxoffice" method="post">
 				<input type="hidden" name="genre" id="genre" value="Theatre">
-				<input type="hidden" name="specificGubun" id="specificGubun"
-					value="">
+				<input type="hidden" name="specificGubun" id="specificGubun" value="">
 				<div class="main_menu1">
 					<select id="period" name="period" title="기간">
 						<option value="daily">일간</option>
@@ -179,40 +269,17 @@ img, fieldset {
 					</select>
 				</div>
 				<div class="main_menu2">
-					<p>
-						<a href="#none" class="m01 m01_on" id="Theatre"><span
-							class="text_none">연극</span></a>
-					</p>
-					<p>
-						<a href="#none" class="m02" id="Musical"><span
-							class="text_none">뮤지컬</span></a>
-					</p>
-					<p>
-						<a href="#none" class="m03" id="Classic"><span
-							class="text_none">클래식/오페라</span></a>
-					</p>
-					<p>
-						<a href="#none" class="m04" id="Dance"><span class="text_none">무용</span></a>
-					</p>
-					<p class="back_none">
-						<a href="#none" class="m05" id="Gukak"><span class="text_none">국악/복합</span></a>
-					</p>
+					<p><a href="#none" class="m01 m01_on" id="Theatre"><span class="text_none">연극</span></a></p>
+					<p><a href="#none" class="m02" id="Musical"><span class="text_none">뮤지컬</span></a></p>
+					<p><a href="#none" class="m03" id="Classic"><span class="text_none">클래식/오페라</span></a></p>
 				</div>
 				<div class="main_menu3">
-					<p>
-						<a href="#none" class="m06" id="kid"><span class="text_none">아동</span></a>
-					</p>
-					<p>
-						<a href="#none" class="m07" id="varsity"><span
-							class="text_none">대학로</span></a>
-					</p>
-					<p class="back_none2">
-						<a href="#none" class="m08" id="openRun"><span
-							class="text_none">오픈런</span></a>
-					</p>
+					<p><a href="#none" class="m06" id="kid"><span class="text_none">아동</span></a></p>
+					<p><a href="#none" class="m07" id="varsity"><span class="text_none">대학로</span></a></p>
+					<p class="back_none2"><a href="#none" class="m08" id="openRun"><span class="text_none">오픈런</span></a></p>
 				</div>
 			</form>
-		</div>
+			</div>
 
 		<ul class="boxOfficePoster">
 			<li><a href=""><div class="poster">
@@ -228,140 +295,8 @@ img, fieldset {
 							<dt>상명아트홀</dt>
 						</dl>
 					</div></a></li>
-					<li><a href=""><div class="poster">
-						<span class="num"><img src="/images/main/poster_rank_1.png"
-							alt="1"></span><span class="poster_img"><img
-							src="/upload/pfmPoster/PF_PF143281_180615_095319.gif"
-							alt="러브 스코어"></span>
-					</div>
-					<div class="poster_hover" style="display: none; opacity: 1;">
-						<dl>
-							<dt style="margin-bottom: 30px">러브 스코어</dt>
-							<dt>18.06.29 ~ 18.10.14</dt>
-							<dt>상명아트홀</dt>
-						</dl>
-					</div></a></li>	
-					<li><a href=""><div class="poster">
-						<span class="num"><img src="/images/main/poster_rank_1.png"
-							alt="1"></span><span class="poster_img"><img
-							src="/upload/pfmPoster/PF_PF143281_180615_095319.gif"
-							alt="러브 스코어"></span>
-					</div>
-					<div class="poster_hover" style="display: none; opacity: 1;">
-						<dl>
-							<dt style="margin-bottom: 30px">러브 스코어</dt>
-							<dt>18.06.29 ~ 18.10.14</dt>
-							<dt>상명아트홀</dt>
-						</dl>
-					</div></a></li>
-					<li><a href=""><div class="poster">
-						<span class="num"><img src="/images/main/poster_rank_1.png"
-							alt="1"></span><span class="poster_img"><img
-							src="/upload/pfmPoster/PF_PF143281_180615_095319.gif"
-							alt="러브 스코어"></span>
-					</div>
-					<div class="poster_hover" style="display: none; opacity: 1;">
-						<dl>
-							<dt style="margin-bottom: 30px">러브 스코어</dt>
-							<dt>18.06.29 ~ 18.10.14</dt>
-							<dt>상명아트홀</dt>
-						</dl>
-					</div></a></li>
-					<li><a href=""><div class="poster">
-						<span class="num"><img src="/images/main/poster_rank_1.png"
-							alt="1"></span><span class="poster_img"><img
-							src="/upload/pfmPoster/PF_PF143281_180615_095319.gif"
-							alt="러브 스코어"></span>
-					</div>
-					<div class="poster_hover" style="display: none; opacity: 1;">
-						<dl>
-							<dt style="margin-bottom: 30px">러브 스코어</dt>
-							<dt>18.06.29 ~ 18.10.14</dt>
-							<dt>상명아트홀</dt>
-						</dl>
-					</div></a></li>
-					<li><a href=""><div class="poster">
-						<span class="num"><img src="/images/main/poster_rank_1.png"
-							alt="1"></span><span class="poster_img"><img
-							src="/upload/pfmPoster/PF_PF143281_180615_095319.gif"
-							alt="러브 스코어"></span>
-					</div>
-					<div class="poster_hover" style="display: none; opacity: 1;">
-						<dl>
-							<dt style="margin-bottom: 30px">러브 스코어</dt>
-							<dt>18.06.29 ~ 18.10.14</dt>
-							<dt>상명아트홀</dt>
-						</dl>
-					</div></a></li>
-					<li><a href=""><div class="poster">
-						<span class="num"><img src="/images/main/poster_rank_1.png"
-							alt="1"></span><span class="poster_img"><img
-							src="/upload/pfmPoster/PF_PF143281_180615_095319.gif"
-							alt="러브 스코어"></span>
-					</div>
-					<div class="poster_hover" style="display: none; opacity: 1;">
-						<dl>
-							<dt style="margin-bottom: 30px">러브 스코어</dt>
-							<dt>18.06.29 ~ 18.10.14</dt>
-							<dt>상명아트홀</dt>
-						</dl>
-					</div></a></li>
-					<li><a href=""><div class="poster">
-						<span class="num"><img src="/images/main/poster_rank_1.png"
-							alt="1"></span><span class="poster_img"><img
-							src="/upload/pfmPoster/PF_PF143281_180615_095319.gif"
-							alt="러브 스코어"></span>
-					</div>
-					<div class="poster_hover" style="display: none; opacity: 1;">
-						<dl>
-							<dt style="margin-bottom: 30px">러브 스코어</dt>
-							<dt>18.06.29 ~ 18.10.14</dt>
-							<dt>상명아트홀</dt>
-						</dl>
-					</div></a></li>
-					v
-					<li><a href=""><div class="poster">
-						<span class="num"><img src="/images/main/poster_rank_1.png"
-							alt="1"></span><span class="poster_img"><img
-							src="/upload/pfmPoster/PF_PF143281_180615_095319.gif"
-							alt="러브 스코어"></span>
-					</div>
-					<div class="poster_hover" style="display: none; opacity: 1;">
-						<dl>
-							<dt style="margin-bottom: 30px">러브 스코어</dt>
-							<dt>18.06.29 ~ 18.10.14</dt>
-							<dt>상명아트홀</dt>
-						</dl>
-					</div></a></li>
-					<li><a href=""><div class="poster">
-						<span class="num"><img src="/images/main/poster_rank_1.png"
-							alt="1"></span><span class="poster_img"><img
-							src="/upload/pfmPoster/PF_PF143281_180615_095319.gif"
-							alt="러브 스코어"></span>
-					</div>
-					<div class="poster_hover" style="display: none; opacity: 1;">
-						<dl>
-							<dt style="margin-bottom: 30px">러브 스코어</dt>
-							<dt>18.06.29 ~ 18.10.14</dt>
-							<dt>상명아트홀</dt>
-						</dl>
-					</div></a></li>
+					
 		</ul>
-
-		<div class="icon_wrap">
-			<p>
-				<img src="/images/main/m_icon01.png" alt="공연DB icon"> <span>공연DB</span>
-				<span class="num_color">17,042</span><span>건</span>
-			</p>
-			<p>
-				<img src="/images/main/m_icon02.png" alt="공연시설DB icon"> <span>공연시설DB</span>
-				<span class="num_color">1,132</span><span>건</span>
-			</p>
-			<p class="back_none2">
-				<img src="/images/main/m_icon03.png" alt="기획·제작사DB icon"> <span>기획·제작사DB</span>
-				<span class="num_color">4,124</span><span>건</span>
-			</p>
-		</div>
 
 	</div>
 

@@ -1,3 +1,4 @@
+
 .wrap {
 	margin: 50px auto;
 	position: relative;
@@ -518,7 +519,7 @@ fieldset {
 	float:right;
 }
 
-#floatparent{
+/* #floatparent{
 	overflow:hidden;
 	height:5000px;
 }
@@ -531,15 +532,12 @@ fieldset {
 	background-color: #606060;
 	color: #fff;
 	z-index: 999;
-}
+} */
 
 /* SHOW COMMENT */
 .tableArea {
 	width: 600px;
-	height: auto;
-	margin-top: 600px;
-	margin-left: auto;
-	margin-right: auto;
+	margin 0 auto;
 	text-align: center;
 }
 
