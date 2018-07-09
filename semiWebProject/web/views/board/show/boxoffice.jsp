@@ -260,9 +260,6 @@ img, fieldset {
 <script>
 
 
-
-
-
 </script>
 
 </head>
@@ -274,8 +271,8 @@ img, fieldset {
 				박스오피스<span id="genreTitle"> - 연극</span>
 			</h1>
 			<p>
-				<span class="d1Dt">2018.07.02 ~ 2018.07.08</span><span class="text">
-					기준</span>
+				<!-- <span class="d1Dt">2018.07.02 ~ 2018.07.08</span><span class="text">
+					기준</span> -->
 			</p>
 		</div>
 		
