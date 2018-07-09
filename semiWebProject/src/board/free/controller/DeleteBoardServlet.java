@@ -17,7 +17,7 @@ import board.free.model.vo.FreeReplyVo;
 /**
  * Servlet implementation class DeleteReplyServlet
  */
-@WebServlet("/deleteBoard.do")
+@WebServlet("/deleteBoardFree.do")
 public class DeleteBoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -272,7 +272,7 @@ function deleteBoard(){
 	}
 	
 	$.ajax({
-		url:"/swp/deleteBoard.do",
+		url:"/swp/deleteBoardFree.do",
 		data:{
 			bno:<%=free.getBoard_no()%>
 		},type:"get",

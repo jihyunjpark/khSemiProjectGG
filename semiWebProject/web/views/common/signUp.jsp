@@ -27,7 +27,7 @@
   <h2>회원 가입</h2>
   		<p>
 			<label for="userId" class="floatLabel">ID</label>
-			<input id="userId" name="id" type="text">
+			<input id="userId" name="userId" type="text">
 			<span>이미 사용중인 아이디 입니다.</span>
 		</p>
   		<p>
