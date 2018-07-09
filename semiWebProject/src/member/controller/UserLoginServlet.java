@@ -34,7 +34,7 @@ public class UserLoginServlet extends HttpServlet {
 
 		// 전송값 변수에 저장
 		String id = request.getParameter("userId");
-		String pwd = request.getParameter("userPwd");
+		String pwd = request.getParameter("password");
 
 		// 서비스 호출
 		MemberVo member = new MemberService().getMemberId(id);

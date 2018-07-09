@@ -23,15 +23,19 @@ public class MemberDao {
 			//실행 할 jdbc 라이브러리 등록
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			//접속 정보 설정
-			con = JDBCTemplate.getConnection();
+
+			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe",
+														"swp",
+														"swp");
 			//2. 쿼리 실행 객체 생성
 			stmt = con.createStatement();
 			
 			//쿼리 작성시 주의 사항 
 			//- 스트링 값 비교 시 따옴표를 추가하는 경우 주의
 			String query = "SELECT * FROM MEMBER "
-					+ "WHERE MEMBER_ID = '" + id + "' "   // where userid = 'admin' 
-					+ "AND PASSWORD = '" + pwd + "'";
+
+					+ " WHERE MEMBER_ID = '" + id + "' "   // where userid = 'admin' 
+					+ " AND MEMBER_PASSWORD = '" + pwd + "'";
 			System.out.println(query);
 			//3. 쿼리 실행
 			rs = stmt.executeQuery(query);

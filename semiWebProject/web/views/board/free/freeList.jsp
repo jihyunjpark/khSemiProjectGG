@@ -70,7 +70,6 @@ td{
 	</div>
 	<div class="searchArea" align="center">
 		<select id="searchCondition">
-			<option value="0">전체</option>
 			<option value="1">제목</option>
 			<option value="2">내용</option>
 			<option value="3">작성자</option>
@@ -86,9 +85,22 @@ td{
 </body>
 
 <script>
+$(function(){
+	$("#searchText").change(searchBoard);
+})
+
 function writeBoard(){
 	location.href = "/swp/views/board/free/freeForm.jsp?currentPage=<%=currentPage%>";
-	
+}
+
+function searchBoard(){
+	var condition = $("#searchCondition").val();
+	var searchText = $("#searchText").val();
+	if(searchText == ""){
+		location.href = "/swp/freeList.do";		
+	}else{
+		location.href = "/swp/searchFreeList.do?condition=" + condition + "&keyword=" + searchText;
+	}
 }
 
 function movePage(pageNum){

@@ -1,4 +1,4 @@
-package board.review.controller;
+package report.review.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,22 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.review.model.service.ReviewService;
-import board.review.model.vo.ReviewVo;
+import report.review.model.service.ReportService;
+import report.review.model.vo.ReportVo;
 import common.PageInfo;
 
-@WebServlet("/reviewList.do")
-public class ReviewListServlet extends HttpServlet {
+
+@WebServlet("/reportList.do")
+public class ReportListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ReviewListServlet() {
+    public ReportListServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		ReviewService bs = new ReviewService();
-		String showId = request.getParameter("showId"); 
+		ReportService bs = new ReportService();
 		//페이징 처리 변수
 		int currentPage;	//현재 페이지의 번호
 		int limitPage;		//한페이지에 출력할 페이지 갯수
@@ -45,7 +44,7 @@ public class ReviewListServlet extends HttpServlet {
 		}
 		
 		//게시글의 총 갯수
-		int listCount = bs.selectReviewTotalCount(showId);
+		int listCount = bs.selectReportTotalCount();
 		//134 -> 14
 		maxPage = (int)((double)listCount / limit + 0.9);
 		
@@ -61,22 +60,26 @@ public class ReviewListServlet extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(currentPage, limitPage, maxPage,
 																startPage, endPage, listCount);
-		ArrayList<ReviewVo> list = bs.selectReviewListPage(currentPage, limit, showId);
+		//==================페이징 처리의 끝===============
+		//비지니스 로직 호출
+//		BoardService bs = new BoardService();
+		//기존 목록 조회 
+		//ArrayList<BoardVo> list = bs.selectBoardList();
+		
+		//페이지 처리 후 게시글 조회
+		ArrayList<ReportVo> list = bs.selectReportListPage(currentPage, limit);
 		
 		String url = "";
 		if(null != list){
-			url = "/views/board/show/showSub.jsp?showId=" + showId;
+			url = "views/report/reportList_review.jsp";
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 		}else{
 			url = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "게시판 목록 조회 실패!!");
+			request.setAttribute("msg", "조회 실패!!");
 		}
 		RequestDispatcher view = request.getRequestDispatcher(url);
 		view.forward(request, response);
-		
-		
-		
 	}
 
 }

@@ -1,4 +1,4 @@
-package board.review.controller;
+package report.review.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,22 +10,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.review.model.service.ReviewService;
-import board.review.model.vo.ReviewVo;
+import report.review.model.service.ReportService;
+import report.review.model.vo.ReportVo;
 import common.PageInfo;
 
-@WebServlet("/reviewList.do")
-public class ReviewListServlet extends HttpServlet {
+/**
+ * Servlet implementation class searchReportServlet
+ */
+@WebServlet("/searchReport.do")
+public class searchReportServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ReviewListServlet() {
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public searchReportServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		
-		ReviewService bs = new ReviewService();
-		String showId = request.getParameter("showId"); 
+		int condition = Integer.parseInt(request.getParameter("condition"));
+		String keyword = request.getParameter("keyword");
+		
+		ReportService bs = new ReportService();
 		//페이징 처리 변수
 		int currentPage;	//현재 페이지의 번호
 		int limitPage;		//한페이지에 출력할 페이지 갯수
@@ -45,7 +58,7 @@ public class ReviewListServlet extends HttpServlet {
 		}
 		
 		//게시글의 총 갯수
-		int listCount = bs.selectReviewTotalCount(showId);
+		int listCount = bs.selectReportTotalCountSearch(condition, keyword);
 		//134 -> 14
 		maxPage = (int)((double)listCount / limit + 0.9);
 		
@@ -61,13 +74,17 @@ public class ReviewListServlet extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(currentPage, limitPage, maxPage,
 																startPage, endPage, listCount);
-		ArrayList<ReviewVo> list = bs.selectReviewListPage(currentPage, limit, showId);
+		//==================페이징 처리의 끝===============
+		//페이지 처리 후 게시글 조회
+		ArrayList<ReportVo> list = bs.selectReportListPageSearch(currentPage, limit, condition, keyword);
 		
 		String url = "";
 		if(null != list){
-			url = "/views/board/show/showSub.jsp?showId=" + showId;
+			url = "views/report/reportList_review.jsp";
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
+			request.setAttribute("condition", condition);
+			request.setAttribute("keyword", keyword);
 		}else{
 			url = "views/common/errorPage.jsp";
 			request.setAttribute("msg", "게시판 목록 조회 실패!!");
@@ -75,8 +92,7 @@ public class ReviewListServlet extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher(url);
 		view.forward(request, response);
 		
-		
-		
+
 	}
 
 }

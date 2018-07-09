@@ -49,8 +49,7 @@ public class JoinServlet extends HttpServlet {
 		}else{
 			System.out.println("회원가입 실패!!");
 			request.setAttribute("msg", "회원 가입 중 에러가 발생하였습니다.");
-			view 
-				= request.getRequestDispatcher("views/common/errorPage.jsp");
+			view = request.getRequestDispatcher("views/common/errorPage.jsp");
 			view.forward(request, response);
 		}
 	}
