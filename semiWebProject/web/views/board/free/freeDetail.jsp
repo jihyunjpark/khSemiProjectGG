@@ -42,7 +42,7 @@
 	}
 
 </script>
-<title>Insert title here</title>
+<title>원</title>
 </head>
 <body>
 	<%@ include file="/views/common/header.jsp" %>

@@ -21,8 +21,9 @@
 <style>
 td{
 	text-align:center;
+	
+	
 }
-
 </style>
 </head>
 <body>
@@ -56,7 +57,7 @@ td{
 		
 		<!-- 페이징 처리 부분     <<	1 2 3 4 5 6 7 ... >>  -->	
 		<div class="pageArea" align="center">
-			<button onclick="movePage(1);"> << </button>
+			<button onclick="movePage(1);"> ◀ </button>
 			<%for(int i = startPage ; i <= endPage ; i++){ %>
 				<%if(currentPage == i){ %>
 					<button disabled><%=i %></button>
@@ -64,7 +65,7 @@ td{
 					<button onclick="movePage(<%=i%>);"><%=i %></button>
 				<%} %>
 			<%} %>
-			<button onclick="movePage(<%=maxPage%>);"> >> </button>
+			<button onclick="movePage(<%=maxPage%>);"> ▶ </button>
 		</div>
 	</div>
 </div>
