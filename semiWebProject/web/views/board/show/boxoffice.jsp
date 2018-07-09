@@ -1,5 +1,16 @@
+<%@page import="board.show.model.vo.BoxofficeShowVo"%>
+<%@page import="java.util.List"%>
+<%@page import="board.show.controller.BoxofficeListExtXml"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+BoxofficeListExtXml boxExt = new BoxofficeListExtXml();
+String category = "";
+String type = "";
+List<BoxofficeShowVo> list = boxExt.getXmlDataSAX(category, type);
+
+
+	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -245,6 +256,14 @@ img, fieldset {
 }
 
 </style>
+
+<script>
+
+
+
+
+
+</script>
 
 </head>
 <body>

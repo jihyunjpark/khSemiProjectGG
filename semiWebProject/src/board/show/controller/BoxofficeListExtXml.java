@@ -12,7 +12,7 @@ import org.jdom2.input.SAXBuilder;
 import board.show.model.vo.BoxofficeShowVo;
 import board.show.model.vo.ShowVo2;
 
-public class BoxofficeList {
+public class BoxofficeListExtXml {
 	
 	public List<BoxofficeShowVo> getXmlDataSAX(String category, String type) {
 		List<BoxofficeShowVo> showList = null;
@@ -48,6 +48,30 @@ public class BoxofficeList {
 			e.printStackTrace();
 		}
 		return showList;
+	}
+	
+	public String getBoxofficeDate(String category, String type) {
+		String boxDate = "";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		Date today = new Date();
+		String strToday = sdf.format(today);
+		
+		try {
+			String baseUrl = "http://kopis.or.kr/openApi/restful/boxoffice?service=d11d486f591e447d84737299b2895c19&ststype=" + type + "&date=" + strToday + "&catecode=" + category;
+			SAXBuilder builder = new SAXBuilder();
+			Document doc = (Document) builder.build(new java.net.URL(baseUrl));
+			Element root = doc.getRootElement(); // result
+			
+			System.out.println(root);
+
+			List<Element> list = root.getChildren("basedate");
+				BoxofficeShowVo showData = new BoxofficeShowVo();
+				Element show = list.get(0);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return boxDate;
+		
 	}
 
 }
