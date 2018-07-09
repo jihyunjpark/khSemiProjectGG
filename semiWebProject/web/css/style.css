@@ -339,7 +339,7 @@ fieldset {
 }
 /*hover effect on links*/
 #accordian ul ul li a:hover {
-	border-left: 5px solid lightgreen;
+	border-left: 5px solid lightyellow;
 }
 /*Lets hide the non active LIs by default*/
 #accordian ul ul {

@@ -146,8 +146,28 @@ public class FreeService {
 		Connection con = JDBCTemplate.getConnection();
 		
 		int result = new FreeDao().insertComment(con, reply);
+		System.out.println("result : " + result);
+		ArrayList<FreeReplyVo> list = new FreeDao().selectReplyList(con, reply);
+		if(result > 0){
+			JDBCTemplate.commit(con);
+		}else{
+			JDBCTemplate.rollback(con);
+		}
+		
+		return list;
+	}
+
+	public ArrayList<FreeReplyVo> deleteComment(FreeReplyVo reply) {
+		Connection con = JDBCTemplate.getConnection();
+		
+		int result = new FreeDao().deleteComment(con, reply);
 		
 		ArrayList<FreeReplyVo> list = new FreeDao().selectReplyList(con, reply);
+		if(result > 0){
+			JDBCTemplate.commit(con);
+		}else{
+			JDBCTemplate.rollback(con);
+		}
 		
 		return list;
 	}

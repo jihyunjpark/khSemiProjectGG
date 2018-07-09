@@ -413,8 +413,30 @@ public class FreeDao {
 	}
 
 	public int insertComment(Connection con, FreeReplyVo reply) {
-		// TODO Auto-generated method stub
-		return 0;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "";
+		try {
+			//1. 쿼리 작성
+			query = prop.getProperty("insertReply");
+			//2. 쿼리 전송 객체 생성
+			pstmt = con.prepareStatement(query);
+			//3. 전달 값 설정
+			pstmt.setInt(1, reply.getBoard_no());
+			pstmt.setString(2, reply.getMember_id());
+			pstmt.setString(3, reply.getReply_content());
+			//4. 쿼리 실행
+			result = pstmt.executeUpdate();
+			//5. 결과 처리(resultSet-list parsing)
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			//6. 자원 반납(close)
+			JDBCTemplate.close(pstmt);
+		}
+		//7. 결과 리턴
+		return result;
 	}
 
 	public ArrayList<FreeReplyVo> selectReplyList(Connection con, FreeReplyVo reply) {
@@ -455,6 +477,31 @@ public class FreeDao {
 		}
 		//7. 결과 리턴
 		return list;
+	}
+
+	public int deleteComment(Connection con, FreeReplyVo reply) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "";
+		try {
+			//1. 쿼리 작성
+			query = prop.getProperty("deleteReply");
+			//2. 쿼리 전송 객체 생성
+			pstmt = con.prepareStatement(query);
+			//3. 전달 값 설정
+			pstmt.setInt(1, reply.getReply_no());
+			//4. 쿼리 실행
+			result = pstmt.executeUpdate();
+			//5. 결과 처리(resultSet-list parsing)
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			//6. 자원 반납(close)
+			JDBCTemplate.close(pstmt);
+		}
+		//7. 결과 리턴
+		return result;
 	}
 	
 	
