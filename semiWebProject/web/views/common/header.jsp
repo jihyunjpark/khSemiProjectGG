@@ -27,6 +27,7 @@
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=MiE7za1q2r2x8mnXzzsu&submodules=geocoder"></script>
 <script>
 	/* jQuery timeㄴ */
+	var subMenuName = null; 
 
 	var naverLogin = new naver.LoginWithNaverId({
 		clientId : "{MiE7za1q2r2x8mnXzzsu}",

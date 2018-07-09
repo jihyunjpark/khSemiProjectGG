@@ -301,19 +301,21 @@ img, fieldset {
 			</div>
 
 		<ul class="boxOfficePoster">
+		<%for(int i = 0; i < 10; i++){ %>
 			<li><a href=""><div class="poster">
-						<span class="num"><img src="/images/main/poster_rank_1.png"
-							alt="1"></span><span class="poster_img"><img
-							src="/upload/pfmPoster/PF_PF143281_180615_095319.gif"
-							alt="러브 스코어"></span>
+						<span class="num"><img src="/images/main/poster_rank_<%=i+1%>.png"
+							alt="<!-- 순위 -->"></span><span class="poster_img"><img
+							src="이미지 경로"
+							alt="<!-- 제목 -->"></span>
 					</div>
 					<div class="poster_hover" style="display: none; opacity: 1;">
 						<dl>
-							<dt style="margin-bottom: 30px">러브 스코어</dt>
-							<dt>18.06.29 ~ 18.10.14</dt>
-							<dt>상명아트홀</dt>
+							<dt style="margin-bottom: 30px"><!-- 제목 --></dt>
+							<dt><!-- 연극 기간 --></dt>
+							<dt><!-- 극장 --></dt>
 						</dl>
 					</div></a></li>
+					<%} %>
 					
 		</ul>
 

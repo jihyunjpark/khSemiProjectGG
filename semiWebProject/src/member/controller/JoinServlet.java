@@ -40,7 +40,6 @@ public class JoinServlet extends HttpServlet {
 			view 
 				= request.getRequestDispatcher("views/common/errorPage.jsp");
 			view.forward(request, response);
-			return;
 		} 
 		
 		int result = ms.joinMember(member);

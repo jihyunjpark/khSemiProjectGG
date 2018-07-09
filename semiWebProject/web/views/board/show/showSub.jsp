@@ -328,7 +328,7 @@ table.type09 td {
 	border-bottom: 5px solid lightgreen;
 }
 
-.menuSub li a.highlight{
+.menuSub li a.highlight {
 	border-bottom: 5px solid lightgreen;
 }
 
@@ -396,14 +396,14 @@ table.type09 td {
 .reviewSection {
 	
 }
-#reviewTable{
-width: 960px;
+
+#reviewTable {
+	width: 960px;
 	width: 100%;
 	border: 0;
 	cellpadding: 0;
 	cellspacing: 0;
 	text-align: left;
-
 }
 </style>
 
@@ -474,10 +474,10 @@ width: 960px;
 				</div>
 				<div class="menuSub">
 					<ul>
-						<li><a onclick="setSubMenu('subImage', this);">공연정보</a></li>
-						<li><a onclick="setSubMenu('showLocation', this);">공연장정보</a></li>
-						<li><a onclick="setSubMenu('calendar', this);">캘린더</a></li>
-						<li><a onclick="setSubMenu('comment', this);">리뷰</a></li>
+						<li><a id="subImage" onclick="setSubMenu('subImage', this);">공연정보</a></li>
+						<li><a id="showLocation" onclick="setSubMenu('showLocation', this);">공연장정보</a></li>
+						<li><a id="calendar" onclick="setSubMenu('calendar', this);">캘린더</a></li>
+						<li><a id="comment" onclick="setSubMenu('comment', this);">리뷰</a></li>
 					</ul>
 				</div>
 
@@ -587,7 +587,9 @@ width: 960px;
 								for (ReviewVo n : list) {
 							%>
 							<tr>
-								<td><%%></td>
+								<td>
+									<%%>
+								</td>
 								<td><%=n.getContent()%></td>
 								<td><%=n.getMemberId()%></td>
 								<td><%=n.getReviewDate()%></td>
@@ -630,6 +632,8 @@ width: 960px;
 	});
 
 	function setSubMenu(area, obj) {
+		sessionStorage.setItem('subMenu', area);
+		console.log(sessionStorage.getItem('subMenu'));
 		$(".menuSubArea").hide();
 		$("." + area).show();
 		$(".menuSub a").removeClass("highlight");
@@ -640,5 +644,17 @@ width: 960px;
 		location.href = "/swp/reviewList.do?showId=" + showId + "currentPage="
 				+ pageNum;
 	}
+	
+	$(function() {
+		subMenuName = sessionStorage.getItem('subMenu');
+		console.log(subMenuName);
+		if (subMenuName != null) {
+			$("." + subMenuName).show();
+			$(".menuSub a").removeClass("highlight");
+			$("#subMenuName").toggleClass("highlight");
+		}
+	});
+	
+	
 </script>
 </html>
