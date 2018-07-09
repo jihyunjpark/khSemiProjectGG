@@ -45,7 +45,7 @@
 	}
 
 </script>
-<title>원</title>
+<title>Insert title here</title>
 </head>
 <body>
 	<%@ include file="/views/common/header.jsp" %>
@@ -88,13 +88,13 @@
 	</div>
 	<%if(member != null){ %>
 	<div class="commentWriteArea">
-		<form method="post" id="commentForm" action="writeComment.do">
+		<form method="get" action="#">
 			<table width="800">
 				<input type="hidden" name="bno" value="<%=free.getBoard_no()%>"/>
-				<input type="hidden" name="writer"	value="<%=member.getUserId() %>"/>
+				<input type="hidden" name="userId"	value="<%=member.getUserId() %>"/>
 				<tr>
 					<td>
-						댓글 : <input type="text" size="40"  name="content" id="comment"/>
+						댓글 : <input type="text" size="40"  name="comment" id="comment"/>
 					</td>
 					<td>
 						<!-- <input type="submit" value="댓글작성"/> -->
@@ -161,19 +161,6 @@ function writeComment(){
 			bno:<%=free.getBoard_no()%>
 		},type:"get",
 		success:function(data){
-// 			$table = $("#replyTable");
-// 			$table.empty();
-// 			for(var i in data){
-// 				var tr = $("<tr>");
-// 				var userTd = $("<td>").text(data[i].nickname);				
-// 				var contentTd = $("<td>").text(data[i].reply_content);				
-// 				var actionTd = $("<td><a>수정</a><a onclick='deleteReply("+data[i].reply_no+")'>삭제</a></td>");
-// 				tr.append(userTd);
-// 				tr.append(contentTd);
-// 				tr.append(actionTd);
-// 				$table.append(tr);
-// 			}
-// 			$("#comment").val("");
 
 			setReplyList(data);
 		},error:function(e){
@@ -193,24 +180,6 @@ function deleteReply(replyNo){
 			bNo:<%=free.getBoard_no()%>
 		},type:"get",
 		success:function(data){
-// 			$table = $("#replyTable");
-// 			$table.empty();
-// 			for(var i in data){
-// 				var tr = $("<tr>");
-// 				var userTd = $("<td>").text(data[i].nickname);				
-// 				var contentTd = $("<td>").text(data[i].reply_content);
-// 				tr.append(userTd);
-// 				tr.append(contentTd);
-// 				var actionTd
-<%-- 				if(data[i].member_id == '<%=member.getUserId()%>'){ --%>
-// 					actionTd = $("<td><a>수정</a><a onclick='deleteReply("+data[i].reply_no+")'>삭제</a></td>");
-// 				}else{
-// 					actionTd = $("<td></td>");
-// 				}
-// 				tr.append(actionTd);
-// 				$table.append(tr);
-// 			}
-// 			$("#comment").val("");
 			setReplyList(data);
 		},error:function(e){
 			console.log(e);
@@ -279,7 +248,7 @@ function deleteBoard(){
 		success:function(data){
 			console.log(data);
 			if(data == 1){
-				alert("게시글이 삭제 되었습니다.");
+				alert("게시글이 삭제 되었습니다. 목록으로 이동 합니다.");
 				location.href="/swp/freeList.do?currentPage=<%=currentPage%>";
 			}else{
 				alert("게시글 삭제 시 오류가 발생하였습니다.");
@@ -291,7 +260,7 @@ function deleteBoard(){
 }
 
 function updateBoard(){
-	location.href = "/swp/updateFreeForm.do?bno=<%=free.getBoard_no()%>";
+	location.href = "/swp/updateFreeForm.do?bno=<%=free.getBoard_no()%>&currentPage=<%=currentPage%>";
 	
 	
 }

@@ -22,9 +22,8 @@
 <style>
 td{
 	text-align:center;
-	
-	
 }
+
 </style>
 </head>
 <body>
@@ -58,7 +57,7 @@ td{
 		
 		<!-- 페이징 처리 부분     <<	1 2 3 4 5 6 7 ... >>  -->	
 		<div class="pageArea" align="center">
-			<button onclick="movePage(1);"> ◀ </button>
+			<button onclick="movePage(1);"> << </button>
 			<%for(int i = startPage ; i <= endPage ; i++){ %>
 				<%if(currentPage == i){ %>
 					<button disabled><%=i %></button>
@@ -66,12 +65,11 @@ td{
 					<button onclick="movePage(<%=i%>);"><%=i %></button>
 				<%} %>
 			<%} %>
-			<button onclick="movePage(<%=maxPage%>);"> ▶ </button>
+			<button onclick="movePage(<%=maxPage%>);"> >> </button>
 		</div>
 	</div>
 	<div class="searchArea" align="center">
 		<select id="searchCondition">
-			<option value="0">전체</option>
 			<option value="1">제목</option>
 			<option value="2">내용</option>
 			<option value="3">작성자</option>
@@ -87,9 +85,22 @@ td{
 </body>
 
 <script>
+$(function(){
+	$("#searchText").change(searchBoard);
+})
+
 function writeBoard(){
 	location.href = "/swp/views/board/free/freeForm.jsp?currentPage=<%=currentPage%>";
-	
+}
+
+function searchBoard(){
+	var condition = $("#searchCondition").val();
+	var searchText = $("#searchText").val();
+	if(searchText == ""){
+		location.href = "/swp/freeList.do";		
+	}else{
+		location.href = "/swp/searchFreeList.do?condition=" + condition + "&keyword=" + searchText;
+	}
 }
 
 function movePage(pageNum){
