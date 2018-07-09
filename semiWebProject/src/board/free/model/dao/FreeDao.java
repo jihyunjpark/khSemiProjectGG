@@ -503,8 +503,178 @@ public class FreeDao {
 		//7. 결과 리턴
 		return result;
 	}
-	
-	
+
+	public int updateComment(Connection con, FreeReplyVo reply) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "";
+		try {
+			//1. 쿼리 작성
+			query = prop.getProperty("updateComment");
+			//2. 쿼리 전송 객체 생성
+			pstmt = con.prepareStatement(query);
+			//3. 전달 값 설정
+			pstmt.setString(1, reply.getReply_content());
+			pstmt.setInt(2, reply.getReply_no());
+			//4. 쿼리 실행
+			result = pstmt.executeUpdate();
+			//5. 결과 처리(resultSet-list parsing)
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			//6. 자원 반납(close)
+			JDBCTemplate.close(pstmt);
+		}
+		//7. 결과 리턴
+		return result;
+	}
+
+	public ArrayList<FreeReplyVo> selectReplyList(Connection con, int boardNo) {
+		ArrayList<FreeReplyVo> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "";
+		try {
+			//1. 쿼리 작성
+			query = prop.getProperty("selectReplyList");
+			//2. 쿼리 전송 객체 생성
+			pstmt = con.prepareStatement(query);
+			//3. 전달 값 설정
+			pstmt.setInt(1, boardNo);
+			//4. 쿼리 실행
+			rs = pstmt.executeQuery();
+			//5. 결과 처리(resultSet-list parsing)
+			list = new ArrayList<FreeReplyVo>();
+			FreeReplyVo temp = null;
+			while(rs.next()){
+				temp = new FreeReplyVo();
+				temp.setReply_no(rs.getInt("REPLY_NO"));
+				temp.setBoard_no(rs.getInt("BOARD_NO"));
+				temp.setReply_content(rs.getString("REPLY_CONTENT"));
+				temp.setNickname(rs.getString("NICKNAME"));
+				temp.setMember_id(rs.getString("MEMBER_ID"));
+				temp.setReply_date_str(rs.getString("REPLY_DATE_STR"));
+				temp.setReply_date(rs.getDate("REPLY_DATE"));
+				
+				list.add(temp);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			//6. 자원 반납(close)
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		//7. 결과 리턴
+		return list;
+	}
+
+	public int deleteBoard(Connection con, int boardNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "";
+		try {
+			//1. 쿼리 작성
+			query = prop.getProperty("deleteBoard");
+			//2. 쿼리 전송 객체 생성
+			pstmt = con.prepareStatement(query);
+			//3. 전달 값 설정
+			pstmt.setInt(1, boardNo);
+			//4. 쿼리 실행
+			result = pstmt.executeUpdate();
+			//5. 결과 처리(resultSet-list parsing)
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			//6. 자원 반납(close)
+			JDBCTemplate.close(pstmt);
+		}
+		//7. 결과 리턴
+		return result;
+	}
+
+	public int deleteBoardReply(Connection con, int boardNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "";
+		try {
+			//1. 쿼리 작성
+			query = prop.getProperty("deleteBoardReply");
+			//2. 쿼리 전송 객체 생성
+			pstmt = con.prepareStatement(query);
+			//3. 전달 값 설정
+			pstmt.setInt(1, boardNo);
+			//4. 쿼리 실행
+			result = pstmt.executeUpdate();
+			//5. 결과 처리(resultSet-list parsing)
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			//6. 자원 반납(close)
+			JDBCTemplate.close(pstmt);
+		}
+		//7. 결과 리턴
+		return result;
+		
+	}
+
+	public int insertFree(Connection con, FreeVo free) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "";
+		try {
+			//1. 쿼리 작성
+			query = prop.getProperty("insertFree");
+			//2. 쿼리 전송 객체 생성
+			pstmt = con.prepareStatement(query);
+			//3. 전달 값 설정
+			pstmt.setString(1, free.getMember_id());
+			pstmt.setString(2, free.getTitle());
+			pstmt.setString(3, free.getBoard_content());
+			//4. 쿼리 실행
+			result = pstmt.executeUpdate();
+			//5. 결과 처리(resultSet-list parsing)
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			//6. 자원 반납(close)
+			JDBCTemplate.close(pstmt);
+		}
+		//7. 결과 리턴
+		return result;
+	}
+
+	public int updateFree(Connection con, FreeVo free) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "";
+		try {
+			//1. 쿼리 작성
+			query = prop.getProperty("updateFree");
+			//2. 쿼리 전송 객체 생성
+			pstmt = con.prepareStatement(query);
+			//3. 전달 값 설정
+			pstmt.setString(1, free.getTitle());
+			pstmt.setString(2, free.getBoard_content());
+			pstmt.setInt(3, free.getBoard_no());
+			
+			//4. 쿼리 실행
+			result = pstmt.executeUpdate();
+			//5. 결과 처리(resultSet-list parsing)
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			//6. 자원 반납(close)
+			JDBCTemplate.close(pstmt);
+		}
+		//7. 결과 리턴
+		return result;
+	}
 }
 
 

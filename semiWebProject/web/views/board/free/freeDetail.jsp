@@ -1,9 +1,12 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="board.free.model.vo.FreeReplyVo"%>
 <%@page import="board.free.model.vo.FreeVo"%>
 <%@page import="admin.notice.model.vo.NoticeVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
 	FreeVo free = (FreeVo)request.getAttribute("board"); 
+	ArrayList<FreeReplyVo> list = (ArrayList<FreeReplyVo>)request.getAttribute("replyList");
 	Integer currentPage = (Integer)request.getAttribute("currentPage");
 	MemberVo member = (MemberVo) session.getAttribute("user");
 %>
@@ -75,44 +78,23 @@
 	<div align="center">
 		<button onclick="boardPageList();">목록으로</button>
 		<%if(null != member && member.getUserId().equals(free.getMember_id())){ %>
-			<button onclick="bModifyPage();">수정하기</button>
+			<button onclick="updateBoard();">수정하기</button>
 			<button onclick="deleteBoard();">삭제하기</button>
 		<%} %>
 	</div>
 	<div class="commentArea">
 		<table width="800">
-				<!-- 이름(작성일)  ---------------------<수정하기, 삭제하기> -->
-				<!-- 댓글 내용 															-->
-<%-- 			<%for(CommentVo c : cList){ %> --%>
-<!-- 			<tr> -->
-<%-- 				<td><%=c.getWriterNm() %>(<%=c.getWriteDate() %>)</td> --%>
-<!-- 				<td align="right"> -->
-<%-- 				<%if(member.getUserId().equals(c.getWriter())){ %> --%>
-<!-- 					<input type="button" class="modifyBtn" value="수정" onclick="updateCommentForm(this, true);"/> -->
-<%-- 					<input type="button" class="deleteBtn" value="삭제" onclick="deleteComment(<%=c.getCno()%>);"/> --%>
-<%-- 					<input type="button" class="updateBtn" style="display:none;" value="작성 완료" onclick="updateComment(this,<%=c.getCno()%>);"/> --%>
-<!-- 					<input type="button" class="cancelBtn" style="display:none;" value="취소" onclick="updateCommentForm(this, false);"/> -->
-<%-- 				<%} %> --%>
-<!-- 				</td> -->
-<!-- 			</tr> -->
-<!-- 			<tr> -->
-<!-- 				<td colspan="2"> -->
-<%-- 					<textarea cols="108" rows="4" readonly><%=c.getContent() %></textarea> --%>
-<!-- 				</td> -->
-<!-- 			</tr> -->
-<%-- 			<%} %> --%>
 		</table>
 	</div>
 	<%if(member != null){ %>
 	<div class="commentWriteArea">
-		댓글
 		<form method="post" id="commentForm" action="writeComment.do">
 			<table width="800">
 				<input type="hidden" name="bno" value="<%=free.getBoard_no()%>"/>
 				<input type="hidden" name="writer"	value="<%=member.getUserId() %>"/>
 				<tr>
 					<td>
-						<input type="text" size="40"  name="content" id="comment"/>
+						댓글 : <input type="text" size="40"  name="content" id="comment"/>
 					</td>
 					<td>
 						<!-- <input type="submit" value="댓글작성"/> -->
@@ -127,6 +109,20 @@
 	</div>
 	<%} %>
 	<table id="replyTable">
+		<%for(FreeReplyVo reply : list){ %>
+		<tr>
+			<td><%=reply.getNickname()%></td>
+			<td><%=reply.getReply_content() %></td>
+			<%if(reply.getMember_id().equals(member.getUserId())){ %>	
+				<td>
+					<a onclick="updateReply(<%=reply.getReply_no() %>, '<%=reply.getReply_content() %>')">수정</a>
+					<a onclick="deleteReply(<%=reply.getReply_no() %>)">삭제</a>
+				</td>			
+			<%}else{%>
+				<td></td>
+			<%}%>
+		</tr>
+		<%} %>
 	</table>
 </div>
 <%@ include file="/views/common/footer.jsp"%>
@@ -222,18 +218,83 @@ function deleteReply(replyNo){
 	});
 }
 
+var modifyNo;
 function updateReply(reply_no, content){
 	$("#comment").val(content).focus();
-	$("#replyWriteBtn").hide();
-	$("#replyUpdateBtn").show();
-	$("#replyCancelBtn").show();
+	modifyNo = reply_no;
+	setBtnVisible(false);
 }
 
-$(function(){
-	$("#replyUpdateBtn").hide();
-	$("#replyCancelBtn").hide();
+function updateComment(){
+	$.ajax({
+		url:"/swp/updateComment.do",
+		data:{
+			comment:$("#comment").val(),
+			cno:modifyNo,
+			bno:<%=free.getBoard_no()%>
+		},type:"get",
+		success:function(data){
+			setReplyList(data);
+			setBtnVisible(true);
+		},error:function(e){
+			console.log(e);
+		}
+	});
 	
-})
+}
+
+function cancelComment(){
+	if(confirm("댓글 수정을 취소 하시겠습니까?")){
+		setBtnVisible(true);
+		$("#comment").val("");
+	}
+	
+}
+$(function(){
+	setBtnVisible(true);
+});
+
+function setBtnVisible(flag){
+	if(flag){
+		$("#replyWriteBtn").show();
+		$("#replyUpdateBtn").hide();
+		$("#replyCancelBtn").hide();
+	}else{
+		$("#replyWriteBtn").hide();
+		$("#replyUpdateBtn").show();
+		$("#replyCancelBtn").show();
+	}
+}
+
+function deleteBoard(){
+	if(!confirm("해당 게시글을 삭제 하시겠습니까?")){
+		return;
+	}
+	
+	$.ajax({
+		url:"/swp/deleteBoard.do",
+		data:{
+			bno:<%=free.getBoard_no()%>
+		},type:"get",
+		success:function(data){
+			console.log(data);
+			if(data == 1){
+				alert("게시글이 삭제 되었습니다.");
+				location.href="/swp/freeList.do?currentPage=<%=currentPage%>";
+			}else{
+				alert("게시글 삭제 시 오류가 발생하였습니다.");
+			}
+		},error:function(e){
+			console.log(e);
+		}
+	});
+}
+
+function updateBoard(){
+	location.href = "/swp/updateFreeForm.do?bno=<%=free.getBoard_no()%>";
+	
+	
+}
 </script>
 </body>
 </html>

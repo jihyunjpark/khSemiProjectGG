@@ -14,11 +14,11 @@ import board.free.model.service.FreeService;
 import board.free.model.vo.FreeReplyVo;
 import board.free.model.vo.FreeVo;
 
-@WebServlet("/freeSub.do")
-public class FreeSubServlet extends HttpServlet {
+@WebServlet("/updateFreeForm.do")
+public class UpdateFreeFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public FreeSubServlet() {
+    public UpdateFreeFormServlet() {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,14 +28,10 @@ public class FreeSubServlet extends HttpServlet {
 		//게시글에 대한 정보 조회
 		FreeVo board = new FreeService().selectFree(boardNo);
 		//댓글에 대한 정보 조회
-		ArrayList<FreeReplyVo> replyList = new FreeService().selectCommentList(boardNo);
-		//board.setCount(board.getCount() + 1);
-
 		String url = "";
 		if(null != board){
-			url = "views/board/free/freeDetail.jsp";
+			url = "views/board/free/freeUpdateForm.jsp";
 			request.setAttribute("board", board);
-			request.setAttribute("replyList", replyList);
 			request.setAttribute("currentPage", currentPage);
 		}else{
 			url = "views/common/errorPage.jsp";

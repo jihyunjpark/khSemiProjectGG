@@ -12,6 +12,7 @@
 	int maxPage = pi.getMaxPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
+	MemberVo member = (MemberVo) session.getAttribute("user");
 %>
 <!DOCTYPE html>
 <html>
@@ -67,11 +68,29 @@ td{
 			<button onclick="movePage(<%=maxPage%>);"> >> </button>
 		</div>
 	</div>
+	<div class="searchArea" align="center">
+		<select id="searchCondition">
+			<option value="0">전체</option>
+			<option value="1">제목</option>
+			<option value="2">내용</option>
+			<option value="3">작성자</option>
+		</select>		
+		<input type="text" id="searchText" placeholder="검색어 입력"/>
+		<input type="button" value="검색하기" onclick="searchBoard();"/>
+		<%if(null != member){%>
+			<input type="button" value="작성하기" onclick="writeBoard();"/>
+		<%} %>
+	</div>
 </div>
 <%@ include file="/views/common/footer.jsp"%>
 </body>
 
 <script>
+function writeBoard(){
+	location.href = "/swp/views/board/free/freeForm.jsp?currentPage=<%=currentPage%>";
+	
+}
+
 function movePage(pageNum){
 	location.href = "/swp/freeList.do?currentPage=" + pageNum;
 }
