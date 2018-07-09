@@ -171,6 +171,71 @@ public class FreeService {
 		
 		return list;
 	}
+
+	public ArrayList<FreeReplyVo> updateComment(FreeReplyVo reply) {
+		Connection con = JDBCTemplate.getConnection();
+		
+		int result = new FreeDao().updateComment(con, reply);
+		System.out.println("result : " + result);
+		ArrayList<FreeReplyVo> list = new FreeDao().selectReplyList(con, reply);
+		if(result > 0){
+			JDBCTemplate.commit(con);
+		}else{
+			JDBCTemplate.rollback(con);
+		}
+		
+		return list;
+	}
+
+	public ArrayList<FreeReplyVo> selectCommentList(int boardNo) {
+		Connection con = JDBCTemplate.getConnection();
+
+		ArrayList<FreeReplyVo> list = new FreeDao().selectReplyList(con, boardNo);
+		
+		return list;
+	}
+
+	public int deleteBoard(int boardNo) {
+		Connection con = JDBCTemplate.getConnection();
+		
+		int result = new FreeDao().deleteBoardReply(con, boardNo);
+		result = new FreeDao().deleteBoard(con, boardNo);
+		if(result > 0){
+			JDBCTemplate.commit(con);
+		}else{
+			JDBCTemplate.rollback(con);
+		}
+		
+		return result;
+	}
+
+	public int insertFree(FreeVo free) {
+		Connection con = JDBCTemplate.getConnection();
+		
+		int result = new FreeDao().insertFree(con, free);
+
+		if(result > 0){
+			JDBCTemplate.commit(con);
+		}else{
+			JDBCTemplate.rollback(con);
+		}
+		
+		return result;
+	}
+
+	public int updateFree(FreeVo free) {
+		Connection con = JDBCTemplate.getConnection();
+		
+		int result = new FreeDao().updateFree(con, free);
+
+		if(result > 0){
+			JDBCTemplate.commit(con);
+		}else{
+			JDBCTemplate.rollback(con);
+		}
+		
+		return result;
+	}
 }
 
 

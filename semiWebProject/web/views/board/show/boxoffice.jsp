@@ -1,5 +1,16 @@
+<%@page import="board.show.model.vo.BoxofficeShowVo"%>
+<%@page import="java.util.List"%>
+<%@page import="board.show.controller.BoxofficeListExtXml"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+BoxofficeListExtXml boxExt = new BoxofficeListExtXml();
+String category = "";
+String type = "";
+List<BoxofficeShowVo> list = boxExt.getXmlDataSAX(category, type);
+
+
+	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +32,10 @@ body {
 body, input, textarea, select, button, table {
 	font-family: 'y740', Nanum Gothic, dotum, sans-serif;
 	font-size: 12px;
+}
+
+.bold, h1, h2, strong, b {
+    font-weight: bold;
 }
 
 ul, menu, dir {
@@ -58,7 +73,7 @@ h1 {
     float: left;
     margin-right: 12px;
     padding: 14px 12px 14px 0;
-    background: url(../../images/main/mline_dot.gif) repeat-y right top;
+    background: url(/swp/images/main/mline_dot.gif) repeat-y right top;
 }
 
 .main_menu1 select {
@@ -82,7 +97,7 @@ option {
     float: left;
     overflow: hidden;
     padding: 10px 0;
-    background: url(../../images/main/mline_dot.gif) repeat-y right top;
+    background: url(/swp/images/main/mline_dot.gif) repeat-y right top;
 }
 
 .main_menu3 {
@@ -93,27 +108,27 @@ option {
 
 .main_menu2 p {
     float: left;
-    background: url(../../images/main/mlist_dot.gif) no-repeat right 50%;
+    background: url(/swp/images/main/mlist_dot.gif) no-repeat right 50%;
     padding-right: 12px;
     margin-right: 9px;
 }
 
 .m01_on {
-    background: url(../../images/main/m01_on.jpg) no-repeat;
+    background: url(/swp/images/main/m01_on.jpg) no-repeat;
     width: 77px;
     height: 42px;
     display: inline-block;
 }
 
 .m02 {
-    background: url(../../images/main/m02_off.jpg) no-repeat;
+    background: url(/swp/images/main/m02_off.jpg) no-repeat;
     width: 86px;
     height: 42px;
     display: inline-block;
 }
 
 .m03 {
-    background: url(../../images/main/m03_off.jpg) no-repeat;
+    background: url(/swp/images/main/m03_off.jpg) no-repeat;
     width: 122px;
     height: 42px;
     display: inline-block;
@@ -137,14 +152,13 @@ a, a:hover {
 	background: #fff;
 	margin-bottom: 45px;
 	border: 1px solid #e9e9e9;
+	margin-top: 20px;
 }
 
 .poster_rank .title {
 	padding: 40px 48px 16px 48px;
 	line-height: 24px;
 	color: #000;
-	border-bottom: 1px solid #e9e9e9;
-	margin: 10px;
 }
 
 #visual {
@@ -242,6 +256,14 @@ img, fieldset {
 }
 
 </style>
+
+<script>
+
+
+
+
+
+</script>
 
 </head>
 <body>
