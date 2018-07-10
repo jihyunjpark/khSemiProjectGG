@@ -24,16 +24,15 @@ public class FaqListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<FaqVo> list = new FaqService().getFaqList();
+		System.out.println(list);
 
 		RequestDispatcher view = null;
 		if (list.size() != 0) {
 			request.setAttribute("list", list);
-			view = request.getRequestDispatcher("views/faq/faqList.jsp");
-//		} else {
-//			request.setAttribute("msg", "FAQ 불러오기 실패");
-//			
-//			
-//			view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			view = request.getRequestDispatcher("/views/faq/faqList.jsp");
+		} else {
+			request.setAttribute("msg", "FAQ 불러오기 실패");
+			view = request.getRequestDispatcher("views/common/errorPage.jsp");
 		}
 		view.forward(request, response);
 	}

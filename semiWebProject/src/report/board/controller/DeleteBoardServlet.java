@@ -1,4 +1,4 @@
-package com.kh.java.board.controller;
+package report.board.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.java.board.model.service.BoardService;
+import report.board.model.service.BoardService;
 
 /**
  * Servlet implementation class DeleteBoardServlet

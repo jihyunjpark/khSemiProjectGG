@@ -2,7 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	
+ 	if (null != session.getAttribute("user")) {
+		MemberVo member = (MemberVo) session.getAttribute("user");
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -118,11 +120,18 @@
 			 $("#floatMenu").css('top', newPosition);
 			 */
 
-			$("#floatMenu").stop().animate({
-			}, 300);
+			$("#floatMenu").stop().animate({}, 300);
 
 		}).scroll();
 
+	});
+	
+	$(function(){
+		if(sessionStorage.getItem("floatImg") != null){
+			$("#floatLink").attr("href", sessionStorage.getItem("floatLink"));
+			$("#floatImg").attr("src", sessionStorage.getItem("floatImg"));
+			$("#floatTitle").text(sessionStorage.getItem("floatTitle"));
+		}
 	});
 </script>
 
@@ -136,7 +145,8 @@
 				<div id="top-menu-right">
 					<a
 						href="<%=request.getContextPath() + "/views/common/loginPage.html"%>"
-						id="top-Login">로그인</a><span class="al_bar"><img src="/swp/images/main/mline_dot.gif" ></img></span> <a
+						id="top-Login">로그인</a><span class="al_bar"><img
+						src="/swp/images/main/mline_dot.gif"></img></span> <a
 						href="<%=request.getContextPath() + "/views/myPage.jsp"%>"
 						id="top-profile">마이페이지</a><span class="al_bar"></span> <a
 						href="<%=request.getContextPath() + "/views/service.jsp"%>"
@@ -206,7 +216,8 @@
 					onclick="setLeftMenu('question');">문의</a>
 					<ul>
 						<!-- <li><a href="#" onclick="setLeftMenu('question');">문의게시판</a></li> -->
-						<li><a href="/swp/faqList.do" onclick="setLeftMenu('question');">FAQ</a></li>
+						<li><a href="/swp/faqList.do"
+							onclick="setLeftMenu('question');">FAQ</a></li>
 					</ul></li>
 			</ul>
 		</div>
@@ -279,7 +290,11 @@
 	</div>
 	<div id="right-header">
 		<div id="floatparent">
-			<div id="floatMenu">플로팅 메뉴</div>
+			<div id="floatMenu">
+				플로팅 메뉴 <a id="floatLink"> <img id="floatImg" width="100"
+					height="100" /> <span id="floatTitle"></span>
+				</a>
+			</div>
 		</div>
 	</div>
 </body>
