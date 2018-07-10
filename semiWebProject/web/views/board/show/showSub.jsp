@@ -408,14 +408,9 @@ table.type09 td {
 	text-align: left;
 }
 </style>
-<!-- <link href="/swp/js/fullcalender/fullcalendar.min.css" rel="stylesheet">
-<link href="/swp/js/fullcalender/fullcalendar.print.min.css" rel="stylesheet" media="print"> -->
 </head>
 <body>
 	<%@ include file="/views/common/header.jsp"%>
-<!-- <script src="/swp/js/fullcalender/lib/moment.min.js"></script>
-<script src="/swp/js/fullcalender/lib/jquery.min.js"></script>
-<script src="/swp/js/fullcalender/fullcalendar.min.js"></script> -->
 	<div class="wrap">
 		<div id="container">
 			<div id="detailMain">
@@ -614,30 +609,6 @@ table.type09 td {
 
 			</div>
 		</div>
-		
-		
-			<!-- 캘린더 -->
-<!-- <script>
-$(document).ready(function(){
-	 $('#calendar').fullCalendar({
-         header: {
-           left: 'title',
-           center: '',
-           right: 'prev,next'
-         },
-         navLinks: true, // can click day/week names to navigate views
-         editable: true,
-         eventLimit: true, // allow "more" link when too many events
-         businessHours: true,
-         local:'ko',
-         
-       });
-   
-  });
-</script>
- --> <!-- 캘린더 -->
- 
- 
 	</div>
 	<%@ include file="/views/common/footer.jsp"%>
 </body>
