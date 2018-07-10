@@ -23,7 +23,6 @@ public class MemberDao {
 			//실행 할 jdbc 라이브러리 등록
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			//접속 정보 설정
-
 			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe",
 														"swp",
 														"swp");
@@ -33,7 +32,6 @@ public class MemberDao {
 			//쿼리 작성시 주의 사항 
 			//- 스트링 값 비교 시 따옴표를 추가하는 경우 주의
 			String query = "SELECT * FROM MEMBER "
-
 					+ " WHERE MEMBER_ID = '" + id + "' "   // where userid = 'admin' 
 					+ " AND MEMBER_PASSWORD = '" + pwd + "'";
 			System.out.println(query);
@@ -83,10 +81,10 @@ public class MemberDao {
 			//4. 쿼리 실행 결과 처리(resultSet)
 			if(rs.next()){
 				result = new MemberVo();
-				result.setUserId(id);
-				result.setPassword(rs.getString("password"));
+				result.setUserId("member_id");
+				result.setPassword(rs.getString("member_password"));
 				result.setGender(rs.getString("gender").charAt(0));
-				result.setGender(rs.getString("nickname").charAt(0));
+				result.setNickname(rs.getString("nickname"));
 				result.setEmail(rs.getString("email"));
 			}
 		} catch (SQLException e) {
@@ -161,13 +159,13 @@ public class MemberDao {
 		try {
 			stmt = con.createStatement();
 			//3. 쿼리 작성
-//			query = "UPDATE MEMBER "
-//					+ "SET PASSWORD = '" + m.getPassword() + "',"
-//						+ "USERNAME = '" + m.getUserName() + "', "
-//						+ "GENDER = '" + m.getGender() + "', "
-//						+ "EMAIL = '" + m.getEmail() + "', "
-//					+ "WHERE USERID = '" + m.getUserId() + "'";
-//			System.out.println("query : " + query);
+			query = "UPDATE MEMBER "
+					+ "SET MEMBER_PASSWORD = '" + m.getPassword() + "',"
+						+ "NICKNAME = '" + m.getNickname() + "', "
+						+ "GENDER = '" + m.getGender() + "', "
+						+ "EMAIL = '" + m.getEmail() + "' "
+					+ "WHERE MEMBER_ID = '" + m.getUserId() + "'";
+		System.out.println("query : " + query);
 			//4. 실행 결과 처리(int)
 			result = stmt.executeUpdate(query);
 			

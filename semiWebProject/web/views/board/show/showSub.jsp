@@ -30,11 +30,13 @@
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>긴장감고조</title>
+
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e8c4fb9a405e63f9eb58467ef526fb71&libraries=services"></script>
 <style>
@@ -406,8 +408,6 @@ table.type09 td {
 	text-align: left;
 }
 </style>
-
-
 </head>
 <body>
 	<%@ include file="/views/common/header.jsp"%>
@@ -476,7 +476,7 @@ table.type09 td {
 					<ul>
 						<li><a id="subImage" onclick="setSubMenu('subImage', this);">공연정보</a></li>
 						<li><a id="showLocation" onclick="setSubMenu('showLocation', this);">공연장정보</a></li>
-						<li><a id="calendar" onclick="setSubMenu('calendar', this);">캘린더</a></li>
+						<li><a onclick="setSubMenu('calendar', this);">캘린더</a></li>
 						<li><a id="comment" onclick="setSubMenu('comment', this);">리뷰</a></li>
 					</ul>
 				</div>
@@ -564,7 +564,10 @@ table.type09 td {
 					</script>
 				</div>
 
-				<div class="calendar menuSubArea">달력</div>
+				<div class="calendar menuSubArea" >달력
+					<div id="calendar">
+					</div>				
+				</div>
 				<div class="comment menuSubArea">
 					<div class="reviewSection">
 						<table id="reviewTable">
@@ -612,6 +615,12 @@ table.type09 td {
 
 <script src="/swp/js/star.js"></script>
 <script>
+
+	$(function(){
+		sessionStorage.setItem("floatImg","<%=show.getPoster()%>");
+		sessionStorage.setItem("floatTitle","<%=show.getPrfnm()%>");
+		sessionStorage.setItem("floatLink","/swp/reviewList.do?showId=<%=show.getMt20id()%>");
+	});
 	$(function() {
 		//$("#won").hide();
 		$("#objImg").hover(function() {

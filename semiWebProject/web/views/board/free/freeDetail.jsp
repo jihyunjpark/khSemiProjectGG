@@ -35,6 +35,8 @@
 		border-radius:5px;
 		cursor:pointer;
 	}
+	.replyWriteBtn{
+	}
 </style>
 <meta charset="UTF-8">
 <script>
@@ -112,7 +114,7 @@
 		<%for(FreeReplyVo reply : list){ %>
 		<tr>
 			<td><%=reply.getNickname()%></td>
-			<td><%=reply.getReply_content() %></td>
+			<td><%=reply.getReply_content() %> - <%=reply.getReply_date_str() %></td>
 			<%if(reply.getMember_id().equals(member.getUserId())){ %>	
 				<td>
 					<a onclick="updateReply(<%=reply.getReply_no() %>, '<%=reply.getReply_content() %>')">수정</a>
@@ -137,7 +139,7 @@ function setReplyList(data){
 	for(var i in data){
 		var tr = $("<tr>");
 		var userTd = $("<td>").text(data[i].nickname);				
-		var contentTd = $("<td>").text(data[i].reply_content);
+		var contentTd = $("<td>").text(data[i].reply_content + " - " +  data[i].reply_date_str);
 		tr.append(userTd);
 		tr.append(contentTd);
 		var actionTd

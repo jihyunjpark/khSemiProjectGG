@@ -2,7 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	
+// 	if (null != session.getAttribute("user")) {
+		MemberVo member = (MemberVo) session.getAttribute("user");
+// 		// 	} else if(null != ) {
+
+// 	}
 %>
 <!DOCTYPE html>
 <html>
@@ -124,10 +128,17 @@
 		}).scroll();
 
 	});
+	
+	$(function(){
+		if(sessionStorage.getItem("floatImg") != null){
+			$("#floatLink").attr("href", sessionStorage.getItem("floatLink"));
+			$("#floatImg").attr("src", sessionStorage.getItem("floatImg"));
+			$("#floatTitle").text(sessionStorage.getItem("floatTitle"));
+		}
+	});
 </script>
 
 </head>
-
 <body>
 	<button onclick="confirmEmail();">정보확인-네이버</button>
 	<div class="header">
@@ -136,9 +147,9 @@
 				<div id="top-menu-right">
 					<a
 						href="<%=request.getContextPath() + "/views/common/loginPage.html"%>"
-						id="top-Login">로그인</a><span class="al_bar"><img src="/swp/images/main/mline_dot.gif" ></img></span> <a
-						href="<%=request.getContextPath() + "/views/myPage.jsp"%>"
-						id="top-profile">마이페이지</a><span class="al_bar"></span> <a
+						id="top-Login">로그인</a><span class="al_bar"></span> <a
+						href="<%=request.getContextPath() + "/views/common/myPage.jsp"%>"
+						id="top-profile">마이페이지</a><span class="al_bar"></span><a
 						href="<%=request.getContextPath() + "/views/service.jsp"%>"
 						id="top-service">고객센터</a>
 				</div>
@@ -278,10 +289,23 @@
 			</ul>
 		</div>
 	</div>
+<<<<<<< HEAD
 	<div id="right-header">
+=======
+       <div id="right-header">
+>>>>>>> branch 'master' of https://github.com/jihyunjpark/khSemiProjectGG
 		<div id="floatparent">
-			<div id="floatMenu">플로팅 메뉴</div>
+			<div id="floatMenu">플로팅 메뉴
+				<a id="floatLink">
+					<img id="floatImg" width="100" height="100"/>
+					<span id="floatTitle"></span>
+				</a>
+			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
 </body>
+=======
+ </body>
+>>>>>>> branch 'master' of https://github.com/jihyunjpark/khSemiProjectGG
 </html>

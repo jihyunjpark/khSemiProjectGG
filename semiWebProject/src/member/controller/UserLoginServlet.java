@@ -24,7 +24,7 @@ public class UserLoginServlet extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	@SuppressWarnings("unused")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -41,7 +41,7 @@ public class UserLoginServlet extends HttpServlet {
 		RequestDispatcher view = null;
 		// 1. 아이디가 존재하지 않습니다.
 		if (null == member) {
-			view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			view = request.getRequestDispatcher("view/common/errorPage.jsp");
 			request.setAttribute("msg", "아이디가 존재하지 않습니다.");
 			view.forward(request, response);
 		} else {
@@ -51,7 +51,7 @@ public class UserLoginServlet extends HttpServlet {
 				response.sendRedirect("index.jsp");
 			} else {
 				// 2. 비밀번호가 틀렸습니다.
-				view = request.getRequestDispatcher("views/common/errorPage.jsp");
+				view = request.getRequestDispatcher("view/common/errorPage.jsp");
 				request.setAttribute("msg", "비밀번호가 일치하지 않습니다.");
 				view.forward(request, response);
 			}
