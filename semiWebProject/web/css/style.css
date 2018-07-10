@@ -521,7 +521,7 @@ fieldset {
 	float:right;
 }
 
-/* #floatparent{
+ #floatparent{
 	overflow:hidden;
 	height:5000px;
 }
@@ -534,7 +534,7 @@ fieldset {
 	background-color: #606060;
 	color: #fff;
 	z-index: 999;
-} */
+} 
 
 /* SHOW COMMENT */
 .tableArea {

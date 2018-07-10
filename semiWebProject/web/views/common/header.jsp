@@ -270,10 +270,10 @@
 			</ul>
 		</div>
 	</div>
-<!-- 	<div id="right-header">
+<div id="right-header">
 		<div id="floatparent">
 			<div id="floatMenu">플로팅 메뉴</div>
 		</div>
 	</div>
- --></body>
+ </body>
 </html>
