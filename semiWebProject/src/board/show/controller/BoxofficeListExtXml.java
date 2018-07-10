@@ -29,17 +29,17 @@ public class BoxofficeListExtXml {
 			List<Element> list = root.getChildren("boxof");
 			showList = new ArrayList<BoxofficeShowVo>();
 			String[] tagList = { "area", "prfdtcnt", "prfpd", "cate", "prfplcnm", "prfnm", "rnum", "seatcnt", "poster", "mt20id"};
-			for (int i = 0; i < 10; i++) {
+			for (int i = 0; i < list.size(); i++) {
 				BoxofficeShowVo showData = new BoxofficeShowVo();
 				Element show = list.get(i);
 				showData.setArea(show.getChildText(tagList[0]));
-				showData.setPrfdtcnt(Integer.parseInt(show.getChildText(tagList[1])));
+				showData.setPrfdtcnt(show.getChildText(tagList[1]));
 				showData.setPrfpd(show.getChildText(tagList[2]));
 				showData.setCate(show.getChildText(tagList[3]));
 				showData.setPrfplcnm(show.getChildText(tagList[4]));
 				showData.setPrfnm(show.getChildText(tagList[5]));
-				showData.setRnum(Integer.parseInt(show.getChildText(tagList[6])));
-				showData.setSeatcnt(Integer.parseInt(show.getChildText(tagList[7])));
+				showData.setRnum(show.getChildText(tagList[6]));
+				showData.setSeatcnt(show.getChildText(tagList[7]));
 				showData.setPoster(show.getChildText(tagList[8]));
 				showData.setMt20id(show.getChildText(tagList[9]));
 				showList.add(showData);
