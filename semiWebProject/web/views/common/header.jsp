@@ -147,7 +147,7 @@
 		<br>
 		<div class="search_area">
 			<div id="logo_image">
-				<img src="/swp/images/logo.png"></img>
+				<img src="/swp/images/logo.png"><a href="/swp/index.jsp"></a></img>
 			</div>
 			<form id="search_form" name="search" action="?" method="get"
 				role="search">

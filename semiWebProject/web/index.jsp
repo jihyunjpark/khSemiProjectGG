@@ -55,7 +55,7 @@
 		<div class="poster_rank">
 			<div class="title">
 				<h1>
-					박스오피스<span id="genreTitle"> - 연극</span>
+					박스오피스<span id="genreTitle"></span>
 				</h1>
 				<p>
 					<!-- <span class="d1Dt">2018.07.02 ~ 2018.07.08</span><span class="text">
@@ -83,10 +83,10 @@
 							<a href="#none" class="m02" id="Musical"
 								onclick="searchCategory('AAAB')"><span class="text_none">뮤지컬</span></a>
 						</p>
-						<p>
+						<!-- <p>
 							<a href="#none" class="m03" id="Classic"
 								onclick="searchCategory('CCCA')"><span class="text_none">클래식/오페라</span></a>
-						</p>
+						</p> -->
 					</div>
 				</form>
 			</div>
