@@ -35,6 +35,8 @@
 		border-radius:5px;
 		cursor:pointer;
 	}
+	.replyWriteBtn{
+	}
 </style>
 <meta charset="UTF-8">
 <script>
