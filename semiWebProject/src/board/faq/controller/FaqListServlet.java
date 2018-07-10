@@ -31,6 +31,8 @@ public class FaqListServlet extends HttpServlet {
 			view = request.getRequestDispatcher("views/faq/faqList.jsp");
 //		} else {
 //			request.setAttribute("msg", "FAQ 불러오기 실패");
+//			
+//			
 //			view = request.getRequestDispatcher("views/common/errorPage.jsp");
 		}
 		view.forward(request, response);
