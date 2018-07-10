@@ -43,7 +43,20 @@ function login(){
 <link rel="stylesheet" type="text/css" href="../../css/util.css">
 <link rel="stylesheet" type="text/css" href="../../css/main.css">
 <!--===============================================================================================-->
+
+<script>
+function login() {
+	var id = $("#userId");
+	var password = $("#password");
+	location.href="/swp/userLogin.au?" + id + "&password";
+}
+
+</script>
+
 </head>
+
+
+
 <body>
 
 	<div class="limiter">
@@ -54,6 +67,7 @@ function login(){
 
 					<div class="wrap-input100 validate-input"
 						data-validate="Valid email is required: ex@abc.xyz">
+
 						<input class="input100" type="text" name="userId"
 							placeholder="ID"> <span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
@@ -61,6 +75,7 @@ function login(){
 
 					<div class="wrap-input100 rs1 validate-input"
 						data-validate="Password is required">
+
 						<input class="input100" type="password" name="password"
 							placeholder="password"> <span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
@@ -70,29 +85,8 @@ function login(){
 						<button class="login100-form-btn" onclick="login();">Sign in</button>
 					</div>
 					<br>
-					<!-- 연동 로그인 버튼 - 카카오 -->
 					<div class="container-login-api">
-						<div class="container-login-kakao">
-							<a id="kakao-login-btn"></a> <a
-								href="http://developers.kakao.com/logout"></a>
-							<script type='text/javascript'>
-								//<![CDATA[
-								// 사용할 앱의 JavaScript 키를 설정해 주세요.
-								Kakao.init('e8c4fb9a405e63f9eb58467ef526fb71');
-								// 카카오 로그인 버튼을 생성합니다.
-								Kakao.Auth.createLoginButton({
-									container : '#kakao-login-btn',
-									success : function(authObj) {
-										alert(JSON.stringify(authObj));
-										window.location.replace("http://localhost:8081/swp/index.jsp")
-									},
-									fail : function(err) {
-										alert(JSON.stringify(err));
-									}
-								});
-								//]]>
-							</script>
-						</div>
+						
 						<!-- 연동 로그인 버튼 - 네이버 -->
 						<div class="container-login-naver">
 							<!-- 네이버아이디로로그인 버튼 노출 영역 -->
