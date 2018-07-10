@@ -206,13 +206,12 @@
 						<li><a href="/swp/totalReviewList.do"
 							onclick="setLeftMenu('community');">리뷰 게시판</a></li>
 					</ul></li>
-				<li><a href="/swp/freeList.do"
+				<li><a href="/swp/magazineList.do"
 					onclick="setLeftMenu('magazine');">매거진</a>
 					<ul>
-						<li><a href="#" onclick="setLeftMenu('magazine');">기사</a></li>
-						<li><a href="#" onclick="setLeftMenu('magazine');">영상/포토</a></li>
+						<li><a href="/swp/magazineList.do" onclick="/swp/magazineList.do">매거진</a></li>
 					</ul></li>
-				<li><a href="/swp/freeList.do"
+				<li><a href="/swp/faqList.do"
 					onclick="setLeftMenu('question');">문의</a>
 					<ul>
 						<!-- <li><a href="#" onclick="setLeftMenu('question');">문의게시판</a></li> -->
@@ -273,8 +272,7 @@
 						<span class="icon-heart"></span>매거진
 					</h3>
 					<ul>
-						<li><a href="#">기사</a></li>
-						<li><a href="#">영상/포토</a></li>
+						<li><a href="/swp/magazineList.do">매거진</a></li>
 					</ul>
 				</li>
 				<li>
