@@ -225,7 +225,6 @@
 
 	</div>
 	<br>
-	</div>
 	<div id="left-header">
 		<!-- 사이드메뉴 -->
 		<div id="accordian">
@@ -289,11 +288,7 @@
 			</ul>
 		</div>
 	</div>
-<<<<<<< HEAD
-	<div id="right-header">
-=======
        <div id="right-header">
->>>>>>> branch 'master' of https://github.com/jihyunjpark/khSemiProjectGG
 		<div id="floatparent">
 			<div id="floatMenu">플로팅 메뉴
 				<a id="floatLink">
@@ -303,9 +298,5 @@
 			</div>
 		</div>
 	</div>
-<<<<<<< HEAD
-</body>
-=======
  </body>
->>>>>>> branch 'master' of https://github.com/jihyunjpark/khSemiProjectGG
 </html>
