@@ -2,11 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-// 	if (null != session.getAttribute("user")) {
-		//MemberVo member = (MemberVo) session.getAttribute("user");
-// 		// 	} else if(null != ) {
-
-// 	}
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -27,7 +23,7 @@
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=MiE7za1q2r2x8mnXzzsu&submodules=geocoder"></script>
 <script>
 	/* jQuery timeㄴ */
-	var subMenuName = null; 
+	var subMenuName = null;
 
 	var naverLogin = new naver.LoginWithNaverId({
 		clientId : "{MiE7za1q2r2x8mnXzzsu}",
@@ -123,8 +119,7 @@
 			 */
 
 			$("#floatMenu").stop().animate({
-				"top" : newPosition
-			}, 500);
+			}, 300);
 
 		}).scroll();
 
@@ -141,9 +136,9 @@
 				<div id="top-menu-right">
 					<a
 						href="<%=request.getContextPath() + "/views/common/loginPage.html"%>"
-						id="top-Login">로그인</a><span class="al_bar"></span> <a
+						id="top-Login">로그인</a><span class="al_bar"><img src="/swp/images/main/mline_dot.gif" ></img></span> <a
 						href="<%=request.getContextPath() + "/views/myPage.jsp"%>"
-						id="top-profile">마이페이지</a><span class="al_bar"></span><a
+						id="top-profile">마이페이지</a><span class="al_bar"></span> <a
 						href="<%=request.getContextPath() + "/views/service.jsp"%>"
 						id="top-service">고객센터</a>
 				</div>
@@ -151,7 +146,9 @@
 		</header>
 		<br>
 		<div class="search_area">
-			<div id="logo_image"></div>
+			<div id="logo_image">
+				<img src="/swp/images/logo.png"></img>
+			</div>
 			<form id="search_form" name="search" action="?" method="get"
 				role="search">
 				<fieldset class="greenwindow">
@@ -172,16 +169,21 @@
 		<div class="menubar">
 			<ul>
 				<li><a href="/swp" onclick="setLeftMenu('home');">Home</a></li>
-				<li><a href="http://localhost:8081/swp/views/board/show/showMain.jsp" id="current"
-					onclick="setLeftMenu('show');">공연</a>
+				<li><a
+					href="http://localhost:8081/swp/views/board/show/showMain.jsp"
+					id="current" onclick="setLeftMenu('show');">공연</a>
 					<ul>
-						<li><a href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=AAAA"
+						<li><a
+							href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=AAAA"
 							onclick="setLeftMenu('show');">연극</a></li>
-						<li><a href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=AAAB"
+						<li><a
+							href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=AAAB"
 							onclick="setLeftMenu('show');">뮤지컬</a></li>
-						<li><a href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=CCCA"
+						<li><a
+							href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=CCCA"
 							onclick="setLeftMenu('show');">클래식</a></li>
-						<li><a href="http://localhost:8081/swp/views/board/theater/theaterList.jsp"
+						<li><a
+							href="http://localhost:8081/swp/views/board/theater/theaterList.jsp"
 							onclick="setLeftMenu('show');">극장 목록</a></li>
 					</ul></li>
 				<li><a href="/swp/freeList.do"
@@ -191,7 +193,7 @@
 							onclick="setLeftMenu('community');">자유게시판</a></li>
 						<li><a href="/swp/noticeList.do"
 							onclick="setLeftMenu('community');">공지사항</a></li>
-							<li><a href="/swp/totalReviewList.do"
+						<li><a href="/swp/totalReviewList.do"
 							onclick="setLeftMenu('community');">리뷰 게시판</a></li>
 					</ul></li>
 				<li><a href="/swp/freeList.do"
@@ -226,17 +228,22 @@
 				<!-- we will keep this LI open by default -->
 				<li>
 					<h3 id="showMenu">
-						<span class="icon-tasks"></span><a href="http://localhost:8081/swp/views/board/show/showMain.jsp"
+						<span class="icon-tasks"></span><a
+							href="http://localhost:8081/swp/views/board/show/showMain.jsp"
 							id="current" onclick="setLeftMenu('show');">공연</a>
 					</h3>
 					<ul>
-						<li><a href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=AAAA"
+						<li><a
+							href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=AAAA"
 							onclick="setLeftMenu('show');">연극</a></li>
-						<li><a href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=AAAB"
+						<li><a
+							href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=AAAB"
 							onclick="setLeftMenu('show');">뮤지컬</a></li>
-						<li><a href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=CCCA"
+						<li><a
+							href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=CCCA"
 							onclick="setLeftMenu('show');">클래식</a></li>
-						<li><a href="http://localhost:8081/swp/views/board/theater/theaterList.jsp"
+						<li><a
+							href="http://localhost:8081/swp/views/board/theater/theaterList.jsp"
 							onclick="setLeftMenu('show');">극장 목록</a></li>
 					</ul>
 				</li>
@@ -271,10 +278,10 @@
 			</ul>
 		</div>
 	</div>
-<!-- 	<div id="right-header">
+	<div id="right-header">
 		<div id="floatparent">
 			<div id="floatMenu">플로팅 메뉴</div>
 		</div>
 	</div>
- --></body>
+</body>
 </html>

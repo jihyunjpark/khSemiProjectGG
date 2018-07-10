@@ -125,6 +125,7 @@ function nextPage(page) {
 
 .pageArea {
 	width: 520px;
+	height: 1400px;
 	margin: 20px auto;
 }
 

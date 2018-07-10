@@ -1,13 +1,268 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #f5f5f5;
+    color: #666;
+}
+
+body, input, textarea, select, button, table {
+	font-family: 'y740', Nanum Gothic, dotum, sans-serif;
+	font-size: 12px;
+}
+
+.bold, h1, h2, strong, b {
+    font-weight: bold;
+}
+
+ul, menu, dir {
+	display: block;
+	list-style-type: disc;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	-webkit-padding-start: 40px;
+}
+
+.bold, h1, h2, strong, b {
+	font-weight: bold;
+}
+
+h1 {
+	display: block;
+	font-size: 2em;
+	-webkit-margin-before: 0.67em;
+	-webkit-margin-after: 0.67em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	font-weight: bold;
+}
+
+.main_wrap {
+    overflow: hidden;
+    border-top: 1px solid #bbc5db;
+    border-bottom: 1px solid #bbc5db;
+    margin: 0 42px 20px 49px;
+}
+
+.main_menu1 {
+    float: left;
+    margin-right: 12px;
+    padding: 14px 12px 14px 0;
+    background: url(/swp/images/main/mline_dot.gif) repeat-y right top;
+}
+
+.main_menu1 select {
+    width: 198px;
+    border: 1px solid #c9c9c9;
+    font-size: 15px;
+    height: 35px;
+}
+
+option {
+    font-weight: normal;
+    display: block;
+    white-space: pre;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+
+.main_menu2 {
+    float: left;
+    overflow: hidden;
+    padding: 10px 0;
+    background: url(/swp/images/main/mline_dot.gif) repeat-y right top;
+}
+
+.main_menu3 {
+    float: left;
+    overflow: hidden;
+    padding: 10px 12px 10px 12px;
+}
+
+.main_menu2 p {
+    float: left;
+    background: url(/swp/images/main/mline_dot.gif) no-repeat right 50%;
+    padding-right: 12px;
+    margin-right: 9px;
+}
+
+.m01 {
+    background: url(/swp/images/main/m01_off.jpg) no-repeat;
+    width: 77px;
+    height: 42px;
+    display: inline-block;
+}
+.m01_on {
+    background: url(/swp/images/main/m01_on.jpg) no-repeat;
+    width: 77px;
+    height: 42px;
+    display: inline-block;
+}
+
+.m02 {
+    background: url(/swp/images/main/m02_off.jpg) no-repeat;
+    width: 86px;
+    height: 42px;
+    display: inline-block;
+}
+
+.m02 on {
+    background: url(/swp/images/main/m02_onf.jpg) no-repeat;
+    width: 86px;
+    height: 42px;
+    display: inline-block;
+}
+
+.m03 {
+    background: url(/swp/images/main/m03_off.jpg) no-repeat;
+    width: 122px;
+    height: 42px;
+    display: inline-block;
+}
+
+.m03 on {
+    background: url(/swp/images/main/m03_on.jpg) no-repeat;
+    width: 122px;
+    height: 42px;
+    display: inline-block;
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+.text_none {
+    display: none;
+}
+
+
+.poster_rank {
+	position: relative;
+	float: left;
+	width: 1200px;
+	height: 879px;
+	background: #fff;
+	margin-bottom: 45px;
+	border: 1px solid #e9e9e9;
+	margin-top: 20px;
+}
+
+.poster_rank .title {
+	padding: 40px 48px 16px 48px;
+	line-height: 24px;
+	color: #000;
+}
+
+#visual {
+	position: relative;
+	height: 486px;
+	margin-top: 30px;
+	border: 1px solid #e9e9e9;
+	color: #fff;
+	box-sizing: border-box;
+}
+
+.poster_rank .title h1 span {
+	font-size: 15px;
+}
+
+.poster_rank .title p {
+	position: absolute;
+	top: 47px;
+	right: 42px;
+}
+
+.poster_rank .title p span {
+	font-size: 15px;
+	font-family: Nanum Gothic;
+	font-weight: 800;
+}
+
+.poster_rank .title p .text {
+	font-size: 14px;
+	font-weight: normal;
+}
+
+.poster_rank ul {
+	width: 100%;
+	margin: 0 auto;
+}
+
+ul, ol {
+	list-style-type: none;
+}
+
+a, a:hover {
+	text-decoration: none;
+	color: #000;
+}
+
+.poster_rank ul li {
+	position: relative;
+	float: left;
+	width: 20%;
+	margin-bottom: 142px;
+	margin-left: -12px;
+	text-align: center;
+}
+
+.poster_rank ul li a {
+	display: block;
+	width: 120px;
+	height: 169px;
+	margin: 0 auto;
+}
+
+.poster_rank .poster {
+	position: relative;
+	height: 100%;
+}
+
+.poster_rank .poster .num {
+	position: absolute;
+	left: 0;
+}
+
+img {
+	max-width: 100%;
+}
+
+img, fieldset {
+	border: none;
+}
+
+.poster_rank .poster .poster_img {
+	display: block;
+	width: 198px;
+	height: 277px;
+	background: #5288AE;
+	line-height: 183px;
+	color: #fff;
+}
+
+.poster_rank .poster .poster_img img {
+	width: 100%;
+	height: 100%;
+	border: 1px solid #cccccc;
+	box-sizing: border-box;
+}
+
+
+/* ////////////////////// */
 
 .wrap {
 	margin: 50px auto;
 	position: relative;
-	width:960px;
+	width: 960px;
 	background: #f2f4f7;
 }
-
-
-
 
 .header {
 	z-index: 100;
@@ -15,7 +270,6 @@
 	background-color: #f5f5f5; /*배경색 */
 	width: 100%;
 }
-
 
 body, button, input, select, table, textarea {
 	font-size: 12px;
@@ -40,9 +294,10 @@ header {
 }
 
 #top-menu-right {
-	position:absolute;
-	right:0;
+	position: absolute;
+	right: 0;
 	float: right;
+	display: inline-block;
 }
 
 #top-menu-right .al_bar {
@@ -58,8 +313,14 @@ header {
 	text-align: center;
 	width: 100%;
 	min-width: 960px;
-	height: 32px;
+	height: 30px;
 	border-bottom: 1px solid #c1c1c1;
+}
+
+.tm1 p {
+	background: url(/swp/images/main/mline_dot.gif) no-repeat right 50%;
+	padding-right: 12px;
+	margin-right: 9px;
 }
 
 a:link, a:visited, a:hover {
@@ -108,7 +369,6 @@ a:link, a:visited, a:hover {
 form {
 	margin-top: 0em;
 }
-
 
 .bt_search {
 	overflow: hidden;
@@ -191,30 +451,30 @@ fieldset {
 	background-position: -3px -5px;
 }
 
- .search_area {
+.search_area {
 	position: relative;
-	display: inline-block;
-	width:100%;
-	margin: 0 auto;
+	display: block;
+	width: 650px;
+	margin: 10px auto;
 	height: 100%;
 	background-color: #f5f5f5; /*배경색 */
-} 
-
-#logo_image{
-	margin: 0 auto;
-	display:inline-block;
-	width:80px;
-	height:80px;
-	background: #e5e5e5;
-	
 }
 
- #search_form {
-	display: inline-block;
-	overflow:visible;
-	width:550px;
+#logo_image {
 	margin: 0 auto;
-} 
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+}
+
+#search_form {
+	display: inline-block;
+	overflow: visible;
+	width: 550px;
+	margin: 0 auto;
+	padding-bottom: 13px;
+}
+
 .greenwindow {
 	width: 510px;
 	margin: 0 auto;
@@ -257,7 +517,7 @@ fieldset {
 
 .ltShowStar p, #ltShowStar p {
 	padding-left: 6px;
-    padding-top: 1px;
+	padding-top: 1px;
 }
 
 .ltShowStar p b, #ltShowStar p b {
@@ -294,9 +554,9 @@ fieldset {
 
 /* 사이드바 */
 #accordian {
-	position:absolute;
-	z-index:9999;
-	margin-right:50px;
+	position: absolute;
+	z-index: 9999;
+	margin-right: 50px;
 	background: #7C65B2;
 	width: 180px;
 	height: 100%;
@@ -389,12 +649,12 @@ fieldset {
 	opacity: 1;
 }
 
-.slick-dots{
+.slick-dots {
 	display: none;
 }
 
 .footer {
-	z-index:99999;
+	z-index: 99999;
 	position: fixed;
 	left: 0;
 	bottom: 0;
@@ -413,7 +673,7 @@ fieldset {
 }
 
 .menubar ul {
-	display:block;
+	display: block;
 	overflow: hidden;
 	width: 100%;
 	margin: 0 auto;
@@ -502,26 +762,27 @@ fieldset {
 
 /* 플로팅 배너 */
 #left-header {
-	padding:0;
-	overflow:hidden;
+	padding: 0;
+	overflow: hidden;
 	display: inline-block;
-	width:200px;
-	min-width:200px;
-	float:left; 
-	
+	width: 200px;
+	min-width: 200px;
+	float: left;
 }
 
 #right-header {
-	margin: 0 auto;
-	padding:0;
-	overflow:hidden;
+	position:fixed;
+	right:0;
+	padding: 0;
+	overflow: hidden;
 	display: inline-block;
-	width:286px;
-	min-width:286px;
-	float:right;
+	width: 286px;
+	min-width: 286px;
+	height:100%;
+	float: right;
 }
 
-/* #floatparent{
+ #floatparent{
 	overflow:hidden;
 	height:5000px;
 }
@@ -530,16 +791,15 @@ fieldset {
 	position: absolute;
 	width: 200px;
 	height: 200px;
-	top: 300px;
+	top: 50px;
 	background-color: #606060;
 	color: #fff;
 	z-index: 999;
-} */
+} 
 
 /* SHOW COMMENT */
 .tableArea {
-	width: 600px;
-	margin 0 auto;
+	width: 600px; margin 0 auto;
 	text-align: center;
 }
 
@@ -549,4 +809,3 @@ fieldset {
 	border-spacing: 0px;
 	text-align: center;
 }
-
