@@ -16,7 +16,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>신고 자유게시판 목록</title>
+<title>신고 목록</title>
 <style>
 .outer{
 	width:800px;
@@ -47,7 +47,7 @@ table td{
 </head>
 <body>
 <div class="outer">
-	<h1 align="center">신고 자유게시판 목록</h1>
+	<h1 align="center">신고 목록</h1>
 	<div class="tableArea">
 		<table align="center">
 			<tr>

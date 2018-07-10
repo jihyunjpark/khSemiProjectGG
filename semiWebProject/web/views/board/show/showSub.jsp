@@ -475,7 +475,8 @@ table.type09 td {
 				<div class="menuSub">
 					<ul>
 						<li><a id="subImage" onclick="setSubMenu('subImage', this);">공연정보</a></li>
-						<li><a id="showLocation" onclick="setSubMenu('showLocation', this);">공연장정보</a></li>
+						<li><a id="showLocation"
+							onclick="setSubMenu('showLocation', this);">공연장정보</a></li>
 						<li><a onclick="setSubMenu('calendar', this);">캘린더</a></li>
 						<li><a id="comment" onclick="setSubMenu('comment', this);">리뷰</a></li>
 					</ul>
@@ -564,9 +565,9 @@ table.type09 td {
 					</script>
 				</div>
 
-				<div class="calendar menuSubArea" >달력
-					<div id="calendar">
-					</div>				
+				<div class="calendar menuSubArea">
+					달력
+					<div id="calendar"></div>
 				</div>
 				<div class="comment menuSubArea">
 					<div class="reviewSection">
@@ -596,6 +597,7 @@ table.type09 td {
 								<td><%=n.getContent()%></td>
 								<td><%=n.getMemberId()%></td>
 								<td><%=n.getReviewDate()%></td>
+								<td><button onclick="reportReview('<%=n.getReviewNo()%>')"></button></td>
 							</tr>
 							<%
 								}
@@ -615,7 +617,7 @@ table.type09 td {
 
 <script src="/swp/js/star.js"></script>
 <script>
-
+/* 플로팅메뉴  */
 	$(function(){
 		sessionStorage.setItem("floatImg","<%=show.getPoster()%>");
 		sessionStorage.setItem("floatTitle","<%=show.getPrfnm()%>");
@@ -653,7 +655,24 @@ table.type09 td {
 		location.href = "/swp/reviewList.do?showId=" + showId + "currentPage="
 				+ pageNum;
 	}
-	
+
+	function reportReview(reviewId) {
+		$.ajax({
+			url : "/swp/reportReview.do",
+			data : {
+				reviewId : reviewId
+			},type:"get",
+			success : function(data) {
+				console.log(data);
+			},
+			error : function(e) {
+				console.log(e);
+			}
+
+		});
+
+	}
+
 	$(function() {
 		subMenuName = sessionStorage.getItem('subMenu');
 		console.log(subMenuName);
@@ -663,7 +682,5 @@ table.type09 td {
 			$("#subMenuName").toggleClass("highlight");
 		}
 	});
-	
-	
 </script>
 </html>

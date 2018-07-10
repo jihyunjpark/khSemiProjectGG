@@ -73,7 +73,7 @@ public class ReviewDao {
 				temp.setReviewDate(rs.getDate("REVIEW_DATE"));
 				temp.setShowcode(rs.getString("SHOWCODE"));
 				temp.setReportCount(rs.getInt("REPORT_COUNT"));
-				temp.setWishbool(rs.getBoolean("WISH_BOOL"));
+				temp.setWishbool(rs.getString("WISH_BOOL"));
 				list.add(temp);
 			}
 		} catch (SQLException e) {
@@ -86,6 +86,28 @@ public class ReviewDao {
 		// 6. 결과 리턴
 		return list;
 
+	}
+
+	public int reportReview(Connection con, int reviewId) {
+		int result = -1;
+		PreparedStatement pstmt = null;
+		String query = "UPDATE REVIEW SET REPORT_COUNT = REPORT_COUNT + 1 WHERE REVIEW_NO = ?";
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setInt(1, reviewId);
+
+			// 3. 쿼리 실행
+			result = pstmt.executeUpdate();
+			// 4. 결과 처리(resultSet-list parsing)
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 5. 자원 반납(close)
+			JDBCTemplate.close(pstmt);
+		}
+		// 6. 결과 리턴
+		return result;
 	}
 
 }

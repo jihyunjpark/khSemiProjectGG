@@ -12,7 +12,7 @@
 	int maxPage = pi.getMaxPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
-	MemberVo member = (MemberVo) session.getAttribute("user");
+/* 	MemberVo member = (MemberVo) session.getAttribute("user"); */
 %>
 <!DOCTYPE html>
 <html>

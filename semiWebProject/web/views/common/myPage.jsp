@@ -32,6 +32,10 @@
 	#searchAddressBtn, #updateBtn, #joinMainBtn{
 		background:yellowgreen;
 	}
+	.1{
+	margin-left:auto;
+	margin-right:auto;
+	}
 </style>
 <script>
 	function memberJoin(){
@@ -53,8 +57,11 @@
 	</script>
 
 </head>
+<body>
 <%@ include file="header.jsp" %>
-		<form id="updateForm" name="updateForm" action="/swp/updateMember.au" method="post" onsubmit="validate();">
+
+	<div class="1" width="960px" height="800px" align="center">
+		<form id="updateForm" name="updateForm" action="/swp/updateMember.au" method="post" onsubmit="return validate();">
   		<h2>회원 가입</h2>
   		<p>
 			<label for="id" class="floatLabel">ID</label>
@@ -96,13 +103,13 @@
   			</fieldset>
   			<!--<span>성별을 선택해주세요.</span>-->
 		</p>
-				<td></td>
 		<br>
 		<div class="btns" align="center">	
 			<div id="updateBtn" onclick="updateMember();">회원 수정</div>		
 			<div id="deleteBtn" onclick="deleteMember();">회원 탈퇴</div>		
 		</div>
 		</form>
+		</div>
 
 	<script>
 		$(function(){

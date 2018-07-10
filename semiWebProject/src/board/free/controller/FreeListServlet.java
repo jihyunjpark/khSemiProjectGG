@@ -71,8 +71,8 @@ public class FreeListServlet extends HttpServlet {
 			url = "views/board/free/freeList.jsp";
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
-			HttpSession session = request.getSession();
-			session.setAttribute("user", new MemberVo("won", "원"));
+//			HttpSession session = request.getSession();
+//			session.setAttribute("user", new MemberVo("won", "원"));
 		}
 //		}else{
 //			url = "views/common/errorPage.jsp";

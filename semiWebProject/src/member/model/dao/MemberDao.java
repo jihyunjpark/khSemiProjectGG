@@ -81,7 +81,7 @@ public class MemberDao {
 			//4. 쿼리 실행 결과 처리(resultSet)
 			if(rs.next()){
 				result = new MemberVo();
-				result.setUserId("member_id");
+				result.setUserId(rs.getString("member_id"));
 				result.setPassword(rs.getString("member_password"));
 				result.setGender(rs.getString("gender").charAt(0));
 				result.setNickname(rs.getString("nickname"));

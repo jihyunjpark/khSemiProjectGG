@@ -8,7 +8,7 @@
 	FreeVo free = (FreeVo)request.getAttribute("board"); 
 	ArrayList<FreeReplyVo> list = (ArrayList<FreeReplyVo>)request.getAttribute("replyList");
 	Integer currentPage = (Integer)request.getAttribute("currentPage");
-	MemberVo member = (MemberVo) session.getAttribute("user");
+	//MemberVo member = (MemberVo) session.getAttribute("user");
 %>
 <!DOCTYPE html>
 <html>
@@ -103,7 +103,6 @@
 						<input type="button" id="replyWriteBtn" onclick="writeComment();" value="댓글작성"/>
 						<input type="button" id="replyUpdateBtn" onclick="updateComment();" value="수정"/>
 						<input type="button" id="replyCancelBtn" onclick="cancelComment();" value="취소"/>
-						
 					</td>
 				</tr>
 			</table>		
@@ -115,7 +114,7 @@
 		<tr>
 			<td><%=reply.getNickname()%></td>
 			<td><%=reply.getReply_content() %> - <%=reply.getReply_date_str() %></td>
-			<%if(reply.getMember_id().equals(member.getUserId())){ %>	
+			<%if(member != null && reply.getMember_id().equals(member.getUserId())){ %>	
 				<td>
 					<a onclick="updateReply(<%=reply.getReply_no() %>, '<%=reply.getReply_content() %>')">수정</a>
 					<a onclick="deleteReply(<%=reply.getReply_no() %>)">삭제</a>
@@ -143,7 +142,7 @@ function setReplyList(data){
 		tr.append(userTd);
 		tr.append(contentTd);
 		var actionTd
-		if(data[i].member_id == '<%=member.getUserId()%>'){
+		if(data[i].member_id == '<%=member != null ? member.getUserId() : ""%>'){
 			actionTd = $("<td><a onclick='updateReply("+data[i].reply_no+", \""+data[i].reply_content+"\")'>수정</a><a onclick='deleteReply("+data[i].reply_no+")'>삭제</a></td>");
 		}else{
 			actionTd = $("<td></td>");
@@ -159,7 +158,7 @@ function writeComment(){
 		url:"/swp/writeComment.do",
 		data:{
 			comment:$("#comment").val(),
-			userId:'<%=member.getUserId()%>',
+			userId:'<%=member != null ? member.getUserId() : ""%>',
 			bno:<%=free.getBoard_no()%>
 		},type:"get",
 		success:function(data){
@@ -263,8 +262,6 @@ function deleteBoard(){
 
 function updateBoard(){
 	location.href = "/swp/updateFreeForm.do?bno=<%=free.getBoard_no()%>&currentPage=<%=currentPage%>";
-	
-	
 }
 </script>
 </body>

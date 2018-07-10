@@ -2,9 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
- 	if (null != session.getAttribute("user")) {
 		MemberVo member = (MemberVo) session.getAttribute("user");
-	}
 %>
 <!DOCTYPE html>
 <html>
@@ -24,6 +22,18 @@
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=MiE7za1q2r2x8mnXzzsu&submodules=geocoder"></script>
 <script>
+function logout(){
+	location.href = "/swp/userLogout.do";		
+}
+<% if(null != session.getAttribute("user")){%>
+$(function() {
+$("#top-Login").attr("href", "#");
+$("#top-Login").attr("onclick", "logout();");
+});
+<%}	%>
+
+
+
 	/* jQuery timeㄴ */
 	var subMenuName = null;
 
@@ -145,9 +155,9 @@
 				<div id="top-menu-right">
 					<a
 						href="<%=request.getContextPath() + "/views/common/loginPage.html"%>"
-						id="top-Login">로그인</a><span class="al_bar"><img
+						id="top-Login">로그인/로그아웃</a><span class="al_bar"><img
 						src="/swp/images/main/mline_dot.gif"></img></span> <a
-						href="<%=request.getContextPath() + "/views/myPage.jsp"%>"
+						href="<%=request.getContextPath() + "/views/common/myPage.jsp"%>"
 						id="top-profile">마이페이지</a><span class="al_bar"></span> <a
 						href="<%=request.getContextPath() + "/views/service.jsp"%>"
 						id="top-service">고객센터</a>
@@ -156,8 +166,8 @@
 		</header>
 		<br>
 		<div class="search_area">
-			<div id="logo_image">
-				<img src="/swp/images/logo.png"></img>
+			<div id="logo_image" >
+				<img src="/swp/images/logo.png" width="80px" height="80px"></img>
 			</div>
 			<form id="search_form" name="search" action="?" method="get"
 				role="search">

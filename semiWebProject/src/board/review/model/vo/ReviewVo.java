@@ -11,7 +11,7 @@ public class ReviewVo {
 	private Date reviewDate;
 	private String showcode;
 	private int reportCount;
-	private boolean wishbool;
+	private String wishbool;
 	
 	public ReviewVo() {
 		// TODO Auto-generated constructor stub
@@ -40,11 +40,11 @@ public class ReviewVo {
 	
 	
 
-	public boolean isWishbool() {
+	public String isWishbool() {
 		return wishbool;
 	}
 
-	public void setWishbool(boolean wishbool) {
+	public void setWishbool(String wishbool) {
 		this.wishbool = wishbool;
 	}
 

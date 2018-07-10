@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 	<%
 		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
-		MemberVo member = (MemberVo) session.getAttribute("user");
+		//MemberVo member = (MemberVo) session.getAttribute("user");
 	%>
 <!DOCTYPE html>
 <html>
