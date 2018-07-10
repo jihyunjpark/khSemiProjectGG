@@ -615,6 +615,12 @@ table.type09 td {
 
 <script src="/swp/js/star.js"></script>
 <script>
+
+	$(function(){
+		sessionStorage.setItem("floatImg","<%=show.getPoster()%>");
+		sessionStorage.setItem("floatTitle","<%=show.getPrfnm()%>");
+		sessionStorage.setItem("floatLink","/swp/reviewList.do?showId=<%=show.getMt20id()%>");
+	});
 	$(function() {
 		//$("#won").hide();
 		$("#objImg").hover(function() {

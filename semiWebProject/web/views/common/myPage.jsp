@@ -54,39 +54,39 @@
 
 </head>
 <%@ include file="header.jsp" %>
-		<form action="#" method="post" onsubmit="validate();">
+		<form id="updateForm" name="updateForm" action="/swp/updateMember.au" method="post" onsubmit="validate();">
   		<h2>회원 가입</h2>
   		<p>
 			<label for="id" class="floatLabel">ID</label>
 			<input id="userId" name="userId" type="text">
 			<span>id를 입력해주세요.</span>
-			<span>이미 사용중인 id 입니다.</span>
+			<!-- <span>이미 사용중인 id 입니다.</span> -->
 		</p>
   		<p>
 			<label for="name" class="floatLabel">이름</label>
 			<input id="name" name="name" type="text">
-			<span>이름을 입력해주세요.</span>
+			<!--<span>이름을 입력해주세요.</span>-->
 		</p>
 		<p>
 			<label for="nickname" class="floatLabel">별명</label>
 			<input id="nickname" name="nickname" type="text">
 			<span>닉네임을 입력해주세요.</span>
-			<span>이미 사용중인 닉네임 입니다.</span>
+		<!--	<span>이미 사용중인 닉네임 입니다.</span>   -->
 		</p>
 		<p>
 			<label for="email" class="floatLabel">이메일</label>
 			<input id="email" name="email" type="text">
-			<span>이미 사용중인 이메일 입니다.</span>
+			<!--<span>이미 사용중인 이메일 입니다.</span>-->
 		</p>
 		<p>
 			<label for="password" class="floatLabel">비밀번호</label>
 			<input id="password" name="password" type="password">
-			<span>비밀번호를 8자 이상으로 입력해주세요.</span>
+			<!--<span>비밀번호를 8자 이상으로 입력해주세요.</span>-->
 		</p>
 		<p>
 			<label for="confirm_password" class="floatLabel">비밀번호 확인</label>
 			<input id="confirm_password" name="confirm_password" type="password">
-			<span>비밀번호가 일치하지 않습니다.</span>
+			<!--<span>비밀번호가 일치하지 않습니다.</span>-->
 		</p>
 		<p>
 			<label for="gender" class="floatLabel">성별</label>
@@ -94,12 +94,11 @@
     			<input id="gender_m" name="gender" type="radio" value="M">남자
     			<input id="gender_f" name="gender" type="radio" value="F">여자
   			</fieldset>
-  			<span>성별을 선택해주세요.</span>
+  			<!--<span>성별을 선택해주세요.</span>-->
 		</p>
 				<td></td>
 		<br>
-		<div class="btns" align="center">
-			<div id="joinMainBtn" onclick="mainPage();">메인으로</div>		
+		<div class="btns" align="center">	
 			<div id="updateBtn" onclick="updateMember();">회원 수정</div>		
 			<div id="deleteBtn" onclick="deleteMember();">회원 탈퇴</div>		
 		</div>
