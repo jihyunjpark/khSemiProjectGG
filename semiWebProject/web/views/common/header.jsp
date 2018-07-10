@@ -2,11 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-// 	if (null != session.getAttribute("user")) {
-		MemberVo member = (MemberVo) session.getAttribute("user");
-// 		// 	} else if(null != ) {
-
-// 	}
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -128,17 +124,10 @@
 		}).scroll();
 
 	});
-	
-	$(function(){
-		if(sessionStorage.getItem("floatImg") != null){
-			$("#floatLink").attr("href", sessionStorage.getItem("floatLink"));
-			$("#floatImg").attr("src", sessionStorage.getItem("floatImg"));
-			$("#floatTitle").text(sessionStorage.getItem("floatTitle"));
-		}
-	});
 </script>
 
 </head>
+
 <body>
 	<button onclick="confirmEmail();">정보확인-네이버</button>
 	<div class="header">
@@ -147,9 +136,9 @@
 				<div id="top-menu-right">
 					<a
 						href="<%=request.getContextPath() + "/views/common/loginPage.html"%>"
-						id="top-Login">로그인</a><span class="al_bar"></span> <a
-						href="<%=request.getContextPath() + "/views/common/myPage.jsp"%>"
-						id="top-profile">마이페이지</a><span class="al_bar"></span><a
+						id="top-Login">로그인</a><span class="al_bar"><img src="/swp/images/main/mline_dot.gif" ></img></span> <a
+						href="<%=request.getContextPath() + "/views/myPage.jsp"%>"
+						id="top-profile">마이페이지</a><span class="al_bar"></span> <a
 						href="<%=request.getContextPath() + "/views/service.jsp"%>"
 						id="top-service">고객센터</a>
 				</div>
@@ -158,7 +147,7 @@
 		<br>
 		<div class="search_area">
 			<div id="logo_image">
-				<img src="/swp/images/logo.png"><a href="/swp/index.jsp"></a></img>
+				<img src="/swp/images/logo.png"></img>
 			</div>
 			<form id="search_form" name="search" action="?" method="get"
 				role="search">
@@ -216,8 +205,8 @@
 				<li><a href="/swp/freeList.do"
 					onclick="setLeftMenu('question');">문의</a>
 					<ul>
-						<li><a href="#" onclick="setLeftMenu('question');">문의게시판</a></li>
-						<li><a href="#" onclick="setLeftMenu('question');">FAQ</a></li>
+						<!-- <li><a href="#" onclick="setLeftMenu('question');">문의게시판</a></li> -->
+						<li><a href="/swp/faqList.do" onclick="setLeftMenu('question');">FAQ</a></li>
 					</ul></li>
 			</ul>
 		</div>
@@ -225,6 +214,7 @@
 
 	</div>
 	<br>
+	</div>
 	<div id="left-header">
 		<!-- 사이드메뉴 -->
 		<div id="accordian">
@@ -281,22 +271,16 @@
 						<span class="icon-heart"></span>문의
 					</h3>
 					<ul>
-						<li><a href="#">문의게시판</a></li>
-						<li><a href="#">FAQ</a></li>
+						<li><a href="/swp/faqList.do">FAQ</a></li>
 					</ul>
 				</li>
 			</ul>
 		</div>
 	</div>
-       <div id="right-header">
+	<div id="right-header">
 		<div id="floatparent">
-			<div id="floatMenu">플로팅 메뉴
-				<a id="floatLink">
-					<img id="floatImg" width="100" height="100"/>
-					<span id="floatTitle"></span>
-				</a>
-			</div>
+			<div id="floatMenu">플로팅 메뉴</div>
 		</div>
 	</div>
- </body>
+</body>
 </html>
