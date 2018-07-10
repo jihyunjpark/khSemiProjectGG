@@ -5,9 +5,9 @@
 	pageEncoding="UTF-8"%>
 <%
 BoxofficeListExtXml boxExt = new BoxofficeListExtXml();
-String category = "";
-String type = "";
-List<BoxofficeShowVo> list = boxExt.getXmlDataSAX(category, type);
+String category = "AAAA";
+String type = "week"; /* day, week, month */
+List<BoxofficeShowVo> list = boxExt.getXmlDataSAX(category, type); 
 
 
 	%>
@@ -91,8 +91,6 @@ option {
     padding: 0px 2px 1px;
 }
 
-
-
 .main_menu2 {
     float: left;
     overflow: hidden;
@@ -108,11 +106,17 @@ option {
 
 .main_menu2 p {
     float: left;
-    background: url(/swp/images/main/mlist_dot.gif) no-repeat right 50%;
+    background: url(/swp/images/main/mline_dot.gif) no-repeat right 50%;
     padding-right: 12px;
     margin-right: 9px;
 }
 
+.m01 {
+    background: url(/swp/images/main/m01_off.jpg) no-repeat;
+    width: 77px;
+    height: 42px;
+    display: inline-block;
+}
 .m01_on {
     background: url(/swp/images/main/m01_on.jpg) no-repeat;
     width: 77px;
@@ -127,8 +131,22 @@ option {
     display: inline-block;
 }
 
+.m02 on {
+    background: url(/swp/images/main/m02_onf.jpg) no-repeat;
+    width: 86px;
+    height: 42px;
+    display: inline-block;
+}
+
 .m03 {
     background: url(/swp/images/main/m03_off.jpg) no-repeat;
+    width: 122px;
+    height: 42px;
+    display: inline-block;
+}
+
+.m03 on {
+    background: url(/swp/images/main/m03_on.jpg) no-repeat;
     width: 122px;
     height: 42px;
     display: inline-block;
@@ -259,7 +277,28 @@ img, fieldset {
 
 <script>
 
+$(function(){
+	$('select').change(function(){
+		var a = $('[selected]').attr("selected", "");
+		var b = 
+		console.log(a);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	});
+});
 
+$('#Theatre').click(function() {
+	alert("aa");
+});
 </script>
 
 </head>
@@ -283,12 +322,12 @@ img, fieldset {
 				<div class="main_menu1">
 					<select id="period" name="period" title="기간">
 						<option value="daily">일간</option>
-						<option value="weekly" selected="">주간</option>
+						<option value="weekly" selected>주간</option>
 						<option value="monthly">월간</option>
 					</select>
 				</div>
 				<div class="main_menu2">
-					<p><a href="#none" class="m01 m01_on" id="Theatre"><span class="text_none">연극</span></a></p>
+					<p><a href="#none" class="m01 m01_on" id="Theatre" onclick=><span class="text_none">연극</span></a></p>
 					<p><a href="#none" class="m02" id="Musical"><span class="text_none">뮤지컬</span></a></p>
 					<p><a href="#none" class="m03" id="Classic"><span class="text_none">클래식/오페라</span></a></p>
 				</div>
@@ -301,18 +340,22 @@ img, fieldset {
 			</div>
 
 		<ul class="boxOfficePoster">
-		<%for(int i = 0; i < 10; i++){ %>
+		<%for(int i = 0; i < 10; i++){%> 
+		<% if(list.get(i).getPoster().charAt(0) == '/') {
+			list.get(i).setPoster("http://www.kopis.or.kr/" + list.get(i).getPoster());
+		}%>
+			
 			<li><a href=""><div class="poster">
-						<span class="num"><img src="/images/main/poster_rank_<%=i+1%>.png"
-							alt="<!-- 순위 -->"></span><span class="poster_img"><img
-							src="이미지 경로"
-							alt="<!-- 제목 -->"></span>
+						<span class="num"><img src="/swp/images/main/poster_rank_<%=i+1%>.png"
+							alt="<%=list.get(i).getRnum() %>>"></span><span class="poster_img"><img
+							src="<%=list.get(i).getPoster() %>"
+							alt="<%=list.get(i).getPrfnm() %>"></span>
 					</div>
 					<div class="poster_hover" style="display: none; opacity: 1;">
 						<dl>
-							<dt style="margin-bottom: 30px"><!-- 제목 --></dt>
-							<dt><!-- 연극 기간 --></dt>
-							<dt><!-- 극장 --></dt>
+							<dt style="margin-bottom: 30px"><%=list.get(i).getPrfnm() %></dt>
+							<dt><%=list.get(i).getMt20id() %></dt>
+							<dt><%=list.get(i).getPrfplcnm() %></dt>
 						</dl>
 					</div></a></li>
 					<%} %>
