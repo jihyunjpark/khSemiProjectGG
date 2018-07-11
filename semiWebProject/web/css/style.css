@@ -4,10 +4,9 @@
 /* ////////////////////// */
 
 .wrap {
-	margin: 50px auto;
+	margin: 00px auto;
 	position: relative;
-	width: 960px;
-	background: #f2f4f7;
+	width: 1140px;
 }
 
 .header {
@@ -19,8 +18,10 @@
 
 body, button, input, select, table, textarea {
 	font-size: 12px;
-	font-family: Dotum, '돋움', Helvetica, "Apple SD Gothic Neo", sans-serif;
+	font-family: Helvetica, "Apple SD Gothic Neo", sans-serif;
 }
+
+
 
 #body-wrapper {
 	overflow: hidden;
@@ -50,7 +51,6 @@ header {
 	margin: 5px 4px 0 9px;
 	width: 1px;
 	height: 11px;
-	background: #000000;
 }
 
 #top-menu {
@@ -427,6 +427,7 @@ fieldset {
 	list-style: none;
 	line-height: normal;
 	text-align: center;
+	
 }
 
 .menubar li {
@@ -464,6 +465,7 @@ fieldset {
 	position: absolute;
 	width: 228px;
 	z-index: 200;
+	
 	/*top:1em;
 /*left:0;*/
 }

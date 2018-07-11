@@ -155,8 +155,7 @@ $("#top-Login").attr("onclick", "logout();");
 				<div id="top-menu-right">
 					<a
 						href="<%=request.getContextPath() + "/views/common/loginPage.html"%>"
-						id="top-Login">로그인/로그아웃</a><span class="al_bar"><img
-						src="/swp/images/main/mline_dot.gif"></img></span> <a
+						id="top-Login">로그인/로그아웃</a><span class="al_bar"></span> <a
 						href="<%=request.getContextPath() + "/views/common/myPage.jsp"%>"
 						id="top-profile">마이페이지</a><span class="al_bar"></span> <a
 						href="<%=request.getContextPath() + "/views/service.jsp"%>"
@@ -167,9 +166,9 @@ $("#top-Login").attr("onclick", "logout();");
 		<br>
 		<div class="search_area">
 			<div id="logo_image" >
-				<img src="/swp/images/logo.png" width="80px" height="80px"></img>
+				<a href="<%=request.getContextPath()%>/index.jsp"><img src="/swp/images/logo.png" width="80px" height="80px"></img></a>
 			</div>
-			<form id="search_form" name="search" action="?" method="get"
+			<form id="search_form" name="search" action="/swp/views/common/showSearch.jsp"  method="get"
 				role="search">
 				<fieldset class="greenwindow">
 					<legend>검색</legend>
@@ -188,7 +187,7 @@ $("#top-Login").attr("onclick", "logout();");
 
 		<div class="menubar">
 			<ul>
-				<li><a href="/swp" onclick="setLeftMenu('home');">Home</a></li>
+				<li><a href="<%=request.getContextPath()%>/index.jsp" onclick="setLeftMenu('home');">Home</a></li>
 				<li><a
 					href="http://localhost:8081/swp/views/board/show/showMain.jsp"
 					id="current" onclick="setLeftMenu('show');">공연</a>
@@ -241,7 +240,7 @@ $("#top-Login").attr("onclick", "logout();");
 			<ul>
 				<li class="active">
 					<h3 id="homeMenu">
-						<span class="icon-dashboard"></span><a href="/swp"
+						<span class="icon-dashboard"></span><a href="<%=request.getContextPath()%>/index.jsp"
 							onclick="setLeftMenu('home');">HOME</a>
 					</h3>
 				</li>

@@ -43,8 +43,6 @@
 /*-------- showSub --------- */
 /* -- */
 #container {
-	overflow: hidden;
-	width: 1002px;
 	margin: 0 auto;
 }
 
@@ -75,7 +73,9 @@
 	margin-top: 3px;
 	float: left;
 	width: 100%;
+	
 }
+
 
 #eventContents li {
 	display: block;
@@ -100,7 +100,6 @@
 
 #detailMain {
 	overflow: hidden;
-	width: 960px;
 	padding: 20px;
 	border: solid 1px #c2c2c2;
 }
@@ -306,7 +305,7 @@ table.type09 td {
 
 .menuSub li {
 	overflow: hidden;
-	width: 240px;
+	width: 274px;
 	float: left;
 	padding: 0px;
 }
@@ -391,7 +390,7 @@ table.type09 td {
 }
 
 .subImage img {
-	width: 960px;
+	width: 100%;
 	margin: 0 auto;
 }
 
@@ -417,7 +416,7 @@ table.type09 td {
 				<div id="contentsLeft">
 					<img src="<%=show.getPoster()%>" width=350 id="objImg"
 						class="subDetailImg" />
-					<div class="star-input" id="won">
+					<!-- <div class="star-input" id="won">
 						<span class="input"> <input type="radio" name="star-input"
 							value="1" id="p1"> <label for="p1">1</label> <input
 							type="radio" name="star-input" value="2" id="p2"> <label
@@ -430,7 +429,7 @@ table.type09 td {
 						<output for="star-input">
 							<b>0</b>점
 						</output>
-					</div>
+					</div> -->
 				</div>
 
 				<div id="contentsRight">
@@ -643,7 +642,7 @@ table.type09 td {
 		sessionStorage.setItem("floatTitle","<%=show.getPrfnm()%>");
 		sessionStorage.setItem("floatLink","/swp/reviewList.do?showId=<%=show.getMt20id()%>");
 	});
-	$(function() {
+/* 	$(function() {
 		//$("#won").hide();
 		$("#objImg").hover(function() {
 			$("#won").show();
@@ -660,7 +659,7 @@ table.type09 td {
 
 		//setSubMenu('subImage');
 		$(".menuSubArea").hide(); //원 로직
-	});
+	}); */
 
 	function setSubMenu(area, obj) {
 		sessionStorage.setItem('subMenu', area);
@@ -695,7 +694,7 @@ table.type09 td {
 
 	$(function() {
 		subMenuName = sessionStorage.getItem('subMenu');
-		console.log(subMenuName);
+		//console.log(subMenuName);
 		if (subMenuName != null) {
 			$("." + subMenuName).show();
 			$(".menuSub a").removeClass("highlight");
