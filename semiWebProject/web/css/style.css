@@ -302,9 +302,6 @@ fieldset {
 	height: 100%;
 	margin-left: 10px;
 	color: white;
-	/*Some cool shadow and glow effect*/
-	box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.6), 0 0 200px 1px
-		rgba(255, 255, 255, 0.5);
 }
 
 #accordian h3 {

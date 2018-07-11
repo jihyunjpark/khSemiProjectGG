@@ -31,6 +31,10 @@
 table td {
 	text-align: center;
 }
+.writeBtnArea{
+	margin-left: auto;
+	margin-right: auto;
+}
 #writeBtn{
 	width:150px;
 	height:30px;
@@ -88,7 +92,9 @@ table td {
 				%>
 			</table>
 		</div>
-		<div id="writeBtn" onclick="writeNotice();">작성</div>
+		<div class="writeBtnArea" align="center">
+			<div id="writeBtn" onclick="writeNotice();">작성</div>
+		</div>
 	</div>
 </body>
 </html>
