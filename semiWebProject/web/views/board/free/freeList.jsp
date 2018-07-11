@@ -20,8 +20,28 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+.freeListArea {
+height:300px;
+
+
+}
+
+.pageArea {
+margin-top: 10px;
+}
+.tableArea {
+	width: 1000px;
+	height: 250px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 td{
 	text-align:center;
+}
+
+tr:hover{
+background-color: #f5f5f5;
 }
 
 </style>
@@ -29,8 +49,9 @@ td{
 <body>
 <div>
 	<%@ include file="/views/common/header.jsp"%>
+	<div class="freeListArea">
 	<div class="section">
-		<table width="100%" border=0 cellpadding=0 cellspacing=0 align="center">
+		<table class="tableArea" width="100%" border=0 cellpadding=0 cellspacing=0 align="center">
 			<tr>
 				<th>글번호</th>
 				<th>제목</th>
@@ -79,6 +100,10 @@ td{
 		<%if(null != member){%>
 			<input type="button" value="작성하기" onclick="writeBoard();"/>
 		<%} %>
+	</div>
+	
+	
+	
 	</div>
 </div>
 <%@ include file="/views/common/footer.jsp"%>

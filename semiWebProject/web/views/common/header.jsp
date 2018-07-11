@@ -11,7 +11,10 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/swp/slick/slick-theme.css">
 <link rel="stylesheet" type="text/css" href="/swp/slick/slick.css">
+<link rel="stylesheet" href="http://icono-49d6.kxcdn.com/icono.min.css">
 <link rel="stylesheet" type="text/css" href="/swp/css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Song+Myung" rel="stylesheet">
 <!-- (1) LoginWithNaverId Javscript SDK -->
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
@@ -212,8 +215,8 @@ $("#top-Login").attr("onclick", "logout();");
 							onclick="setLeftMenu('community');">자유게시판</a></li>
 						<li><a href="/swp/noticeList.do"
 							onclick="setLeftMenu('community');">공지사항</a></li>
-						<li><a href="/swp/totalReviewList.do"
-							onclick="setLeftMenu('community');">리뷰 게시판</a></li>
+						<!-- <li><a href="/swp/totalReviewList.do"
+							onclick="setLeftMenu('community');">리뷰 게시판</a></li> -->
 					</ul></li>
 				<li><a href="/swp/magazineList.do"
 					onclick="setLeftMenu('magazine');">매거진</a>
@@ -273,7 +276,7 @@ $("#top-Login").attr("onclick", "logout();");
 					<ul>
 						<li><a href="#">자유 게시판</a></li>
 						<li><a href="#">공지사항</a></li>
-						<li><a href="#">리뷰 게시판</a></li>
+						<!-- <li><a href="#">리뷰 게시판</a></li> -->
 					</ul>
 				</li>
 				<li>
@@ -298,8 +301,9 @@ $("#top-Login").attr("onclick", "logout();");
 	<div id="right-header">
 		<div id="floatparent">
 			<div id="floatMenu">
-				플로팅 메뉴 <a id="floatLink"> <img id="floatImg" width="100"
-					height="100" /> <span id="floatTitle"></span>
+			<div id="floatp">최근 본 공연</div>
+				<a id="floatLink"> <img id="floatImg" width="100"
+					height="100" /> <div id="floatTitle"></div>
 				</a>
 			</div>
 		</div>

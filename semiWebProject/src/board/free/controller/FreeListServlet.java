@@ -9,12 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import board.free.model.service.FreeService;
 import board.free.model.vo.FreeVo;
 import common.PageInfo;
-import member.model.vo.MemberVo;
 
 @WebServlet("/freeList.do")
 public class FreeListServlet extends HttpServlet {
@@ -24,7 +22,7 @@ public class FreeListServlet extends HttpServlet {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String type = request.getParameter("type");
 		FreeService bs = new FreeService();
 		//페이징 처리 변수
 		int currentPage;	//현재 페이지의 번호
@@ -45,7 +43,7 @@ public class FreeListServlet extends HttpServlet {
 		}
 		
 		//게시글의 총 갯수
-		int listCount = bs.selectFreeTotalCount();
+		int	listCount = bs.selectFreeTotalCount();
 		//134 -> 14
 		maxPage = (int)((double)listCount / limit + 0.9);
 		

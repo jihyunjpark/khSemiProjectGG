@@ -210,9 +210,9 @@ border-bottom: 2px solid #e5e5e5;
 
 		<!-- 페이징 처리 부분     <<	1 2 3 4 5 6 7 ... >>  -->
 		<div class="pageArea">
-			<button onclick="movePage(1);"><<</button>
-			<button onclick="prevPage(<%=currentPage%>)"
-				<%if (1 == currentPage) {%> disabled <%}%>><</button>
+			<i class="icono-rewind" onclick="movePage(1);"><<</i>
+			<i class="icono-previous" onclick="prevPage(<%=currentPage%>)"
+				<%if (1 == currentPage) {%> disabled <%}%>><</i>
 			<%
 				for (int i = startPage; i <= endPage; i++) {
 			%>
@@ -222,9 +222,9 @@ border-bottom: 2px solid #e5e5e5;
 			<%
 				}
 			%>
-			<button onclick="nextPage(<%=currentPage%>)"
-				<%if (maxPage == currentPage) {%> disabled <%}%>>></button>
-			<button onclick="movePage(<%=maxPage%>);">>></button>
+			<i class="icono-next" onclick="nextPage(<%=currentPage%>)"
+				<%if (maxPage == currentPage) {%> disabled <%}%>>></i>
+			<i class="icono-forward" onclick="movePage(<%=maxPage%>);">>></i>
 		</div>
 	</div>
 	<%@ include file="/views/common/footer.jsp"%>

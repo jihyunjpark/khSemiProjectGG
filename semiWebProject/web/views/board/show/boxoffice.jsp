@@ -22,8 +22,8 @@ body {
 }
 
 body, input, textarea, select, button, table {
-	font-family: Nanum Gothic, dotum, sans-serif;
-	font-size: 12px;
+	font-family: 'Rubik';
+	font-size: 15px;
 }
 
 .bold, h1, h2, strong, b {
