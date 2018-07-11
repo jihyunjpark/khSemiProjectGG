@@ -208,7 +208,7 @@ border-bottom: 2px solid #e5e5e5;
 			</table>
 		</div>
 
-		<!-- 페이징 처리 부분     <<	1 2 3 4 5 6 7 ... >>  -->
+		<!-- 페이징 처리     <<	1 2 3 4 5 6 7 ... >>  -->
 		<div class="pageArea">
 			<i class="icono-rewind" onclick="movePage(1);"><<</i>
 			<i class="icono-previous" onclick="prevPage(<%=currentPage%>)"
