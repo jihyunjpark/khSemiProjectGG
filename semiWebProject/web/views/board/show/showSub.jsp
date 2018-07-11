@@ -570,6 +570,23 @@ table.type09 td {
 					<div id="calendar"></div>
 				</div>
 				<div class="comment menuSubArea">
+				<%if(member != null){%>
+					<table width="800">
+						<input type="hidden" name="bno" value="<%=show.getMt20id()%>"/>
+						<input type="hidden" name="userId"	value="<%=member.getUserId() %>"/>
+						<tr>
+							<td>
+								댓글 : <input type="text" size="40"  name="comment" id="commentText"/>
+							</td>
+							<td>
+								<!-- <input type="submit" value="댓글작성"/> -->
+								<input type="button" id="replyWriteBtn" onclick="writeComment();" value="댓글작성"/>
+								<input type="button" id="replyUpdateBtn" onclick="updateComment();" value="수정"/>
+								<input type="button" id="replyCancelBtn" onclick="cancelComment();" value="취소"/>
+							</td>
+						</tr>
+					</table>		
+				<%} %>
 					<div class="reviewSection">
 						<table id="reviewTable">
 							<tr>
@@ -577,7 +594,9 @@ table.type09 td {
 								<th>내용</th>
 								<th>작성자</th>
 								<th>작성일</th>
+								<th></th>
 							</tr>
+							<tbody id="reviewTbody">
 							<%
 								if (list.size() == 0) {
 							%>
@@ -597,12 +616,13 @@ table.type09 td {
 								<td><%=n.getContent()%></td>
 								<td><%=n.getMemberId()%></td>
 								<td><%=n.getReviewDate()%></td>
-								<td><button onclick="reportReview('<%=n.getReviewNo()%>')"></button></td>
+								<td><button onclick="reportReview('<%=n.getReviewNo()%>')">신고하기</button></td>
 							</tr>
 							<%
 								}
 								}
 							%>
+							</tbody>
 						</table>
 
 					</div>
@@ -682,5 +702,115 @@ table.type09 td {
 			$("#subMenuName").toggleClass("highlight");
 		}
 	});
+	
+	
+
+	function writeComment(){
+		$.ajax({
+			url:"/swp/writeShowComment.do",
+			data:{
+				comment:$("#commentText").val(),
+				userId:'<%=member != null ? member.getUserId() : ""%>',
+				bno:'<%=show.getMt20id()%>'
+			},type:"get",
+			success:function(data){
+				setReplyList(data);
+			},error:function(e){
+				console.log(e);
+			}
+		});
+	}
+
+	function deleteReply(replyNo){
+		if(!confirm("삭제 하시겠습니까?")){
+			return;
+		}
+		$.ajax({
+			url:"/swp/deleteShowReply.do",
+			data:{
+				replyNo:replyNo,
+				bNo:'<%=show.getMt20id()%>'
+			},type:"get",
+			success:function(data){
+				setReplyList(data);
+			},error:function(e){
+				console.log(e);
+			}
+		});
+	}
+
+	var modifyNo;
+	function updateReply(reply_no, content){
+		$("#commentText").val(content).focus();
+		modifyNo = reply_no;
+		setBtnVisible(false);
+	}
+
+	function updateComment(){
+		$.ajax({
+			url:"/swp/updateShowComment.do",
+			data:{
+				comment:$("#commentText").val(),
+				cno:modifyNo,
+				bno:'<%=show.getMt20id()%>'
+			},type:"get",
+			success:function(data){
+				setReplyList(data);
+				setBtnVisible(true);
+			},error:function(e){
+				console.log(e);
+			}
+		});
+		
+	}
+
+	function cancelComment(){
+		if(confirm("댓글 수정을 취소 하시겠습니까?")){
+			setBtnVisible(true);
+			$("#commentText").val("");
+		}
+	}
+	
+	$(function(){
+		setBtnVisible(true);
+	});
+
+	function setBtnVisible(flag){
+		if(flag){
+			$("#replyWriteBtn").show();
+			$("#replyUpdateBtn").hide();
+			$("#replyCancelBtn").hide();
+		}else{
+			$("#replyWriteBtn").hide();
+			$("#replyUpdateBtn").show();
+			$("#replyCancelBtn").show();
+		}
+	}
+	
+	function setReplyList(data){
+		$table = $("#reviewTbody");
+		$table.empty();
+		for(var i in data){
+				
+			var tr = $("<tr>");
+			var gradeTd = $("<td>").text(data[i].point);
+			var contentTd = $("<td>").text(data[i].content);
+			var userTd = $("<td>").text(data[i].writerName);
+			var dateTd = $("<td>").text(data[i].writeDateStr);
+			tr.append(gradeTd);
+			tr.append(contentTd);
+			tr.append(userTd);
+			tr.append(dateTd);
+			var actionTd
+			if(data[i].writer == '<%=member != null ? member.getUserId() : ""%>'){
+				actionTd = $("<td><a onclick='updateReply("+data[i].no+", \""+data[i].content+"\")'>수정</a><a onclick='deleteReply("+data[i].no+")'>삭제</a></td>");
+			}else{
+				actionTd = $("<td></td>");
+			}
+			tr.append(actionTd);
+			$table.append(tr);
+		}
+		$("#commentText").val("");
+	}
 </script>
 </html>

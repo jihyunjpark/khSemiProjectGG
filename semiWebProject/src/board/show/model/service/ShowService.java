@@ -1,11 +1,16 @@
 package board.show.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
+import board.free.model.dao.FreeDao;
+import board.free.model.vo.FreeReplyVo;
 import board.show.model.dao.ShowDao;
 import board.show.model.vo.ShowVo;
 import common.JDBCTemplate;
+import report.review.model.vo.ReportVo;
+import report.review.model.vo.ReportVo2;
 
 public class ShowService {
 	public List<ShowVo> selectShowList() {
@@ -58,5 +63,20 @@ public class ShowService {
 
 		return count;
 		
+	}
+
+	public ArrayList<ReportVo2> insertComment(ReportVo2 reply) {
+		Connection con = JDBCTemplate.getConnection();
+		
+		int result = new ShowDao().insertComment(con, reply);
+		System.out.println("result : " + result);
+		ArrayList<ReportVo2> list = new ShowDao().selectReplyList(con, reply);
+		if(result > 0){
+			JDBCTemplate.commit(con);
+		}else{
+			JDBCTemplate.rollback(con);
+		}
+		
+		return list;
 	}
 }
