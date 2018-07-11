@@ -44,7 +44,7 @@ public class BoxofficeListExtXml {
 				showData.setRnum(show.getChildText(tagList[6]));
 				showData.setSeatcnt(show.getChildText(tagList[7]));
 				if (show.getChildText(tagList[8]).charAt(0) == '/') {
-					System.out.println(show.getChildText(tagList[8]));
+					//System.out.println(show.getChildText(tagList[8]));
 					showData.setPoster("http://www.kopis.or.kr" + show.getChildText(tagList[8]));
 					
 				} else {

@@ -75,16 +75,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script>
-
 function movePage(page) {
-	var query = $("#nquery").val();
+var query = $("#nquery").val();
 	location.href="http://localhost:8081/swp/views/common/showSearch.jsp?page=" + page + "&query=" + query;
 }
 function prevPage(page) {
+var query = $("#nquery").val();
 	page -= 1;
 	location.href="http://localhost:8081/swp/views/common/showSearch.jsp?page=" + page + "&query=" + query;
 }
 function nextPage(page) {
+var query = $("#nquery").val();
 	page += 1;
 	location.href="http://localhost:8081/swp/views/common/showSearch.jsp?page=" + page + "&query=" + query;
 }
