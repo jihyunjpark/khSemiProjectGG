@@ -13,22 +13,25 @@ import board.show.model.vo.BoxofficeShowVo;
 import board.show.model.vo.ShowVo2;
 
 public class BoxofficeListExtXml {
-	
+
 	public List<BoxofficeShowVo> getXmlDataSAX(String category, String type) {
 		List<BoxofficeShowVo> showList = null;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		Date today = new Date();
 		String strToday = sdf.format(today);
-		
+
 		try {
-			String baseUrl = "http://kopis.or.kr/openApi/restful/boxoffice?service=d11d486f591e447d84737299b2895c19&ststype=" + type + "&date=" + strToday + "&catecode=" + category;
+			String baseUrl = "http://kopis.or.kr/openApi/restful/boxoffice?service=d11d486f591e447d84737299b2895c19&ststype="
+					+ type + "&date=" + strToday + "&catecode=" + category;
+			System.out.println("XmlRequestUrl: " + baseUrl);
 			SAXBuilder builder = new SAXBuilder();
 			Document doc = (Document) builder.build(new java.net.URL(baseUrl));
 			Element root = doc.getRootElement(); // result
 
 			List<Element> list = root.getChildren("boxof");
 			showList = new ArrayList<BoxofficeShowVo>();
-			String[] tagList = { "area", "prfdtcnt", "prfpd", "cate", "prfplcnm", "prfnm", "rnum", "seatcnt", "poster", "mt20id"};
+			String[] tagList = { "area", "prfdtcnt", "prfpd", "cate", "prfplcnm", "prfnm", "rnum", "seatcnt", "poster",
+					"mt20id" };
 			for (int i = 0; i < list.size(); i++) {
 				BoxofficeShowVo showData = new BoxofficeShowVo();
 				Element show = list.get(i);
@@ -40,7 +43,13 @@ public class BoxofficeListExtXml {
 				showData.setPrfnm(show.getChildText(tagList[5]));
 				showData.setRnum(show.getChildText(tagList[6]));
 				showData.setSeatcnt(show.getChildText(tagList[7]));
-				showData.setPoster(show.getChildText(tagList[8]));
+				if (show.getChildText(tagList[8]).charAt(0) == '/') {
+					System.out.println(show.getChildText(tagList[8]));
+					showData.setPoster("http://www.kopis.or.kr" + show.getChildText(tagList[8]));
+					
+				} else {
+					showData.setPoster(show.getChildText(tagList[8]));
+				}
 				showData.setMt20id(show.getChildText(tagList[9]));
 				showList.add(showData);
 			}
@@ -49,29 +58,30 @@ public class BoxofficeListExtXml {
 		}
 		return showList;
 	}
-	
+
 	public String getBoxofficeDate(String category, String type) {
 		String boxDate = "";
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		Date today = new Date();
 		String strToday = sdf.format(today);
-		
+
 		try {
-			String baseUrl = "http://kopis.or.kr/openApi/restful/boxoffice?service=d11d486f591e447d84737299b2895c19&ststype=" + type + "&date=" + strToday + "&catecode=" + category;
+			String baseUrl = "http://kopis.or.kr/openApi/restful/boxoffice?service=d11d486f591e447d84737299b2895c19&ststype="
+					+ type + "&date=" + strToday + "&catecode=" + category;
 			SAXBuilder builder = new SAXBuilder();
 			Document doc = (Document) builder.build(new java.net.URL(baseUrl));
 			Element root = doc.getRootElement(); // result
-			
+
 			System.out.println(root);
 
 			List<Element> list = root.getChildren("basedate");
-				BoxofficeShowVo showData = new BoxofficeShowVo();
-				Element show = list.get(0);
+			BoxofficeShowVo showData = new BoxofficeShowVo();
+			Element show = list.get(0);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return boxDate;
-		
+
 	}
 
 }

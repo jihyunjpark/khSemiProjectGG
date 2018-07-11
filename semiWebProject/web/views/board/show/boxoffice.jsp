@@ -3,20 +3,6 @@
 <%@page import="board.show.controller.BoxofficeListExtXml"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	BoxofficeListExtXml boxExt = new BoxofficeListExtXml();
-String category = "AAAA";
-String type = "week";
-if(null != request.getParameter("category")) {
-		category = request.getParameter("category");
-	}
-if(null != request.getParameter("type")) {
-	type = request.getParameter("type");
-}
-List<BoxofficeShowVo> list = boxExt.getXmlDataSAX(category, type);
-System.out.println(list.size());
-
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +22,7 @@ body {
 }
 
 body, input, textarea, select, button, table {
-	font-family: 'y740', Nanum Gothic, dotum, sans-serif;
+	font-family: Nanum Gothic, dotum, sans-serif;
 	font-size: 12px;
 }
 
@@ -72,7 +58,7 @@ h1 {
     overflow: hidden;
     border-top: 1px solid #bbc5db;
     border-bottom: 1px solid #bbc5db;
-    margin: 0 42px 20px 49px;
+    margin: 0 32px 20px 32px;
 }
 
 .main_menu1 {
@@ -104,18 +90,31 @@ option {
     background: url(/swp/images/main/mline_dot.gif) repeat-y right top;
 }
 
+.main_menu2 p {
+    float: left;
+    background: url(/swp/images/main/mlist_dot.gif) no-repeat right 50%;
+    padding-right: 12px;
+    margin-right: 9px;
+}
+
 .main_menu3 {
     float: left;
     overflow: hidden;
     padding: 10px 12px 10px 12px;
 }
 
-.main_menu2 p {
+.main_menu3 p {
     float: left;
     background: url(/swp/images/main/mline_dot.gif) no-repeat right 50%;
     padding-right: 12px;
     margin-right: 9px;
 }
+
+.back_none {
+    background: none!important;
+    margin-right: 0px!important;
+}
+
 
 .m01 {
     background: url(/swp/images/main/m01_off.jpg) no-repeat;
@@ -129,6 +128,12 @@ option {
     height: 42px;
     display: inline-block;
 }
+.m01:hover {
+    background: url(/swp/images/main/m01_on.jpg) no-repeat;
+    width: 77px;
+    height: 42px;
+    display: inline-block;
+}
 
 .m02 {
     background: url(/swp/images/main/m02_off.jpg) no-repeat;
@@ -137,8 +142,14 @@ option {
     display: inline-block;
 }
 
-.m02 on {
-    background: url(/swp/images/main/m02_onf.jpg) no-repeat;
+.m02_on {
+    background: url(/swp/images/main/m02_on.jpg) no-repeat;
+    width: 86px;
+    height: 42px;
+    display: inline-block;
+}
+.m02:hover {
+    background: url(/swp/images/main/m02_on.jpg) no-repeat;
     width: 86px;
     height: 42px;
     display: inline-block;
@@ -150,10 +161,117 @@ option {
     height: 42px;
     display: inline-block;
 }
-
-.m03 on {
+.m03:hover {
     background: url(/swp/images/main/m03_on.jpg) no-repeat;
     width: 122px;
+    height: 42px;
+    display: inline-block;
+}
+
+.m03_on {
+    background: url(/swp/images/main/m03_on.jpg) no-repeat;
+    width: 122px;
+    height: 42px;
+    display: inline-block;
+}
+
+.m04 {
+    background: url(/swp/images/main/m04_off.jpg) no-repeat;
+    width: 75px;
+    height: 42px;
+    display: inline-block;
+}
+.m04:hover {
+    background: url(/swp/images/main/m04_on.jpg) no-repeat;
+    width: 75px;
+    height: 42px;
+    display: inline-block;
+}
+
+.m04_on{
+    background: url(/swp/images/main/m04_on.jpg) no-repeat;
+    width: 75px;
+    height: 42px;
+    display: inline-block;
+}
+
+.m05 {
+    background: url(/swp/images/main/m05_off.jpg) no-repeat;
+    width: 104px;
+    height: 42px;
+    display: inline-block;
+}
+.m05:hover {
+    background: url(/swp/images/main/m05_on.jpg) no-repeat;
+    width: 104px;
+    height: 42px;
+    display: inline-block;
+}
+
+.m05_on {
+    background: url(/swp/images/main/m05_on.jpg) no-repeat;
+    width: 104px;
+    height: 42px;
+    display: inline-block;
+}
+
+
+.m06 {
+    background: url(/swp/images/main/m06_off.jpg) no-repeat;
+    width: 78px;
+    height: 42px;
+    display: inline-block;
+}
+.m06:hover {
+    background: url(/swp/images/main/m06_on.jpg) no-repeat;
+    width: 78px;
+    height: 42px;
+    display: inline-block;
+}
+
+.m06_on {
+    background: url(/swp/images/main/m06_on.jpg) no-repeat;
+    width: 78px;
+    height: 42px;
+    display: inline-block;
+}
+
+.m07 {
+    background: url(/swp/images/main/m07_off.jpg) no-repeat;
+    width: 84px;
+    height: 42px;
+    display: inline-block;
+}
+.m07:hover {
+    background: url(/swp/images/main/m07_on.jpg) no-repeat;
+    width: 84px;
+    height: 42px;
+    display: inline-block;
+}
+
+.m07_on {
+    background: url(/swp/images/main/m07_on.jpg) no-repeat;
+    width: 84px;
+    height: 42px;
+    display: inline-block;
+}
+
+.m08 {
+    background: url(/swp/images/main/m08_off.jpg) no-repeat;
+    width: 95px;
+    height: 42px;
+    display: inline-block;
+}
+.m08:hover {
+    background: url(/swp/images/main/m08_on.jpg) no-repeat;
+    width: 95px;
+    height: 42px;
+    display: inline-block;
+}
+
+.m08_on {
+    background: url(/swp/images/main/m08_on.jpg) no-repeat;
+    width: 95px;
     height: 42px;
     display: inline-block;
 }
@@ -161,6 +279,11 @@ option {
 a, a:hover {
     text-decoration: none;
     color: #000;
+}
+
+.boxOfficePoster{
+padding: 0px;
+
 }
 
 .text_none {
@@ -278,23 +401,120 @@ img, fieldset {
 	border: 1px solid #cccccc;
 	box-sizing: border-box;
 }
+
 </style>
 
 <script>
-			$(function(){
-				$('#period').val('<%=type%>');
-				$('#period').change(function(){
-					location.href="/swp/index.jsp?category=<%=category%>&type="	+ $('#period').val();
-					});
-				
-		});
-			
-			function searchCategory(category) {
-				location.href="/swp/index.jsp?category=" + category +"&type=" + $('#period').val();
+var ccategory = "AAAA";
+var cid = "Theatre";
+var ctype = "week";
+
+$(function() {
+	$("#period").change(function() {
+		ctype = $("#period").val();
+		selectGenre(ccategory, cid);
+		console.log(ccategory);
+		console.log(cid);
+		
+	});
+});
+
+function selectGenre(category, id){
+	console.log(id);	
+	
+
+	for(var idx=1; idx < 9; idx++) {
+		$('.m0' + idx + '_on').removeClass('m0' + idx + '_on');
+		//console.log('m0' + idx + '_on');
+	}
+	
+	if(id == "Theatre"){
+		$("#Theatre").addClass("m01_on");
+		$("#genreTitle").text(" - 연극");
+		$("#genre").val(id);
+		$("#specificGubun").val("");
+	}else if(id == "Musical"){
+		$("#Musical").addClass("m02_on");
+		$("#genreTitle").text(" - 뮤지컬");
+		$("#genre").val(id);
+		$("#specificGubun").val("");
+	}else if(id == "Classic"){
+		$("#Classic").addClass("m03_on");
+		$("#genreTitle").text(" - 클래식/오페라");
+		$("#genre").val(id);
+		$("#specificGubun").val("");
+	}else if(id == "Dance"){
+		$("#Dance").addClass("m04_on");
+		$("#genreTitle").text(" - 무용");
+		$("#genre").val(id);
+		$("#specificGubun").val("");
+	}else if(id == "Gukak"){
+		$("#Gukak").addClass("m05_on");
+		$("#genreTitle").text(" - 국악/복합");
+		$("#genre").val(id);
+		$("#specificGubun").val("");
+	}else if(id == "kid"){
+		$("#kid").addClass("m06_on");
+		$("#genreTitle").text(" - 아동");
+		$("#genre").val("");
+		$("#specificGubun").val(id);
+	}else if(id == "varsity"){
+		$("#varsity").addClass("m07_on");
+		$("#genreTitle").text(" - 대학로");
+		$("#genre").val("");
+		$("#specificGubun").val(id);
+	}else if(id == "openRun"){
+		$("#openRun").addClass("m08_on");
+		$("#genreTitle").text(" - 오픈런");
+		$("#genre").val("");
+		$("#specificGubun").val(id);
+	}
+		//$(obj).addClass('m0' + num + '_on');
+	/* m01 m01_on */
+	$.ajax({
+		url:"/swp/boxofficeAjax.do?category=" + category + "&type=" + ctype,
+		type:"get",
+		success: function(data) {
+			console.log(data.length);
+			var resultStr = "";
+			console.log(0 < data.length);
+			if(0 < data.length){
+			for(var i=0; i < 10; i++){
+				resultStr += "<li><a href='/swp/reviewList.do?showId=" + data[i].mt20id +"'><div class='poster'>";
+				resultStr += "<span class='num'><img src='/swp/images/main/poster_rank_" + (i+1) + ".png'";
+				resultStr += "alt='" + data[i].rnum + "'></span><span class='poster_img'><img ";
+				resultStr += "src='" + data[i].poster + "'";
+				resultStr += "alt='" + data[i].prfnm + "'></span>";
+				resultStr += "</div>";
+				resultStr += "<div class='poster_hover' style='display: none; opacity: 1;'>"
+					resultStr += "<dl>";
+					resultStr += "<dt style='margin-bottom: 30px'>" + data[i].prfnm + "</dt>";
+					resultStr += "<dt>" + data[i].mt20id + "</dt>";
+					resultStr += "<dt>" + data[i].prfplcnm + "</dt>";
+					resultStr += "</dl>";
+					resultStr += "</div></a></li>";
 			}
+			} else {
+				resultStr += "<li style='width:100%; height:100%; color:#000; margin:0; text-align:center; line-height:400px;'>" +
+				"등록된 공연이 없습니다."+	                    		
+				"</li>";
+			}
+				cid = id;
+				ccategory = category;
+				$(".boxOfficePoster").html(resultStr);
 			
-			
-	</script>
+		}, error:function(e) {
+			console.log(e);
+		} 
+		
+	});
+}
+
+
+
+
+selectGenre(ccategory, cid);
+</script>
 
 </head>
 <body>
@@ -322,20 +542,23 @@ img, fieldset {
 					</select>
 				</div>
 				<div class="main_menu2">
-					<p><a href="#none" class="m01 m01_on" id="Theatre" onclick=><span class="text_none">연극</span></a></p>
-					<p><a href="#none" class="m02" id="Musical"><span class="text_none">뮤지컬</span></a></p>
-					<p><a href="#none" class="m03" id="Classic"><span class="text_none">클래식/오페라</span></a></p>
+					<p><a href="#none" class="m01 m01_on" id="Theatre" onclick="selectGenre('AAAA', this.id);"><span class="text_none">연극</span></a></p>
+					<p><a href="#none" class="m02" id="Musical" onclick="selectGenre('AAAB', this.id);"><span class="text_none">뮤지컬</span></a></p>
+					<p><a href="#none" class="m03" id="Classic" onclick="selectGenre('CCCA', this.id);"><span class="text_none">클래식/오페라</span></a></p>
+					<p><a href="#none" class="m04" id="Dance" onclick="selectGenre('BBBA', this.id);"><span class="text_none">무용</span></a></p>
+					<p class="back_none"><a href="#none" class="m05" id="Gukak" onclick="selectGenre('CCCC', this.id);"><span class="text_none">국악/복합</span></a></p>
+					
 				</div>
 				<div class="main_menu3">
-					<p><a href="#none" class="m06" id="kid"><span class="text_none">아동</span></a></p>
-					<p><a href="#none" class="m07" id="varsity"><span class="text_none">대학로</span></a></p>
-					<p class="back_none2"><a href="#none" class="m08" id="openRun"><span class="text_none">오픈런</span></a></p>
+					<p><a href="#none" class="m06" id="kid" onclick="selectGenre('KID', this.id);"><span class="text_none">아동</span></a></p>
+					<p><a href="#none" class="m07" id="varsity" onclick="selectGenre('', this.id);"><span class="text_none">대학로</span></a></p>
+					<p class="back_none2"><a href="#none" class="m08" id="openRun" onclick="selectGenre('OPEN', this.id);"><span class="text_none">오픈런</span></a></p>
 				</div>
 			</form>
 			</div>
 
 		<ul class="boxOfficePoster">
-		<%for(int i = 0; i < 10; i++){%> 
+		<%-- <%for(int i = 0; i < 10; i++){%> 
 		<% if(list.get(i).getPoster().charAt(0) == '/') {
 			list.get(i).setPoster("http://www.kopis.or.kr/" + list.get(i).getPoster());
 		}%>
@@ -353,7 +576,7 @@ img, fieldset {
 							<dt><%=list.get(i).getPrfplcnm() %></dt>
 						</dl>
 					</div></a></li>
-					<%} %>
+					<%} %> --%>
 					
 		</ul>
 
