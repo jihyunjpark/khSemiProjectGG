@@ -1,3 +1,5 @@
+<%@page import="java.net.URLDecoder"%>
+<%@page import="java.net.URLEncoder"%>
 <%@page import="board.show.controller.ShowReviewCount"%>
 <%@page import="board.show.controller.ShowPointgrade"%>
 <%@page import="board.show.controller.ShowListExtXml"%>
@@ -8,13 +10,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-
 	List<ShowVo2> list = null;
 	int currentPage = 1;
+	String query = "";
 	if (null != request.getParameter("page")) {
 		currentPage = Integer.parseInt(request.getParameter("page"));
 	}
-	list = slext.getSearchShow(page, word)
+	if(null != request.getParameter("query")) {
+		query = request.getParameter("query");
+	}
+	ShowListExtXml slext = new ShowListExtXml();
+	list = slext.getSearchShow(currentPage, query);
+	//System.out.println(list.size());
+	
+	ShowPointgrade sp = new ShowPointgrade();
+	int point = 0;
+	ShowReviewCount src = new ShowReviewCount();
+	int count = 0;
 %>
 <%
 	int limitPage; //한페이지에 출력할 페이지 갯수
@@ -26,14 +38,9 @@
 	limit = 12;
 	limitPage = 10;
 
-	if (request.getParameter("page") != null) {
-		currentPage = Integer.parseInt(request.getParameter("page"));
-	} else {
-		currentPage = 1;
-	}
 	int listCount = 0;
 	//게시글의 총 갯수
-	
+	listCount = 100;
 	
 	
 	
@@ -53,7 +60,6 @@
 	}
 
 	System.out.println("request.category:" + request.getParameter("category"));
-	System.out.println("category:" + category);
 	System.out.println("limitPage:" + limitPage);
 	System.out.println("maxPage:" + maxPage);
 	System.out.println("startPage:" + startPage);
@@ -69,16 +75,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script>
+
 function movePage(page) {
-	location.href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=<%=category%>&page=" + page;
+	var query = $("#nquery").val();
+	location.href="http://localhost:8081/swp/views/common/showSearch.jsp?page=" + page + "&query=" + query;
 }
 function prevPage(page) {
 	page -= 1;
-	location.href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=<%=category%>&page=" + page;
+	location.href="http://localhost:8081/swp/views/common/showSearch.jsp?page=" + page + "&query=" + query;
 }
 function nextPage(page) {
 	page += 1;
-	location.href="http://localhost:8081/swp/views/board/show/showMain.jsp?category=<%=category%>&page=" + page;
+	location.href="http://localhost:8081/swp/views/common/showSearch.jsp?page=" + page + "&query=" + query;
 }
 
 </script>
@@ -118,11 +126,19 @@ function nextPage(page) {
 <body>
 	<div>
 		<%@ include file="/views/common/header.jsp"%>
+		<script>
+		$(function() {
+			$("#nquery").val('<%=query%>');
+			
+		});
+		</script>
 		<div class="section">
-			<div id="mnImage">
-				<img src="/swp/images/mnImage_<%=category%>.png" class="mnImage" />
-			</div>
+		<h1>검색 결과</h1>
 			<table class="showListTable">
+			<%if(list.size() == 0){ %>
+			<h2>검색결과가 없습니다.</h2>
+			<%} %>
+			
 				<%
 					for (int i = 0; i < list.size(); i++) {
 						ShowVo2 show = list.get(i);
@@ -147,7 +163,6 @@ function nextPage(page) {
 										<li class="ltShowKind"><%=show.getGenrenm()%></li>
 										<li class="ltShowName"><a
 											href="/swp/reviewList.do?showId=<%=show.getMt20id()%>"
-											<%-- 											href="http://localhost:8081/swp/views/board/show/showSub2.jsp?showId=<%=show.getMt20id()%>" --%>
 											title="<%=show.getPrfnm()%>"><%=show.getPrfnm()%></a></li>
 										<li class="ltShowDetail"><%=show.getGenrenm()%></li>
 										<li class="ltShowPlace"><%=show.getFcltynm()%></li>
@@ -196,7 +211,6 @@ function nextPage(page) {
 			%>
 			<button onclick="nextPage(<%=currentPage%>)"
 				<%if (maxPage == currentPage) {%> disabled <%}%>>></button>
-			<button onclick="movePage(<%=maxPage%>);">>></button>
 		</div>
 	</div>
 	<%@ include file="/views/common/footer.jsp"%>

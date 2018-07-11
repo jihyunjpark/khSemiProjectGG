@@ -168,7 +168,7 @@ $("#top-Login").attr("onclick", "logout();");
 			<div id="logo_image" >
 				<a href="<%=request.getContextPath()%>/index.jsp"><img src="/swp/images/logo.png" width="80px" height="80px"></img></a>
 			</div>
-			<form id="search_form" name="search" action="?" method="get"
+			<form id="search_form" name="search" action="/swp/views/common/showSearch.jsp"  method="get"
 				role="search">
 				<fieldset class="greenwindow">
 					<legend>검색</legend>
