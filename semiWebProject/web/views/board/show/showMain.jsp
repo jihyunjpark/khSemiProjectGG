@@ -124,7 +124,7 @@ function nextPage(page) {
 }
 
 .pageArea {
-	width: 520px;
+	width: 720px;
 	height: 1400px;
 	margin: 20px auto;
 }
@@ -144,7 +144,6 @@ font-size: 24px;
 font-weight: bold;
 
 }
-
 
 </style>
 </head>
@@ -222,7 +221,7 @@ font-weight: bold;
 				for (int i = startPage; i <= endPage; i++) {
 			%>
 
-			<button onclick="movePage(<%=i%>);" <%if (currentPage == i) {%>
+			<button class="numberCircle" onclick="movePage(<%=i%>);" <%if (currentPage == i) {%>
 				disabled <%}%>><%=i%></button>
 			<%
 				}
