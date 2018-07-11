@@ -45,6 +45,7 @@ public class MemberDao {
 				result.setPassword(pwd);
 				result.setNickname(rs.getString("nickame"));
 				result.setEnrolldate(rs.getDate("enrolldate"));
+				result.setMember_grade(rs.getInt("member_grade"));
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -86,6 +87,7 @@ public class MemberDao {
 				result.setGender(rs.getString("gender").charAt(0));
 				result.setNickname(rs.getString("nickname"));
 				result.setEmail(rs.getString("email"));
+				result.setMember_grade(rs.getInt("member_grade"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

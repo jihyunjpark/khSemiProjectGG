@@ -10,6 +10,7 @@ public class MemberVo {
 	private char gender;
 	private String email;
 	private Date enrolldate;
+	private int member_grade;
 	
 	public MemberVo(){
 	}
@@ -64,6 +65,14 @@ public class MemberVo {
 	}
 	public void setEnrolldate(Date enrolldate) {
 		this.enrolldate = enrolldate;
+	}
+ 
+	public int getMember_grade() {
+		return member_grade;
+	}
+
+	public void setMember_grade(int member_grade) {
+		this.member_grade = member_grade;
 	}
 
 	@Override
