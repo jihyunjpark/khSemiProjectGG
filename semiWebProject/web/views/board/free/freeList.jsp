@@ -78,15 +78,15 @@ background-color: #f5f5f5;
 		
 		<!-- 페이징 처리 부분     <<	1 2 3 4 5 6 7 ... >>  -->	
 		<div class="pageArea" align="center">
-			<button onclick="movePage(1);"> << </button>
+			<i class="icono-rewind" onclick="movePage(1);"> << </i>
 			<%for(int i = startPage ; i <= endPage ; i++){ %>
 				<%if(currentPage == i){ %>
-					<button disabled><%=i %></button>
+					<button class="numberCircle" disabled><%=i %></button>
 				<%}else{ %>
-					<button onclick="movePage(<%=i%>);"><%=i %></button>
+					<button class="numberCircle" onclick="movePage(<%=i%>);"><%=i %></button>
 				<%} %>
 			<%} %>
-			<button onclick="movePage(<%=maxPage%>);"> >> </button>
+			<i class="icono-forward" onclick="movePage(<%=maxPage%>);"> >> </i>
 		</div>
 	</div>
 	<div class="searchArea" align="center">

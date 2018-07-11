@@ -36,7 +36,6 @@ $("#top-Login").attr("onclick", "logout();");
 <%}	%>
 
 
-
 	/* jQuery timeㄴ */
 	var subMenuName = null;
 
@@ -105,9 +104,9 @@ $("#top-Login").attr("onclick", "logout();");
 			}
 		})
 
-		var menuName = sessionStorage.getItem('menu');
-		console.log(menuName);
-		if (menuName == null || menuName == 'home') {
+		var menuName = sessionStorage.getItem('menu'); 
+		console.log(location.href);
+		if (location.href == "http://localhost:8081/swp/index.jsp" || location.href == "http://localhost:8081/swp/") {
 			$("#accordian").hide();
 		} else if (menuName != null && menuName != 'home') {
 			$("#" + menuName + "Menu").click();
@@ -152,6 +151,7 @@ $("#top-Login").attr("onclick", "logout();");
 
 <body>
 	<button onclick="confirmEmail();">정보확인-네이버</button>
+	<!-- <button class="numberCircle">1</button> -->
 	<div class="header">
 		<header id="header" class="">
 			<div id="top-menu">
@@ -180,7 +180,7 @@ $("#top-Login").attr("onclick", "logout();");
 							name="query" class="box_window" maxlength="255" title="검색어 입력">
 						</span>
 					</div>
-					<button type="submit" class="bt_search">
+					<button class="" type="submit" class="bt_search">
 						<span class="spnew ico_search">검색</span> <span
 							class="ico_search_submit"></span>
 					</button>
