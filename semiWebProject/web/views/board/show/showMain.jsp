@@ -135,11 +135,16 @@ function nextPage(page) {
 
 #mnImage {
 padding-bottom: 10px;
+padding-top: 10px;
+margin-left: 10px;
 margin-bottom: 30px;
-border-bottom: 2px solid #e5e5e5;
-
+border-bottom: 2px solid #7c65b2;
+float:left;
+font-size: 24px;
+font-weight: bold;
 
 }
+
 
 </style>
 </head>
@@ -147,7 +152,7 @@ border-bottom: 2px solid #e5e5e5;
 	<div>
 		<%@ include file="/views/common/header.jsp"%>
 		<div class="section">
-			<div id="mnImage"><img src="/swp/images/mnImage_<%=category%>.png" class="mnImage"/></div>
+			<div id="mnImage"><% if(category.equals("AAAA")){%>연극<%}else if(category.equals("AAAB")){ %>뮤지컬<%}else{ %>클래식<%} %></div>
 			<table class="showListTable">
 				<%
 					for (int i = 0; i < list.size(); i++) {

@@ -151,7 +151,7 @@ $("#top-Login").attr("onclick", "logout();");
 </head>
 
 <body>
-	<button onclick="confirmEmail();">정보확인-네이버</button>
+	<!-- <button onclick="confirmEmail();">정보확인-네이버</button> -->
 	<div class="header">
 		<header id="header" class="">
 			<div id="top-menu">
